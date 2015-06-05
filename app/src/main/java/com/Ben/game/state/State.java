@@ -16,7 +16,7 @@ public abstract class State {
 
 	public abstract void render(Painter g);
 
-	public abstract boolean onTouch(MotionEvent e, int scaledX, int scaledY);
+	public abstract boolean onTouch(int event, int scaledX, int scaledY);
 
 	protected Tile touchInGrid(Tile[][] grid, int x, int y){
 		for(int i = 0; i < 3; i++){

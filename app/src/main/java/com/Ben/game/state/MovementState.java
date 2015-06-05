@@ -3,6 +3,7 @@ package com.Ben.game.state;
 import android.graphics.Color;
 import android.view.MotionEvent;
 
+import com.Ben.framework.util.InputHandler;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.Enemies;
@@ -54,11 +55,9 @@ public class MovementState extends State {
         Renderer.renderIcons(g, selectedTile, imageOffset, 0);
     }
 
-    public boolean onTouch(MotionEvent e, int scaledX, int scaledY){
-        if(e.getAction() == MotionEvent.ACTION_DOWN){
-            tileDown = touchInGrid(player.getGrid(), scaledX, scaledY);
-        }
-        else if(e.getAction() == MotionEvent.ACTION_UP){
+    public boolean onTouch(int e, int scaledX, int scaledY){
+
+        if(e == InputHandler.TOUCHEVENT){
             tileUp = touchInGrid(player.getGrid(), scaledX, scaledY);
             if(tileDown == tileUp  && tileDown != null){   // check if a grid tile was pressed
                 if(tileUp.getShip() != null){

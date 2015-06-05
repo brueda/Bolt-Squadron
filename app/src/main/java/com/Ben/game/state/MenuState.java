@@ -25,7 +25,7 @@ public class MenuState extends State {
 	}
 
 	@Override
-	public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
+	public boolean onTouch(int e, int scaledX, int scaledY) {
 //		if(e.getAction() == MotionEvent.ACTION_UP){
 //			setCurrentState(new MovementState(new Player(), new Enemies()));
 //			return true;

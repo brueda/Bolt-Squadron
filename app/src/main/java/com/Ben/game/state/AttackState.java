@@ -52,7 +52,7 @@ public   class AttackState extends State {
         Renderer.renderIcons(g, selectedTile, imageOffset, 1);
     }
 
-    public boolean onTouch(MotionEvent e, int scaledX, int scaledY){
+    public boolean onTouch(int e, int scaledX, int scaledY){
         if(e.getAction() == MotionEvent.ACTION_DOWN){
             tileDown = touchInGrid(player.getGrid(), scaledX, scaledY);
         }

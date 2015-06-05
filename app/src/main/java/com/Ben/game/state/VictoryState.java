@@ -28,7 +28,7 @@ public class VictoryState extends State {
     }
 
     @Override
-    public boolean onTouch(MotionEvent e, int scaledX, int scaledY) {
+    public boolean onTouch(int e, int scaledX, int scaledY) {
         setCurrentState(new MenuState());
         return true;
     }
