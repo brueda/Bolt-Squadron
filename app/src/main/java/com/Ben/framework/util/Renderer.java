@@ -70,7 +70,7 @@ public class Renderer {
     }
 
     public static void renderIcons(Painter g, Tile selected, int offset, int state){    // state is 0 for movement and 1 for attack
-        if(selected != null && selected.getShip() != null && !selected.getShip().isActivated()) {
+        if(selected != null && selected.getShip() != null && !selected.getShip().isActivated() && !selected.getShip().isDead()) {
             int x = selected.x_coordinate;
             int y = selected.y_coordinate;
             if(state == 0) {   // movement state, bolt

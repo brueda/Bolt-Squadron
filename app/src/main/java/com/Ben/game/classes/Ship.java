@@ -16,6 +16,7 @@ public abstract class Ship {
     protected boolean cloaked;
     protected boolean shielded;
     protected boolean activated;  // has moved or attacked this round
+    protected Tile currentTile;
 
     public Ship(){
         dead = false;
@@ -25,6 +26,7 @@ public abstract class Ship {
         activated = false;
         cloaked = false;
         shielded = false;
+        currentTile = null;
     }
 
     /* getters and setters */
@@ -32,6 +34,14 @@ public abstract class Ship {
     public void setPosition(int x, int y){
         positionX = x;
         positionY = y;
+    }
+
+    public void setTile(Tile t){
+        currentTile = t;
+    }
+
+    public Tile getTile(){
+        return currentTile;
     }
 
     public int getPositionX(){
@@ -74,6 +84,7 @@ public abstract class Ship {
         health -= damage;
         if(health <= 0){
             dead = true;
+            currentTile.setShip(null);
         }
     }
 

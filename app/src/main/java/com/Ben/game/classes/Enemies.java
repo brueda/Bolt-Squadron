@@ -16,14 +16,7 @@ public class Enemies {
         Tile[][] grid = player.getGrid();
         int numEnemies = 4;  // TODO: make this variable
         enemies = new ArrayList<Enemy>();
-        //grid = new Tile[7][4];
         Enemy enemy;
-
-//        for(int i = 4; i < 7; i++){
-//            for(int j = 0; j < 4; j++){
-//                grid[i][j] = new Tile(i, j);
-//            }
-//        }
 
         /* this is just placeholder code for testing */
         for(int i = 0; i < numEnemies; i++){
@@ -31,5 +24,26 @@ public class Enemies {
             enemies.add(enemy);
             grid[5+i%2][i].setShip(enemy);
         }
+    }
+
+    public void attack(Player p){
+        for(Enemy attacker : enemies) {
+            if (!attacker.isDead()) {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                attacker.attack(p);
+            }
+        }
+    }
+
+    public boolean areDefeated(){
+        boolean defeated = true;
+        for(Enemy e : enemies){
+            if(!e.isDead()) defeated = false;
+        }
+        return defeated;
     }
 }

@@ -31,6 +31,7 @@ public class Tile {
         ship = s;
         if(ship != null){
             ship.setPosition(positionX, positionY);
+            ship.setTile(this);
         }
     }
 

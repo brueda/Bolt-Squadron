@@ -65,21 +65,21 @@ public   class AttackState extends State {
                     selectedTile = tileUp;
                 }
                 else{      // enemy ship was selected
-                   // if(selectedTile == null || selectedTile.getShip() == null || selectedTile.getShip().isActivated()) return true;
+                    if(selectedTile == null || selectedTile.getShip() == null || selectedTile.getShip().isActivated()) return true;
                     Enemy target = (Enemy) tileUp.getShip();
                     Ship attacker = selectedTile.getShip();
                     attacker.fire(target);
                     attacker.setActivated(true);
-//                    if(enemies.areDefeated()){
-//                        setCurrentState(new VictoryState(player));
-//                        return true;
-//                    }
+                    if(enemies.areDefeated()){
+                        setCurrentState(new VictoryState());
+                        return true;
+                    }
                     if(player.allShipsActivated()){
-//                        enemies.attack(player);
-//                        if(player.isDefeated()){
-//                            setCurrentState(new GameOverState(player));
-//                            return true;
-//                        }
+                        enemies.attack(player);
+                        if(player.isDefeated()){
+                            setCurrentState(new GameOverState());
+                            return true;
+                        }
                         setCurrentState(new MovementState(player, enemies));
                         return true;
                     }

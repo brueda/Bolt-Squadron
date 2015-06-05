@@ -58,7 +58,7 @@ public class Player {
     public boolean allShipsActivated(){
         boolean all = true;
         for(Ship s : party){
-            if(!s.isActivated()) all = false;
+            if(!s.isActivated() && !s.isDead()) all = false;
         }
         return all;
     }
@@ -67,5 +67,13 @@ public class Player {
         for(Ship s : party){
             s.setActivated(false);
         }
+    }
+
+    public boolean isDefeated(){
+        boolean defeated = true;
+        for(Ship s : party){
+            if(!s.isDead()) defeated = false;
+        }
+        return defeated;
     }
 }
