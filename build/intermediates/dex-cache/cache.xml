@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Benjamin\AndroidStudioProjects\SpaceGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="C:\Users\Benjamin\AndroidStudioProjects\SpaceGame\app\build\intermediates\pre-dexed\debug\classes-b1919d952450b2c4473ea7c4c4ba69e44aaf2716.jar" />
+    </item>
+    <item
+        jar="C:\Users\Benjamin\AndroidStudioProjects\SpaceGame\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\jars\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="C:\Users\Benjamin\AndroidStudioProjects\SpaceGame\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-f92e465f70353b1ec83d4f8f992f45618834bfa5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Benjamin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="C:\Users\Benjamin\AndroidStudioProjects\SpaceGame\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-7b75f360f4dfb571c7d95baa5fa0c762211aa57a.jar" />
+    </item>
+
+</items>
