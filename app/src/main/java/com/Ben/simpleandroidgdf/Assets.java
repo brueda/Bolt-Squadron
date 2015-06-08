@@ -12,7 +12,7 @@ import android.media.SoundPool;
 public class Assets {
 	private static SoundPool soundPool;
 	public static Bitmap welcome;
-	public static Bitmap testShip, yellowDot, redDot, crosshair, bolt, UFO, shield, background;
+	public static Bitmap testShip, yellowDot, redDot, crosshair, bolt, UFO, shield, background, blueLaser, redLaser;
 	public static int laserID;
 
 	public static void load() {
@@ -25,6 +25,8 @@ public class Assets {
 		background = loadBitmap("black.png", true);
 		redDot = loadBitmap("dotRed.png", true);
 		crosshair = loadBitmap("crossair_redOutline.png", true);
+		blueLaser = loadBitmap("laserBlue01.png", true);
+		redLaser = loadBitmap("laserRed01.png", true);
 
 		laserID = loadSound("laser1.wav");
 	}

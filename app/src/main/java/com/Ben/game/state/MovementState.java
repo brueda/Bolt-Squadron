@@ -19,8 +19,6 @@ public class MovementState extends State {
 
     private Player player;
     private Enemies enemies;
-    private Tile tileDown;
-    private Tile tileUp;
     private Tile selectedTile;
     private int imageOffset;
     private boolean increasing;
@@ -31,8 +29,6 @@ public class MovementState extends State {
     }
 
     public void init(){
-        tileDown = null;
-        tileUp = null;
         selectedTile = null;
         imageOffset = 0;
         increasing = true;
@@ -48,8 +44,6 @@ public class MovementState extends State {
     }
 
     public void render(Painter g){
-        //g.setColor(Color.BLACK);
-       // g.fillRect(0,0,800,450);
         Renderer.renderBackground(g);
         Renderer.renderShips(g, player, imageOffset, MOVE);
         Renderer.renderEnemies(g, player, imageOffset);
@@ -62,8 +56,8 @@ public class MovementState extends State {
             Tile pressed = touchInGrid(player.getGrid(), scaledX, scaledY);
             if(pressed == null) return true;
             if(pressed.getShip() != null){
-                if(pressed.getShip().getPositionX() > 3) return true;
-                if(pressed == selectedTile) doMove(selectedTile, pressed);
+                if(pressed.getShip().getPositionX() > 3) return true;  // can't move Enemy ship
+                if(pressed == selectedTile) doMove(selectedTile, pressed);  // hold position
                 selectedTile = pressed;
             }
             else doMove(selectedTile, pressed);

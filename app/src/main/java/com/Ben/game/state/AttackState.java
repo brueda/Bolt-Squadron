@@ -16,8 +16,6 @@ public   class AttackState extends State {
 
     private Player player;
     private Enemies enemies;
-    private Tile tileDown;
-    private Tile tileUp;
     private Tile selectedTile;
     private int imageOffset;
     private boolean increasing;
@@ -28,8 +26,6 @@ public   class AttackState extends State {
     }
 
     public void init(){
-        tileDown = null;
-        tileUp = null;
         selectedTile = null;
         imageOffset = 0;
         increasing = true;
