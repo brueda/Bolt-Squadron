@@ -1,12 +1,10 @@
 package com.Ben.game.state;
 
-import android.graphics.Color;
-import android.view.MotionEvent;
-
+import com.Ben.framework.util.InputHandler;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.Enemies;
-import com.Ben.game.classes.Enemy;
+import com.Ben.game.classes.EnemyShip;
 import com.Ben.game.classes.Player;
 import com.Ben.game.classes.Ship;
 import com.Ben.game.classes.Tile;
@@ -36,6 +34,7 @@ public   class AttackState extends State {
         imageOffset = 0;
         increasing = true;
         player.resetActivated();
+        selectedTile = player.getParty().get(0).getTile();
     }
 
     public void update(float delta){
@@ -53,22 +52,15 @@ public   class AttackState extends State {
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){
-        if(e.getAction() == MotionEvent.ACTION_DOWN){
-            tileDown = touchInGrid(player.getGrid(), scaledX, scaledY);
-        }
-        else if(e.getAction() == MotionEvent.ACTION_UP){
-            tileUp = touchInGrid(player.getGrid(), scaledX, scaledY);
-            if(tileDown == tileUp && tileDown != null){
-                Ship ship = tileUp.getShip();
+        if(e == InputHandler.TOUCHEVENT){
+            Tile pressed = touchInGrid(player.getGrid(), scaledX, scaledY);
+            if(pressed != null){
+                Ship ship = pressed.getShip();
                 if(ship == null) return true;
-                if(ship.getPositionX() < 3){   // a player ship was selected
-                    selectedTile = tileUp;
-                }
-                else{      // enemy ship was selected
-                    if(selectedTile == null || selectedTile.getShip() == null || selectedTile.getShip().isActivated()) return true;
-                    Enemy target = (Enemy) tileUp.getShip();
+                if(ship.getPositionX() > 3){      // enemy ship was selected
+                    EnemyShip target = (EnemyShip) pressed.getShip();
                     Ship attacker = selectedTile.getShip();
-                    attacker.fire(target);
+                    if(!attacker.isActivated() && !attacker.isDead()) attacker.fire(target);  //I feel like these checks belong somewhere else
                     attacker.setActivated(true);
                     if(enemies.areDefeated()){
                         setCurrentState(new VictoryState());
@@ -83,11 +75,10 @@ public   class AttackState extends State {
                         setCurrentState(new MovementState(player, enemies));
                         return true;
                     }
-
                 }
+                else selectedTile = pressed;      // player ship was selected
             }
         }
-
         return true;
     }
 }

@@ -49,6 +49,6 @@ public class InputHandler implements OnTouchListener {
 				return currentState.onTouch(SWIPE_DOWN, scaledX, scaledY);
 			}
 		}
-		return false;
+		return true;
 	}
 }

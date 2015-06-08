@@ -7,13 +7,13 @@ import java.util.ArrayList;
  */
 public class Player {
 
-    private ArrayList<Ship> party;
+    private ArrayList<PlayerShip> party;
     private Tile[][] grid;
     private int volts;
 
     public Player(){
         volts = 1000;
-        party = new ArrayList<Ship>();
+        party = new ArrayList<PlayerShip>();
         grid = new Tile[7][4];
 
         for(int i = 0; i < 3; i++){       // make the Tiles for player ships
@@ -29,13 +29,13 @@ public class Player {
         }
 
         for(int i = 0; i < 4; i++){       // add the test ships
-            Ship ship = new testShip();
+            PlayerShip ship = new testShip();
             party.add(ship);
             grid[1][i].setShip(ship);
         }
     }
 
-    public void addShip(Ship ship){
+    public void addShip(PlayerShip ship){
         party.add(ship);
     }
 
@@ -51,7 +51,7 @@ public class Player {
         volts = _volts;
     }
 
-    public ArrayList<Ship> getParty(){
+    public ArrayList<PlayerShip> getParty(){
         return party;
     }
 

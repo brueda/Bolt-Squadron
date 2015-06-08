@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by Benjamin on 5/26/2015.
  */
 public class Enemies {
-    private ArrayList<Enemy> enemies;
+    private ArrayList<EnemyShip> enemies;
     private Player player;
     //private Tile[][] grid;
 
@@ -15,8 +15,8 @@ public class Enemies {
         player = p;
         Tile[][] grid = player.getGrid();
         int numEnemies = 4;  // TODO: make this variable
-        enemies = new ArrayList<Enemy>();
-        Enemy enemy;
+        enemies = new ArrayList<EnemyShip>();
+        EnemyShip enemy;
 
         /* this is just placeholder code for testing */
         for(int i = 0; i < numEnemies; i++){
@@ -27,7 +27,7 @@ public class Enemies {
     }
 
     public void attack(Player p){
-        for(Enemy attacker : enemies) {
+        for(EnemyShip attacker : enemies) {
             if (!attacker.isDead()) {
                 try {
                     Thread.sleep(1000);
@@ -41,7 +41,7 @@ public class Enemies {
 
     public boolean areDefeated(){
         boolean defeated = true;
-        for(Enemy e : enemies){
+        for(EnemyShip e : enemies){
             if(!e.isDead()) defeated = false;
         }
         return defeated;

@@ -5,7 +5,7 @@ package com.Ben.game.classes;
  */
 
 /* Placeholder class until real ship variants are implemented */
-public class testShip extends Ship {
+public class testShip extends PlayerShip {
 
     public testShip(){
         super();

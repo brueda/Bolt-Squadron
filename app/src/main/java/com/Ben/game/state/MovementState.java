@@ -37,6 +37,7 @@ public class MovementState extends State {
         imageOffset = 0;
         increasing = true;
         player.resetActivated();
+        selectedTile = player.getParty().get(0).getTile();
     }
 
     public void update(float delta){
@@ -58,15 +59,14 @@ public class MovementState extends State {
     public boolean onTouch(int e, int scaledX, int scaledY){
 
         if(e == InputHandler.TOUCHEVENT){
-            tileUp = touchInGrid(player.getGrid(), scaledX, scaledY);
-            if(tileDown == tileUp  && tileDown != null){   // check if a grid tile was pressed
-                if(tileUp.getShip() != null){
-                    if(tileUp.getShip().getPositionX() > 3) return true;  // can't move an enemy ship
-                    if(tileUp == selectedTile) doMove(selectedTile,tileUp);  // tap on a selected ship to hold position
-                    selectedTile = tileUp;
-                }
-                else doMove(selectedTile, tileUp);
+            Tile pressed = touchInGrid(player.getGrid(), scaledX, scaledY);
+            if(pressed == null) return true;
+            if(pressed.getShip() != null){
+                if(pressed.getShip().getPositionX() > 3) return true;
+                if(pressed == selectedTile) doMove(selectedTile, pressed);
+                selectedTile = pressed;
             }
+            else doMove(selectedTile, pressed);
         }
         return true;
     }
