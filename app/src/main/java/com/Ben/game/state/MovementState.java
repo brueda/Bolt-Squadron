@@ -51,9 +51,9 @@ public class MovementState extends State {
         //g.setColor(Color.BLACK);
        // g.fillRect(0,0,800,450);
         Renderer.renderBackground(g);
-        Renderer.renderShips(g, player, imageOffset, 0);
+        Renderer.renderShips(g, player, imageOffset, MOVE);
         Renderer.renderEnemies(g, player, imageOffset);
-        Renderer.renderIcons(g, selectedTile, imageOffset, 0);
+        Renderer.renderIcons(g, selectedTile, imageOffset, MOVE);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){

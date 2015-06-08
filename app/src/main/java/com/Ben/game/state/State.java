@@ -6,6 +6,9 @@ import com.Ben.game.classes.Tile;
 import com.Ben.simpleandroidgdf.GameMainActivity;
 
 public abstract class State {
+	public static final int MOVE = 0;
+	public static final int ATTACK = 1;
+
 	public void setCurrentState(State newState) {
 		GameMainActivity.sGame.setCurrentState(newState);
 	}

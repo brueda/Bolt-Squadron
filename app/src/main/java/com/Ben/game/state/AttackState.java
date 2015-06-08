@@ -46,9 +46,9 @@ public   class AttackState extends State {
 
     public void render(Painter g){
         Renderer.renderBackground(g);
-        Renderer.renderShips(g, player, imageOffset, 1);
+        Renderer.renderShips(g, player, imageOffset, ATTACK);
         Renderer.renderEnemies(g, player, imageOffset);
-        Renderer.renderIcons(g, selectedTile, imageOffset, 1);
+        Renderer.renderIcons(g, selectedTile, imageOffset, ATTACK);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){

@@ -8,6 +8,7 @@ import com.Ben.game.classes.Enemies;
 import com.Ben.game.classes.Player;
 import com.Ben.game.classes.Ship;
 import com.Ben.game.classes.Tile;
+import com.Ben.game.state.State;
 import com.Ben.simpleandroidgdf.Assets;
 import com.Ben.simpleandroidgdf.R;
 
@@ -38,7 +39,7 @@ public class Renderer {
                     g.setColor(Color.GREEN);
                     g.drawString("" + ship.getHealth(),x-10,y+15+(j%2==0?1:-1)*offset/15);
                     if(!ship.isActivated()){
-                        if(state == 0){     // movement state, yellow dot
+                        if(state == State.MOVE){     // movement state, yellow dot
                             g.drawImage(Assets.yellowDot,x+45,y+10+(j%2==0?1:-1)*offset/15,10,10);
                         }
                         else{               // attack state, red dot
@@ -73,7 +74,7 @@ public class Renderer {
         if(selected != null && selected.getShip() != null && !selected.getShip().isActivated() && !selected.getShip().isDead()) {
             int x = selected.x_coordinate;
             int y = selected.y_coordinate;
-            if(state == 0) {   // movement state, bolt
+            if(state == State.MOVE) {   // movement state, bolt
                 g.drawImage(Assets.bolt, x + 42, y + (selected.getPositionY() % 2 == 0 ? 1 : -1) * offset / 15, 18, 27);
             }
             else{              // attack state, crosshair
