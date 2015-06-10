@@ -56,25 +56,28 @@ public   class AttackState extends State {
                 if(ship.getPositionX() > 3){      // enemy ship was selected
                     EnemyShip target = (EnemyShip) pressed.getShip();
                     Ship attacker = selectedTile.getShip();
-                    if(!attacker.isActivated() && !attacker.isDead()) attacker.fire(target);  //I feel like these checks belong somewhere else
-                    attacker.setActivated(true);
-                    if(enemies.areDefeated()){
-                        setCurrentState(new VictoryState());
-                        return true;
-                    }
-                    if(player.allShipsActivated()){
-                        enemies.attack(player);
-                        if(player.isDefeated()){
-                            setCurrentState(new GameOverState());
-                            return true;
-                        }
-                        setCurrentState(new MovementState(player, enemies));
-                        return true;
-                    }
+                    if(!attacker.isActivated() && !attacker.isDead()) {attacker.fire(target);}  //I feel like these checks belong somewhere else
+                    resolve(attacker);
                 }
                 else selectedTile = pressed;      // player ship was selected
             }
         }
         return true;
+    }
+
+    private void resolve(Ship attacker){
+        attacker.setActivated(true);
+        if(enemies.areDefeated()){
+            setCurrentState(new VictoryState());
+            return;
+        }
+        if(player.allShipsActivated()){
+            enemies.attack(player);
+            if(player.isDefeated()){
+                setCurrentState(new GameOverState());
+                return;
+            }
+            setCurrentState(new MovementState(player, enemies));
+        }
     }
 }
