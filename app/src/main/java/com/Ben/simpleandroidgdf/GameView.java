@@ -10,6 +10,7 @@ import android.view.SurfaceView;
 
 import com.Ben.framework.util.InputHandler;
 import com.Ben.framework.util.Painter;
+import com.Ben.framework.util.TaskList;
 import com.Ben.game.classes.Enemies;
 import com.Ben.game.classes.Player;
 import com.Ben.game.state.LoadState;
@@ -98,6 +99,7 @@ public class GameView extends SurfaceView implements Runnable {
 
 	private void updateAndRender(long delta) {
 		currentState.update(delta / 1000f);
+        TaskList.updateAll(delta);
 		currentState.render(graphics);
 		renderGameImage();
 	}
