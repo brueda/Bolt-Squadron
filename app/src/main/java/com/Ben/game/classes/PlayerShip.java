@@ -15,6 +15,6 @@ public abstract class PlayerShip extends Ship {
 
     public void render(Painter g){
         if(!dead)
-        g.drawImage(Assets.testShip, currentTile.x_coordinate, currentTile.y_coordinate, 65, 85);
+            g.drawImage(Assets.testShip, currentTile.x_coordinate, currentTile.y_coordinate, 65, 85);
     }
 }

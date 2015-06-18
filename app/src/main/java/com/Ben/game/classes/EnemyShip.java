@@ -49,7 +49,7 @@ public abstract class EnemyShip extends Ship {
 
     public void render(Painter g){
         if(!dead)
-        g.drawImage(Assets.UFO, currentTile.x_coordinate, currentTile.y_coordinate, 80, 80);
+          g.drawImage(Assets.UFO, currentTile.x_coordinate, currentTile.y_coordinate, 80, 80);
     }
 
    private boolean checkedAllColumns(boolean[] checked){
