@@ -26,6 +26,10 @@ public class Enemies {
         }
     }
 
+    public ArrayList<EnemyShip> getEnemies(){
+        return enemies;
+    }
+
     public void attack(Player p){
         for(EnemyShip attacker : enemies) {
             if (!attacker.isDead()) {

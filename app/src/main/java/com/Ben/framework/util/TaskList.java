@@ -22,9 +22,9 @@ public class TaskList {
         _toAdd.add(t);
     }
 
-    public static  void updateAll(long deltaTime) {
+    public static void updateAll(long deltaTime, Painter g) {
         for (Task t : _list) {
-            if (t.getState() == Task.TASK_READY) { t.update(deltaTime); }
+            if (t.getState() == Task.TASK_READY) { t.update(deltaTime, g); }
             if (t.getState() == Task.TASK_DONE) { _toDelete.add(t); }
         }
         cleanup();

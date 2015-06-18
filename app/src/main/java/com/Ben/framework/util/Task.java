@@ -13,10 +13,10 @@ public abstract class Task {
 
     private int _state;
     private Task _child;
-    private TaskList _owner;
+    //private TaskList _owner;
 
-    public Task(TaskList owner) {
-        _owner = owner;
+    public Task() {
+        //_owner = owner;
         _state = TASK_NEW;
         _child = null;
     }
@@ -35,14 +35,14 @@ public abstract class Task {
     {
         if (!(_state == TASK_READY)) { throw new AssertionError("Task was not running."); }
         if(_child != null) {
-            _owner.addTask(_child);
+            TaskList.addTask(_child);
             _child.makeRunnable();
         }
         _state = TASK_DONE;
     }
 
     //TODO: This must be overridden. This is what makes a specific instance of a Task unique.
-    public abstract void update(long deltaTime);
+    public abstract void update(long deltaTime, Painter g);
 
     public void attachChild(Task child) { _child = child; }
 

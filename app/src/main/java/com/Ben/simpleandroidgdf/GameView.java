@@ -24,6 +24,7 @@ public class GameView extends SurfaceView implements Runnable {
 	private Rect gameImageDst;
 	private Canvas gameCanvas;
 	private Painter graphics;
+	private TaskList task_list;
 
 	private Thread gameThread;
 	private volatile boolean running = false;
@@ -83,6 +84,7 @@ public class GameView extends SurfaceView implements Runnable {
 	private void initGame() {
 		running = true;
 		gameThread = new Thread(this, "Game Thread");
+		task_list = new TaskList();
 		gameThread.start();
 	}
 
@@ -99,8 +101,8 @@ public class GameView extends SurfaceView implements Runnable {
 
 	private void updateAndRender(long delta) {
 		currentState.update(delta / 1000f);
-        TaskList.updateAll(delta);
 		currentState.render(graphics);
+		TaskList.updateAll(delta, graphics);
 		renderGameImage();
 	}
 

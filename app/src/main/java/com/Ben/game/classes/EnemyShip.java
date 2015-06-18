@@ -1,6 +1,8 @@
 package com.Ben.game.classes;
 
+import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.RandomNumberGenerator;
+import com.Ben.simpleandroidgdf.Assets;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,13 @@ public abstract class EnemyShip extends Ship {
         if(!foundTarget) return;   // there were no living player ships
         int targetIndex = RandomNumberGenerator.getRandInt(targets.size());  // pick a random ship from the targeted column
         this.fire(targets.get(targetIndex));                                 // shoot him in the face
+    }
+
+    public void update(){}
+
+    public void render(Painter g){
+        if(!dead)
+        g.drawImage(Assets.UFO, currentTile.x_coordinate, currentTile.y_coordinate, 80, 80);
     }
 
    private boolean checkedAllColumns(boolean[] checked){

@@ -34,16 +34,14 @@ public   class AttackState extends State {
     }
 
     public void update(float delta){
-        if(increasing) imageOffset += 2;
-        else imageOffset -= 2;
-        if(imageOffset == 60) increasing = false;
-        if(imageOffset == -60) increasing = true;
+        for(Ship s : player.getParty()) s.update();
+        for(Ship s : enemies.getEnemies()) s.update();
     }
 
     public void render(Painter g){
         Renderer.renderBackground(g);
         Renderer.renderShips(g, player, imageOffset, ATTACK);
-        Renderer.renderEnemies(g, player, imageOffset);
+        Renderer.renderEnemies(g, enemies, imageOffset);
         Renderer.renderIcons(g, selectedTile, imageOffset, ATTACK);
     }
 

@@ -1,5 +1,8 @@
 package com.Ben.game.classes;
 
+import com.Ben.framework.util.Painter;
+import com.Ben.framework.util.ProjectileTask;
+import com.Ben.framework.util.TaskList;
 import com.Ben.simpleandroidgdf.Assets;
 
 /**
@@ -77,6 +80,13 @@ public abstract class Ship {
         return dead;
     }
 
+    /* abstract methods for animation */
+
+    public abstract void update();
+
+    public abstract void render(Painter g);
+
+
     /* methods for battle */
 
     public void hit(int power){
@@ -91,7 +101,11 @@ public abstract class Ship {
     public void fire(Ship target){
         Assets.playSound(Assets.laserID);
         int power = attack;
-        target.hit(power);
+        //target.hit(power);
+        ProjectileTask laser = new ProjectileTask();
+        laser.initialize(this,target,power);
+        laser.makeRunnable();
+        TaskList.addTask(laser);
     }
 
 }
