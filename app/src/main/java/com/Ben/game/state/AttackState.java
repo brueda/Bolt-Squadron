@@ -6,19 +6,18 @@ import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.Enemies;
 import com.Ben.game.classes.EnemyShip;
 import com.Ben.game.classes.Player;
+import com.Ben.game.classes.PlayerShip;
 import com.Ben.game.classes.Ship;
 import com.Ben.game.classes.Tile;
 
 /**
  * Created by Benjamin on 6/3/2015.
  */
-public   class AttackState extends State {
+public class AttackState extends State {
 
     private Player player;
     private Enemies enemies;
     private Tile selectedTile;
-    private int imageOffset;
-    private boolean increasing;
 
     public AttackState(Player p, Enemies e){
         player = p;
@@ -26,9 +25,6 @@ public   class AttackState extends State {
     }
 
     public void init(){
-        selectedTile = null;
-        imageOffset = 0;
-        increasing = true;
         player.resetActivated();
         selectedTile = player.getParty().get(0).getTile();
     }
@@ -40,9 +36,8 @@ public   class AttackState extends State {
 
     public void render(Painter g){
         Renderer.renderBackground(g);
-        Renderer.renderShips(g, player, imageOffset, ATTACK);
-        Renderer.renderEnemies(g, enemies, imageOffset);
-        Renderer.renderIcons(g, selectedTile, imageOffset, ATTACK);
+        Renderer.renderShips(g, player, ATTACK, selectedTile);
+        Renderer.renderEnemies(g, enemies, State.ATTACK);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){
@@ -59,6 +54,11 @@ public   class AttackState extends State {
                 }
                 else selectedTile = pressed;      // player ship was selected
             }
+        }
+        else if(e == InputHandler.SWIPE_RIGHT){
+            PlayerShip ship = (PlayerShip) selectedTile.getShip();
+            if(ship.isDead() || ship.isActivated()) return true;
+            ship.superAttack(enemies);
         }
         return true;
     }

@@ -84,7 +84,7 @@ public abstract class Ship {
 
     public abstract void update();
 
-    public abstract void render(Painter g);
+    public abstract void render(Painter g, int state, Tile selected);
 
 
     /* methods for battle */

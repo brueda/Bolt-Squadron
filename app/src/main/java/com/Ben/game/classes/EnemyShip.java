@@ -2,6 +2,7 @@ package com.Ben.game.classes;
 
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.RandomNumberGenerator;
+import com.Ben.game.state.State;
 import com.Ben.simpleandroidgdf.Assets;
 
 import java.util.ArrayList;
@@ -10,9 +11,13 @@ import java.util.ArrayList;
  * Created by Benjamin on 5/26/2015.
  */
 public abstract class EnemyShip extends Ship {
+    private int offset;
+    private boolean increasing;
 
     public EnemyShip(){
         super();
+        offset = RandomNumberGenerator.getRandInt(200);
+        increasing = true;
     }
 
     public void attack(Player p){
@@ -45,11 +50,20 @@ public abstract class EnemyShip extends Ship {
         this.fire(targets.get(targetIndex));                                 // shoot him in the face
     }
 
-    public void update(){}
+    public void update(){
+        if(increasing) offset++;
+        else offset--;
+        if(offset == 200) increasing = false;
+        if(offset == 0) increasing = true;
+    }
 
-    public void render(Painter g){
-        if(!dead)
-          g.drawImage(Assets.UFO, currentTile.x_coordinate, currentTile.y_coordinate, 80, 80);
+    public void render(Painter g, int state, Tile selected){
+        int x = currentTile.x_coordinate;
+        int y = currentTile.y_coordinate;
+        int sway = (offset - 100)/20;
+        if(!dead){
+            g.drawImage(Assets.UFO, x, y + sway, 80, 80);
+        }
     }
 
    private boolean checkedAllColumns(boolean[] checked){

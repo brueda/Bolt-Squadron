@@ -20,8 +20,6 @@ public class MovementState extends State {
     private Player player;
     private Enemies enemies;
     private Tile selectedTile;
-    private int imageOffset;
-    private boolean increasing;
 
     public MovementState(Player p, Enemies e){
         player = p;
@@ -29,9 +27,6 @@ public class MovementState extends State {
     }
 
     public void init(){
-        selectedTile = null;
-        imageOffset = 0;
-        increasing = true;
         player.resetActivated();
         selectedTile = player.getParty().get(0).getTile();
     }
@@ -43,9 +38,8 @@ public class MovementState extends State {
 
     public void render(Painter g){
         Renderer.renderBackground(g);
-        Renderer.renderShips(g, player, imageOffset, MOVE);
-        Renderer.renderEnemies(g, enemies, imageOffset);
-        Renderer.renderIcons(g, selectedTile, imageOffset, MOVE);
+        Renderer.renderShips(g, player, MOVE, selectedTile);
+        Renderer.renderEnemies(g, enemies, MOVE);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){
