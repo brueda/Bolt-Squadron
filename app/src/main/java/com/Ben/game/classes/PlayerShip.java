@@ -17,7 +17,7 @@ public abstract class PlayerShip extends Ship {
         increasing = true;
     }
 
-    public void superAttack(Enemies e){
+    public void teamAttack(Enemies e){
 
     }
 
@@ -32,22 +32,24 @@ public abstract class PlayerShip extends Ship {
         int x = currentTile.x_coordinate;
         int y = currentTile.y_coordinate;
         int sway = (offset - 100)/20;
-        if(!dead){
-            g.drawImage(Assets.testShip, x, y + sway, 65, 85);
-        }
-        if(!activated){
+
+        if(!activated && !dead){
             switch(state){
                 case(State.MOVE):
-                    g.drawImage(Assets.yellowDot, x + 45, y + 10 + sway, 10, 10);
+                    g.drawImage(Assets.greenDot, x + 45, y + 10 + sway, 10, 10);
                     if(currentTile == selected)
-                        g.drawImage(Assets.bolt, x + 42, y + sway, 18, 27);
+                        g.drawImage(Assets.greenRing, x + 40, y + 5 + sway, 20, 20);
                     break;
                 case(State.ATTACK):
-                    g.drawImage(Assets.redDot, x + 45, y + 10 + sway, 10, 10);
+                    g.drawImage(Assets.blueDot, x + 45, y + 10 + sway, 10, 10);
                     if(currentTile == selected)
-                        g.drawImage(Assets.crosshair, x + 42, y + sway, 25, 25);
+                        g.drawImage(Assets.blueRing, x + 40, y + 5 + sway, 20, 20);
                     break;
             }
+        }
+        if(!dead){
+            g.drawImage(Assets.testShip, x, y + sway, 65, 85);
+            g.drawImage(Assets.shield, x-10, y + sway, 95, 95);
         }
     }
 }

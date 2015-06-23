@@ -8,25 +8,31 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 
 public class Assets {
+	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
 	public static Bitmap welcome;
-	public static Bitmap testShip, yellowDot, redDot, crosshair, bolt, UFO, shield, background, blueLaser, redLaser;
+	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield;
 	public static int laserID;
 
 	public static void load() {
 		welcome = loadBitmap("welcome.png", false);
-		testShip = loadBitmap("playerShip1_blue.png", true);
-		yellowDot = loadBitmap("dotYellow.png", true);
+		testShip = loadBitmap("playerShip1_orange.png", true);
+		greenDot = loadBitmap("fx13.png", true);
 		bolt = loadBitmap("bolt_gold.png", true);
-		UFO = loadBitmap("ufoRed.png", true);
-		shield = loadBitmap("shield.png", true);
+		UFO = loadBitmap("Bio1_14_green.png", true);
 		background = loadBitmap("black.png", true);
-		redDot = loadBitmap("dotRed.png", true);
+		blueDot = loadBitmap("fx12.png", true);
 		crosshair = loadBitmap("crossair_redOutline.png", true);
-		blueLaser = loadBitmap("laserBlue01.png", true);
-		redLaser = loadBitmap("laserRed01.png", true);
+		blueLaser = loadBitmap("lzrfx086.png", true);
+		redLaser = loadBitmap("lzrfx101.png", true);
+		greenLaser = loadBitmap("illuminaFX03.png", true);
+		greenRing = loadBitmap("fx15.png", true);
+		blueRing = loadBitmap("fx14.png", true);
+		shield = loadBitmap("shieldSoft4.png", true);
 
 		laserID = loadSound("laser1.wav");
 	}
@@ -65,5 +71,22 @@ public class Assets {
 
 	public static void playSound(int soundID) {
 		soundPool.play(soundID, 1, 1, 1, 0, 1);
+	}
+
+	public static void playMusic(String filename, boolean looping) {
+		if(mediaPlayer == null){
+			mediaPlayer = new MediaPlayer();
+		}
+		try {
+			AssetFileDescriptor afd = GameMainActivity.assets.openFd(filename);
+			mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+			mediaPlayer.setVolume((float)0.1,(float)0.1);
+			mediaPlayer.prepare();
+			mediaPlayer.setLooping(looping);
+			mediaPlayer.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

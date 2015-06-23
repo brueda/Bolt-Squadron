@@ -58,7 +58,7 @@ public class AttackState extends State {
         else if(e == InputHandler.SWIPE_RIGHT){
             PlayerShip ship = (PlayerShip) selectedTile.getShip();
             if(ship.isDead() || ship.isActivated()) return true;
-            ship.superAttack(enemies);
+            ship.teamAttack(enemies);
         }
         return true;
     }

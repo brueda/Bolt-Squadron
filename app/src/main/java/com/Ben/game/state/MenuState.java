@@ -15,6 +15,7 @@ public class MenuState extends State {
 
 	@Override
 	public void update(float delta) {
+		Assets.playMusic("cyber-advance.mp3", true);
 	}
 
 	@Override
