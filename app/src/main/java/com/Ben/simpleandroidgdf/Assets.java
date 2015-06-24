@@ -81,10 +81,10 @@ public class Assets {
 			AssetFileDescriptor afd = GameMainActivity.assets.openFd(filename);
 			mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
 			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-			mediaPlayer.setVolume((float)0.1,(float)0.1);
+			mediaPlayer.setVolume((float) 0.1, (float) 0.1);
 			mediaPlayer.prepare();
-			mediaPlayer.setLooping(looping);
 			mediaPlayer.start();
+			mediaPlayer.setLooping(looping);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
