@@ -103,7 +103,7 @@ public abstract class Ship {
     }
 
     public void fire(Ship target){
-        Assets.playSound(Assets.laserID);
+        Assets.playSound(Assets.laserID, 4f);
         int power = attack;
         target.hit(power);
         ProjectileTask laser = new ProjectileTask();

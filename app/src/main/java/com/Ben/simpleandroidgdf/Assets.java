@@ -17,7 +17,7 @@ public class Assets {
 	private static SoundPool soundPool;
 	public static Bitmap welcome;
 	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield;
-	public static int laserID;
+	public static int laserID, hitID, explosionID, movementID;
 	public static Typeface tf;
 
 
@@ -38,6 +38,9 @@ public class Assets {
 		shield = loadBitmap("shieldSoft4.png", true);
 
 		laserID = loadSound("laser1.wav");
+		hitID = loadSound("Hit.wav");
+		explosionID = loadSound("Explosion.wav");
+		movementID = loadSound("Woosh.wav");
 
 		tf = Typeface.createFromAsset(GameMainActivity.assets, "kenvector_future.ttf");
 	}
@@ -74,8 +77,8 @@ public class Assets {
 		return soundID;
 	}
 
-	public static void playSound(int soundID) {
-		soundPool.play(soundID, 1, 1, 1, 0, 1);
+	public static void playSound(int soundID, float volume) {
+		soundPool.play(soundID, volume, volume, 1, 0, 1);
 	}
 
 	public static void playMusic(String filename, boolean looping) {
@@ -86,7 +89,7 @@ public class Assets {
 			AssetFileDescriptor afd = GameMainActivity.assets.openFd(filename);
 			mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
 			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-			mediaPlayer.setVolume((float) 0.1, (float) 0.1);
+			mediaPlayer.setVolume(0.2f, 0.2f);
 			mediaPlayer.prepare();
 			mediaPlayer.start();
 			mediaPlayer.setLooping(looping);

@@ -57,6 +57,7 @@ public class MovementState extends State {
         Ship ship = source.getShip();
         /* check if the move is valid */
         if(Math.abs(destination.getPositionY() - source.getPositionY()) + Math.abs(destination.getPositionX() - source.getPositionX()) <= 1){
+            Assets.playSound(Assets.movementID, 0.3f);
             source.setShip(null);
             destination.setShip(ship);
             ship.setActivated(true);
