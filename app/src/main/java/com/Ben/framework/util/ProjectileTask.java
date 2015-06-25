@@ -14,6 +14,7 @@ public class ProjectileTask extends Task {
     private int destination_x;
     private int destination_y;
     private int vertical;
+    private int distance;
     private int direction;
     private final int TRAVEL = 20;
     private Bitmap image;
@@ -28,6 +29,7 @@ public class ProjectileTask extends Task {
         destination_x = dest.getTile().x_coordinate;
         destination_y = dest.getTile().y_coordinate;
         vertical = y_coordinate - destination_y;
+        distance = Math.abs(x_coordinate - destination_x);
         if(destination_x > x_coordinate){
             direction = 1;              // laser is going right
             image = Assets.blueLaser;
@@ -52,7 +54,7 @@ public class ProjectileTask extends Task {
             x_coordinate -= TRAVEL;
             if(x_coordinate <= destination_x){finishTask();}
         }
-        y_coordinate -= vertical/25;
+        y_coordinate -= vertical / (distance / TRAVEL);
         g.drawImage(image, x_coordinate, y_coordinate);
     }
 }
