@@ -8,6 +8,7 @@ import android.content.res.Resources;
 
 import com.Ben.framework.util.Painter;
 import com.Ben.game.classes.Enemies;
+import com.Ben.game.classes.Grid;
 import com.Ben.game.classes.Player;
 import com.Ben.simpleandroidgdf.Assets;
 import com.Ben.simpleandroidgdf.GameMainActivity;
@@ -34,8 +35,10 @@ public class MenuState extends State {
 
 	@Override
 	public boolean onTouch(int e, int scaledX, int scaledY) {
-		Player p = new Player();
-		setCurrentState(new MovementState(p, new Enemies(p)));
+		new Grid();
+		new Player();
+		new Enemies();
+		setCurrentState(new MovementState());
 		return true;
 	}
 }

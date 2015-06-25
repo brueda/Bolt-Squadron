@@ -6,14 +6,12 @@ import java.util.ArrayList;
  * Created by Benjamin on 5/26/2015.
  */
 public class Enemies {
-    private ArrayList<EnemyShip> enemies;
-    private Player player;
+    private static ArrayList<EnemyShip> enemies;
     //private Tile[][] grid;
 
 
-    public Enemies(Player p){
-        player = p;
-        Tile[][] grid = player.getGrid();
+    public Enemies(){
+        Tile[][] grid = Grid.grid;
         int numEnemies = 4;  // TODO: make this variable
         enemies = new ArrayList<EnemyShip>();
         EnemyShip enemy;
@@ -26,11 +24,11 @@ public class Enemies {
         }
     }
 
-    public ArrayList<EnemyShip> getEnemies(){
+    public static ArrayList<EnemyShip> getEnemies(){
         return enemies;
     }
 
-    public void attack(Player p){
+    public static void attack(Player p){
         for(EnemyShip attacker : enemies) {
             if (!attacker.isDead()) {
                 try {
@@ -43,7 +41,7 @@ public class Enemies {
         }
     }
 
-    public boolean areDefeated(){
+    public static boolean areDefeated(){
         boolean defeated = true;
         for(EnemyShip e : enemies){
             if(!e.isDead()) defeated = false;

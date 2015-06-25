@@ -25,14 +25,14 @@ public class Renderer {
         }
     }
 
-    public static void renderShips(Painter g, Player p, int state, Tile selected){
-        for(Ship s : p.getParty()){
+    public static void renderShips(Painter g, int state, Tile selected){
+        for(Ship s : Player.getParty()){
             s.render(g, state, selected);
         }
     }
 
-    public static void renderEnemies(Painter g, Enemies e, int state){
-        for(Ship s : e.getEnemies()){
+    public static void renderEnemies(Painter g, int state){
+        for(Ship s : Enemies.getEnemies()){
             s.render(g, state, null);
         }
     }

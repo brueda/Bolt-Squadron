@@ -101,11 +101,13 @@ public abstract class Ship {
     public void fire(Ship target){
         Assets.playSound(Assets.laserID);
         int power = attack;
-        //target.hit(power);
+        target.hit(power);
         ProjectileTask laser = new ProjectileTask();
         laser.initialize(this,target,power);
         laser.makeRunnable();
         TaskList.addTask(laser);
     }
+
+    public abstract void destroy();
 
 }

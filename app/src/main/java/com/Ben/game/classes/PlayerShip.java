@@ -33,23 +33,26 @@ public abstract class PlayerShip extends Ship {
         int y = currentTile.y_coordinate;
         int sway = (offset - 100)/20;
 
-        if(!activated && !dead){
-            switch(state){
-                case(State.MOVE):
+        if(!activated && !dead) {
+            switch (state) {
+                case (State.MOVE):
                     g.drawImage(Assets.greenDot, x + 45, y + 10 + sway, 10, 10);
-                    if(currentTile == selected)
+                    if (currentTile == selected)
                         g.drawImage(Assets.greenRing, x + 40, y + 5 + sway, 20, 20);
                     break;
-                case(State.ATTACK):
+                case (State.ATTACK):
                     g.drawImage(Assets.blueDot, x + 45, y + 10 + sway, 10, 10);
-                    if(currentTile == selected)
+                    if (currentTile == selected)
                         g.drawImage(Assets.blueRing, x + 40, y + 5 + sway, 20, 20);
                     break;
             }
         }
-        if(!dead){
-            g.drawImage(Assets.testShip, x, y + sway, 65, 85);
-            g.drawImage(Assets.shield, x-10, y + sway, 95, 95);
-        }
+        g.drawImage(Assets.testShip, x, y + sway, 65, 85);
+        g.drawImage(Assets.shield, x-10, y + sway, 95, 95);
+    }
+
+    public void destroy(){
+        //Player.getParty().remove(this);   ** concurrency issues with this **
+        currentTile = Grid.deadManTile;
     }
 }

@@ -7,55 +7,38 @@ import java.util.ArrayList;
  */
 public class Player {
 
-    private ArrayList<PlayerShip> party;
-    private Tile[][] grid;
-    private int volts;
+    private static ArrayList<PlayerShip> party;
+    //private Tile[][] grid;
+    private static int volts;
 
     public Player(){
         volts = 1000;
         party = new ArrayList<PlayerShip>();
-        grid = new Tile[7][4];
 
-        for(int i = 0; i < 3; i++){       // make the Tiles for player ships
-            for(int j = 0; j < 4; j++){
-                grid[i][j] = new Tile(i,j);
-            }
-        }
-
-        for(int i = 4; i < 7; i++){       // make the Tiles for enemy ships
-            for(int j = 0; j < 4; j++){
-                grid[i][j] = new Tile(i,j);
-            }
-        }
-
-        for(int i = 0; i < 4; i++){       // add the test ships
+        for(int i = 0; i < 4; i++){          // add the test ships
             PlayerShip ship = new testShip();
             party.add(ship);
-            grid[1][i].setShip(ship);
+            Grid.grid[1][i].setShip(ship);
         }
     }
 
-    public void addShip(PlayerShip ship){
+    public static void addShip(PlayerShip ship){
         party.add(ship);
     }
 
-    public int getVolts(){
+    public static int getVolts(){
         return volts;
     }
 
-    public Tile[][] getGrid(){
-        return grid;
-    }
-
-    public void setVolts(int _volts){
+    public static void setVolts(int _volts){
         volts = _volts;
     }
 
-    public ArrayList<PlayerShip> getParty(){
+    public static ArrayList<PlayerShip> getParty(){
         return party;
     }
 
-    public boolean allShipsActivated(){
+    public static boolean allShipsActivated(){
         boolean all = true;
         for(Ship s : party){
             if(!s.isActivated() && !s.isDead()) all = false;
@@ -63,13 +46,13 @@ public class Player {
         return all;
     }
 
-    public void resetActivated(){
+    public static void resetActivated(){
         for(Ship s : party){
             s.setActivated(false);
         }
     }
 
-    public boolean isDefeated(){
+    public static boolean isDefeated(){
         boolean defeated = true;
         for(Ship s : party){
             if(!s.isDead()) defeated = false;

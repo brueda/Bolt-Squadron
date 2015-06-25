@@ -50,6 +50,11 @@ public abstract class EnemyShip extends Ship {
         this.fire(targets.get(targetIndex));                                 // shoot him in the face
     }
 
+    public void destroy(){
+        //Enemies.getEnemies().remove(this);
+        currentTile = Grid.deadManTile;
+    }
+
     public void update(){
         if(increasing) offset++;
         else offset--;
@@ -61,9 +66,7 @@ public abstract class EnemyShip extends Ship {
         int x = currentTile.x_coordinate;
         int y = currentTile.y_coordinate;
         int sway = (offset - 100)/20;
-        if(!dead){
-            g.drawImage(Assets.UFO, x, y + sway, 80, 80);
-        }
+        g.drawImage(Assets.UFO, x, y + sway, 80, 80);
     }
 
    private boolean checkedAllColumns(boolean[] checked){
@@ -73,6 +76,8 @@ public abstract class EnemyShip extends Ship {
        }
        return all;
    }
+
+
 
 
 }

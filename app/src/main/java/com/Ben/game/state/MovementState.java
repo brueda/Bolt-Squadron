@@ -7,6 +7,7 @@ import com.Ben.framework.util.InputHandler;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.Enemies;
+import com.Ben.game.classes.Grid;
 import com.Ben.game.classes.Player;
 import com.Ben.game.classes.Ship;
 import com.Ben.game.classes.Tile;
@@ -16,36 +17,30 @@ import com.Ben.simpleandroidgdf.Assets;
  * Created by Benjamin on 5/26/2015.
  */
 public class MovementState extends State {
-
-    private Player player;
-    private Enemies enemies;
     private Tile selectedTile;
 
-    public MovementState(Player p, Enemies e){
-        player = p;
-        enemies = e;
-    }
+    public MovementState(){}
 
     public void init(){
-        player.resetActivated();
-        selectedTile = player.getParty().get(0).getTile();
+        Player.resetActivated();
+        selectedTile = Player.getParty().get(0).getTile();
     }
 
     public void update(float delta){
-        for(Ship s : player.getParty()) s.update();
-        for(Ship s : enemies.getEnemies()) s.update();
+        for(Ship s : Player.getParty()) s.update();
+        for(Ship s : Enemies.getEnemies()) s.update();
     }
 
     public void render(Painter g){
         Renderer.renderBackground(g);
-        Renderer.renderShips(g, player, MOVE, selectedTile);
-        Renderer.renderEnemies(g, enemies, MOVE);
+        Renderer.renderShips(g, MOVE, selectedTile);
+        Renderer.renderEnemies(g, MOVE);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){
 
         if(e == InputHandler.TOUCHEVENT){
-            Tile pressed = touchInGrid(player.getGrid(), scaledX, scaledY);
+            Tile pressed = Grid.touchInGrid(scaledX, scaledY);
             if(pressed == null) return true;
             if(pressed.getShip() != null){
                 if(pressed.getShip().getPositionX() > 3) return true;  // can't move Enemy ship
@@ -65,8 +60,8 @@ public class MovementState extends State {
             source.setShip(null);
             destination.setShip(ship);
             ship.setActivated(true);
-            if(player.allShipsActivated()){
-                setCurrentState(new AttackState(player, enemies));
+            if(Player.allShipsActivated()){
+                setCurrentState(new AttackState());
             }
             return true;
         }

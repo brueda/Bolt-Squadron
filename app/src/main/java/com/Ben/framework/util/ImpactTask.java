@@ -19,7 +19,9 @@ public class ImpactTask extends Task {
     }
 
     public void update(long delta, Painter g){
-        target.hit(power);
+        if(target.isDead()){
+            target.destroy();
+        }
         finishTask();
     }
 }
