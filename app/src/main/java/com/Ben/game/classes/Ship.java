@@ -20,6 +20,7 @@ public abstract class Ship {
     protected boolean shielded;
     protected boolean activated;  // has moved or attacked this round
     protected Tile currentTile;
+    protected boolean renderable;
 
     public Ship(){
         dead = false;
@@ -30,6 +31,7 @@ public abstract class Ship {
         cloaked = false;
         shielded = false;
         currentTile = null;
+        renderable = true;
     }
 
     /* getters and setters */
@@ -79,6 +81,8 @@ public abstract class Ship {
     public boolean isDead(){
         return dead;
     }
+
+    public boolean isRenderable() {return renderable;}
 
     /* abstract methods for animation */
 

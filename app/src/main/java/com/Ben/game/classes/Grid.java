@@ -5,11 +5,9 @@ package com.Ben.game.classes;
  */
 public class Grid {
     public static Tile[][] grid;
-    public static Tile deadManTile;
 
     public Grid(){
         grid = new Tile[7][4];
-        deadManTile = new Tile(10,1);
 
         for(int i = 0; i < 3; i++){       // make the Tiles for player ships
             for(int j = 0; j < 4; j++){

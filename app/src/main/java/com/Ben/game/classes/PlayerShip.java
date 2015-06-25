@@ -17,7 +17,7 @@ public abstract class PlayerShip extends Ship {
         increasing = true;
     }
 
-    public void teamAttack(Enemies e){
+    public void teamAttack(){
 
     }
 
@@ -47,12 +47,14 @@ public abstract class PlayerShip extends Ship {
                     break;
             }
         }
-        g.drawImage(Assets.testShip, x, y + sway, 65, 85);
-        g.drawImage(Assets.shield, x-10, y + sway, 95, 95);
+        if(renderable) {
+            g.drawImage(Assets.testShip, x, y + sway, 65, 85);
+            g.drawImage(Assets.shield, x - 10, y + sway, 95, 95);
+        }
     }
 
     public void destroy(){
         //Player.getParty().remove(this);   ** concurrency issues with this **
-        currentTile = Grid.deadManTile;
+        renderable = false;
     }
 }

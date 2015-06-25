@@ -28,7 +28,7 @@ public class Enemies {
         return enemies;
     }
 
-    public static void attack(Player p){
+    public static void attack(){
         for(EnemyShip attacker : enemies) {
             if (!attacker.isDead()) {
                 try {
@@ -36,7 +36,7 @@ public class Enemies {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                attacker.attack(p);
+                attacker.attack();
             }
         }
     }

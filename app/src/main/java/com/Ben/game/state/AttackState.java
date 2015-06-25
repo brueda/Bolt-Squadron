@@ -15,9 +15,6 @@ import com.Ben.game.classes.Tile;
  * Created by Benjamin on 6/3/2015.
  */
 public class AttackState extends State {
-
-    private Player player;
-    private Enemies enemies;
     private Tile selectedTile;
 
     public AttackState(){}
@@ -58,7 +55,7 @@ public class AttackState extends State {
         else if(e == InputHandler.SWIPE_RIGHT){
             PlayerShip ship = (PlayerShip) selectedTile.getShip();
             if(ship.isDead() || ship.isActivated()) return true;
-            ship.teamAttack(enemies);
+            ship.teamAttack();
         }
         return true;
     }
@@ -70,7 +67,7 @@ public class AttackState extends State {
             return;
         }
         if(Player.allShipsActivated()){
-            Enemies.attack(player);
+            Enemies.attack();
             if(Player.isDefeated()){
                 setCurrentState(new GameOverState());
                 return;

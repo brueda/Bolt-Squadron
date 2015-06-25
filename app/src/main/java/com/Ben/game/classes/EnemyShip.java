@@ -20,7 +20,7 @@ public abstract class EnemyShip extends Ship {
         increasing = true;
     }
 
-    public void attack(Player p){
+    public void attack(){
         int targetColumn;
         boolean foundTarget = false;
         ArrayList<Ship> targets = new ArrayList<Ship>();
@@ -32,7 +32,7 @@ public abstract class EnemyShip extends Ship {
         else targetColumn = 0;
 
         while(!checkedAllColumns(columnChecked)){
-            for(Ship s: p.getParty()){
+            for(Ship s: Player.getParty()){
                 if (s.getPositionX() == targetColumn && !s.isDead()){
                     foundTarget = true;
                     targets.add(s);
@@ -52,7 +52,7 @@ public abstract class EnemyShip extends Ship {
 
     public void destroy(){
         //Enemies.getEnemies().remove(this);
-        currentTile = Grid.deadManTile;
+        renderable = false;
     }
 
     public void update(){
@@ -66,7 +66,9 @@ public abstract class EnemyShip extends Ship {
         int x = currentTile.x_coordinate;
         int y = currentTile.y_coordinate;
         int sway = (offset - 100)/20;
-        g.drawImage(Assets.UFO, x, y + sway, 80, 80);
+        if(renderable) {
+            g.drawImage(Assets.UFO, x, y + sway, 80, 80);
+        }
     }
 
    private boolean checkedAllColumns(boolean[] checked){
