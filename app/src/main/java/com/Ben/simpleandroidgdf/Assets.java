@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.content.res.AssetFileDescriptor;
@@ -17,6 +18,8 @@ public class Assets {
 	public static Bitmap welcome;
 	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield;
 	public static int laserID;
+	public static Typeface tf;
+
 
 	public static void load() {
 		welcome = loadBitmap("welcome.png", false);
@@ -35,6 +38,8 @@ public class Assets {
 		shield = loadBitmap("shieldSoft4.png", true);
 
 		laserID = loadSound("laser1.wav");
+
+		tf = Typeface.createFromAsset(GameMainActivity.assets, "kenvector_future.ttf");
 	}
 
 	private static Bitmap loadBitmap(String filename, boolean transparency) {

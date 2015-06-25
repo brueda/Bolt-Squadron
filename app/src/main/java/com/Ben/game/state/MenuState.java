@@ -14,12 +14,8 @@ import com.Ben.simpleandroidgdf.Assets;
 import com.Ben.simpleandroidgdf.GameMainActivity;
 
 public class MenuState extends State {
-	private Typeface tf;
-	private TextView tv;
 	@Override
-	public void init() {
-		tf = Typeface.createFromAsset(GameMainActivity.assets, "kenvector_future.ttf");
-	}
+	public void init() {}
 
 	@Override
 	public void update(float delta) {
@@ -28,9 +24,9 @@ public class MenuState extends State {
 
 	@Override
 	public void render(Painter g) {
-		g.setFont(Typeface.SANS_SERIF, 50);
+		g.setFont(Assets.tf, 50);
 		g.setColor(Color.YELLOW);
-		g.drawString("Touch the Screen to Play",100,200);
+		g.drawString("BOLT SQUADRON",100,200);
 	}
 
 	@Override
