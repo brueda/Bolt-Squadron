@@ -23,7 +23,7 @@ public class ProjectileTask extends Task {
         super();
     }
 
-    public void initialize(Ship src, Ship dest, int power){
+    public void initialize(Ship src, Ship dest, int power, boolean killShot){
         x_coordinate = src.getTile().x_coordinate;
         y_coordinate = src.getTile().y_coordinate;
         destination_x = dest.getTile().x_coordinate;
@@ -40,9 +40,11 @@ public class ProjectileTask extends Task {
             image = Assets.redLaser;
         }
 
-        ImpactTask impact = new ImpactTask();
-        impact.initialize(dest,power);
-        attachChild(impact);
+        if (killShot) {
+            ImpactTask impact = new ImpactTask();
+            impact.initialize(dest, power);
+            attachChild(impact);
+        }
     }
 
     public void update(long delta, Painter g){

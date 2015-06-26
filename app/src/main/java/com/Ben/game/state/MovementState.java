@@ -29,6 +29,7 @@ public class MovementState extends State {
     public void update(float delta){
         for(Ship s : Player.getParty()) s.update();
         for(Ship s : Enemies.getEnemies()) s.update();
+        Renderer.updateBackground(delta);
     }
 
     public void render(Painter g){

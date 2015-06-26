@@ -91,8 +91,9 @@ public class Assets {
 			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 			mediaPlayer.setVolume(0.2f, 0.2f);
 			mediaPlayer.prepare();
+            mediaPlayer.setLooping(looping);
 			mediaPlayer.start();
-			mediaPlayer.setLooping(looping);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

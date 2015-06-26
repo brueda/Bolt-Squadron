@@ -21,10 +21,8 @@ public class ImpactTask extends Task {
 
     public void update(long delta, Painter g){
        // Assets.playSound(Assets.hitID, 1f);
-        if(target.isDead()){
-            target.destroy();
-            Assets.playSound(Assets.explosionID, 0.5f);
-        }
+        target.destroy();
+        Assets.playSound(Assets.explosionID, 0.5f);
         finishTask();
     }
 }
