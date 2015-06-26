@@ -29,6 +29,15 @@ public class Renderer {
         for(Ship s : Player.getParty()){
             s.render(g, state, selected);
         }
+        g.setFont(Assets.tf, 20f);
+        if(selected.getShip() != null && !selected.getShip().isDead()){
+            g.setColor(Color.RED);
+            g.drawString("ATK: " + selected.getShip().getAttack(), 50, 443);
+            g.setColor(Color.CYAN);
+            g.drawString("DEF: " + selected.getShip().getDefense(), 150, 443);
+        }
+        g.setColor(Color.YELLOW);
+        g.drawString("VOLTS: " + Player.getVolts(), 250, 443);
     }
 
     public static void renderEnemies(Painter g, int state){

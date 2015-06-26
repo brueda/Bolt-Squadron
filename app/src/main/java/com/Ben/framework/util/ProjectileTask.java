@@ -30,6 +30,7 @@ public class ProjectileTask extends Task {
         destination_y = dest.getTile().y_coordinate;
         vertical = y_coordinate - destination_y;
         distance = Math.abs(x_coordinate - destination_x);
+
         if(destination_x > x_coordinate){
             direction = 1;              // laser is going right
             image = Assets.blueLaser;

@@ -51,7 +51,7 @@ public abstract class PlayerShip extends Ship {
         }
         if(renderable) {
             g.setFont(Assets.tf, 15f);
-            g.setColor(Color.CYAN);
+            g.setColor(Color.GREEN);
             g.drawString("" + health, x - 15, y + sway + 20);
             g.drawImage(Assets.testShip, x, y + sway, 65, 85);
             g.drawImage(Assets.shield, x - 10, y + sway, 95, 95);
