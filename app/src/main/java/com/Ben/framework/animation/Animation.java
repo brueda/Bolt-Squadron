@@ -8,9 +8,14 @@ public class Animation {
 	private int currentFrameIndex = 0;
 	private double totalDuration = 0;
 	private double currentTime = 0;
+    boolean loop;
+    boolean done;
 
+    //will loop by default
 	public Animation(Frame... frames) {
 		this.frames = frames;
+        loop = true;
+        done = false;
 		frameEndTimes = new double[frames.length];
 		for (int i = 0; i < frames.length; i++) {
 			Frame f = frames[i];
@@ -20,9 +25,17 @@ public class Animation {
 	}
 
 	public synchronized void update(float increment) {
+        if (done) { return; }
 		currentTime += increment;
 		if (currentTime > totalDuration) {
-			wrapAnimation();
+            if (loop) {
+                wrapAnimation();
+            }
+            else {
+                done = true;
+                currentFrameIndex = frames.length - 1;
+                return;
+            }
 		}
 		while (currentTime > frameEndTimes[currentFrameIndex]) {
 			currentFrameIndex++;
@@ -42,4 +55,12 @@ public class Animation {
 			int height) {
 		g.drawImage(frames[currentFrameIndex].getImage(), x, y, width, height);
 	}
+
+    public void setLoop(boolean loop) {
+        this.loop = loop;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
 }

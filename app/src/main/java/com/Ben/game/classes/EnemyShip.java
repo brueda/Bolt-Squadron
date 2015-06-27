@@ -78,8 +78,4 @@ public abstract class EnemyShip extends Ship {
        }
        return all;
    }
-
-
-
-
 }
