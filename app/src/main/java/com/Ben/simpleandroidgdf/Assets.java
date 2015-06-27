@@ -107,4 +107,16 @@ public class Assets {
 			e.printStackTrace();
 		}
 	}
+
+    public static void pauseMusic() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
+
+    public static void unpauseMusic() {
+        if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+        }
+    }
 }

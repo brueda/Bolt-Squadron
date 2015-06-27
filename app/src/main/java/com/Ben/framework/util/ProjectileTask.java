@@ -1,6 +1,7 @@
 package com.Ben.framework.util;
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 import com.Ben.game.classes.Ship;
 import com.Ben.simpleandroidgdf.Assets;
@@ -16,7 +17,10 @@ public class ProjectileTask extends Task {
     private int vertical;
     private int distance;
     private int direction;
+    private float angle;
+    private Bitmap myProjectile;
     private final int TRAVEL = 20;
+
     private Bitmap image;
 
     public ProjectileTask(){
@@ -40,6 +44,13 @@ public class ProjectileTask extends Task {
             image = Assets.redLaser;
         }
 
+        int deltaY = destination_y - y_coordinate;
+        int deltaX = destination_x - x_coordinate;
+        angle = (float)(Math.atan2(deltaY, deltaX) * 180 / Math.PI);
+        Matrix mat = new Matrix();
+        mat.setRotate(angle, image.getWidth()/2, image.getHeight()/2);
+        myProjectile = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), mat, false);
+
         if (killShot) {
             ImpactTask impact = new ImpactTask();
             impact.initialize(dest, power);
@@ -58,6 +69,6 @@ public class ProjectileTask extends Task {
             if(x_coordinate <= destination_x){finishTask();}
         }
         y_coordinate -= vertical / (distance / TRAVEL);
-        g.drawImage(image, x_coordinate, y_coordinate);
+        g.drawImage(myProjectile, x_coordinate, y_coordinate);
     }
 }
