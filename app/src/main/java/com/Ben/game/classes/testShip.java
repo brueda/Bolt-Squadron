@@ -13,5 +13,4 @@ public class testShip extends PlayerShip {
         super();
     }
 
-
 }

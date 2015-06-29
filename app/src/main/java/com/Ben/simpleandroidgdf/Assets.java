@@ -12,12 +12,16 @@ import android.media.SoundPool;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 
+import com.Ben.framework.animation.Animation;
+import com.Ben.framework.animation.Frame;
+
 public class Assets {
 	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
 	public static Bitmap welcome;
 	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield;
 	public static int laserID, hitID, explosionID, movementID;
+    public static Frame[] explosionFrames;
 	public static Typeface tf;
 
 
@@ -41,6 +45,11 @@ public class Assets {
 		hitID = loadSound("Hit.wav");
 		explosionID = loadSound("Explosion.wav");
 		movementID = loadSound("Woosh.wav");
+
+        explosionFrames = new Frame[9];
+        for (int i = 0; i < 9; ++i) {
+            explosionFrames[i] = new Frame(loadBitmap("explosion0" + i + ".png", false), 20.0);
+        }
 
 		tf = Typeface.createFromAsset(GameMainActivity.assets, "kenvector_future.ttf");
 	}
@@ -91,10 +100,23 @@ public class Assets {
 			mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 			mediaPlayer.setVolume(0.2f, 0.2f);
 			mediaPlayer.prepare();
+            mediaPlayer.setLooping(looping);
 			mediaPlayer.start();
-			mediaPlayer.setLooping(looping);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+    public static void pauseMusic() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
+
+    public static void unpauseMusic() {
+        if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+        }
+    }
 }

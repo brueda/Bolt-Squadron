@@ -17,10 +17,22 @@ import com.Ben.simpleandroidgdf.R;
  */
 public class Renderer {
 
+    //milliseconds to pass before pixel shift. Lower is faster.
+    static final float _backgroundSpeed = 15.0f;
+    static float _currentTime = 0;
+    static int _backgroundPosition = 0;
+
+    public static void updateBackground(float delta) {
+        _currentTime += delta * 1000.0f;
+        int numberOfShifts = (int)Math.floor(_currentTime / _backgroundSpeed);
+        _backgroundPosition = (_backgroundPosition + numberOfShifts) % 255;
+        _currentTime %= _backgroundSpeed;
+    }
+
     public static void renderBackground(Painter g){
-        for(int i = 0; i < 4; i++){
+        for(int i = 0; i < 5; i++){
             for(int j = 0; j < 2; j++){
-                g.drawImage(Assets.background, i * 256, j * 256, 256, 256);
+                g.drawImage(Assets.background, (i * 256) - _backgroundPosition, (j * 256), 256, 256);
             }
         }
     }
