@@ -2,6 +2,8 @@ package com.Ben.framework.util;
 
 import com.Ben.simpleandroidgdf.BuildConfig;
 
+import java.util.ArrayList;
+
 /**
  * Created by homedesk on 6/8/2015.
  */
@@ -12,13 +14,12 @@ public abstract class Task {
     public static final int TASK_DONE = 2;
 
     private int _state;
-    private Task _child;
+    private ArrayList<Task> _children;
     //private TaskList _owner;
 
     public Task() {
         //_owner = owner;
         _state = TASK_NEW;
-        _child = null;
     }
 
     //Most usually called from within a specific task's initialization function.
@@ -34,9 +35,9 @@ public abstract class Task {
     public void finishTask()
     {
         if (!(_state == TASK_READY)) { throw new AssertionError("Task was not running."); }
-        if(_child != null) {
-            TaskList.addTask(_child);
-            _child.makeRunnable();
+        for(Task child : _children) {
+            TaskList.addTask(child);
+            child.makeRunnable();
         }
         _state = TASK_DONE;
     }
@@ -44,9 +45,9 @@ public abstract class Task {
     //TODO: This must be overridden. This is what makes a specific instance of a Task unique.
     public abstract void update(long deltaTime, Painter g);
 
-    public void attachChild(Task child) { _child = child; }
+    public void attachChild(Task child) { _children.add(child); }
 
-    public void detachChild() { _child = null; }
+    public void detachChild() {}
 
     public int getState() {
         return _state;

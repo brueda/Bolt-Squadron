@@ -59,7 +59,6 @@ public class ProjectileTask extends Task {
     }
 
     public void update(long delta, Painter g){
-        /* the below should be replaced with some actual mathematics */
         if(direction == 1){
             x_coordinate += TRAVEL;
             if(x_coordinate >= destination_x){finishTask();}

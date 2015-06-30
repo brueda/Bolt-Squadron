@@ -19,7 +19,7 @@ public class Assets {
 	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
 	public static Bitmap welcome;
-	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield;
+	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield, beam;
 	public static int laserID, hitID, explosionID, movementID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
@@ -40,6 +40,7 @@ public class Assets {
 		greenRing = loadBitmap("fx15.png", true);
 		blueRing = loadBitmap("fx14.png", true);
 		shield = loadBitmap("shieldSoft4.png", true);
+		beam = loadBitmap("beam.png", true);
 
 		laserID = loadSound("laser1.wav");
 		hitID = loadSound("Hit.wav");

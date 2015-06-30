@@ -2,8 +2,10 @@ package com.Ben.game.classes;
 
 import android.graphics.Color;
 
+import com.Ben.framework.util.BeamTask;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.RandomNumberGenerator;
+import com.Ben.framework.util.TaskList;
 import com.Ben.game.state.State;
 import com.Ben.simpleandroidgdf.Assets;
 
@@ -19,8 +21,24 @@ public abstract class PlayerShip extends Ship {
         increasing = true;
     }
 
-    public void teamAttack(){
+    public void shield(){
+        shielded = true;
+    }
 
+    public void repair(){
+        health = Math.min(maxHealth, health + (maxHealth / 2));
+    }
+
+    // all allied ships in the same column attack
+    public void columnAttack(){
+        for(PlayerShip s : Player.getParty()){
+            if(s.getPositionX() == positionX && !s.isDead()){
+                BeamTask task = new BeamTask();
+                task.initialize(s, s.getAttack());
+                task.makeRunnable();
+                TaskList.addTask(task);
+            }
+        }
     }
 
     public void update(){

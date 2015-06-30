@@ -107,7 +107,7 @@ public abstract class Ship {
         int power = attack;
         target.hit(power);
         ProjectileTask laser = new ProjectileTask();
-        laser.initialize(this,target,power, target.isDead());
+        laser.initialize(this, target, power, target.isDead());
         laser.makeRunnable();
         TaskList.addTask(laser);
     }
