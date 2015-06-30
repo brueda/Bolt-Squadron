@@ -6,6 +6,9 @@ import android.view.MotionEvent;
 
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
+import com.Ben.game.classes.Enemies;
+import com.Ben.game.classes.Player;
+import com.Ben.game.classes.PlayerShip;
 import com.Ben.simpleandroidgdf.Assets;
 
 /**
@@ -13,7 +16,15 @@ import com.Ben.simpleandroidgdf.Assets;
  */
 public class VictoryState extends State {
     @Override
-    public void init(){}
+    public void init(){
+        /* clean up stuff */
+        Enemies.getEnemies().clear();
+        for(PlayerShip p : Player.getParty()){
+            if(p.isDead()){
+                Player.getParty().remove(p);
+            }
+        }
+    }
 
     @Override
     public void update(float delta) {
@@ -21,10 +32,10 @@ public class VictoryState extends State {
 
     @Override
     public void render(Painter g) {
-        Renderer.renderBackground(g);
-        g.setFont(Typeface.SANS_SERIF, 50);
+        //Renderer.renderBackground(g);
+        g.setFont(Assets.tf, 50);
         g.setColor(Color.YELLOW);
-        g.drawString("Victory",100,200);
+        g.drawString("Victory",500,200);
     }
 
     @Override
