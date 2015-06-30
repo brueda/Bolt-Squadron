@@ -18,7 +18,7 @@ public class Enemies {
 
         /* this is just placeholder code for testing */
         for(int i = 0; i < numEnemies; i++){
-            enemy = new testEnemy();
+            enemy = new TestEnemy();
             enemies.add(enemy);
             grid[5+i%2][i].setShip(enemy);
         }

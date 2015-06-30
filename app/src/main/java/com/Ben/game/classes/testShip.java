@@ -7,9 +7,9 @@ import com.Ben.framework.util.Painter;
  */
 
 /* Placeholder class until real ship variants are implemented */
-public class testShip extends PlayerShip {
+public class TestShip extends PlayerShip {
 
-    public testShip(){
+    public TestShip(){
         super();
     }
 

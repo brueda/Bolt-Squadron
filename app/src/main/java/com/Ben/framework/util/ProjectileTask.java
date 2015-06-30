@@ -52,7 +52,7 @@ public class ProjectileTask extends Task {
         myProjectile = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), mat, false);
 
         if (killShot) {
-            ImpactTask impact = new ImpactTask();
+            DestroyTask impact = new DestroyTask();
             impact.initialize(dest, power);
             attachChild(impact);
         }

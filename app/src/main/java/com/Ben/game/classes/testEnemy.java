@@ -5,9 +5,9 @@ import com.Ben.framework.util.Painter;
 /**
  * Created by Benjamin on 5/26/2015.
  */
-public class testEnemy extends EnemyShip {
+public class TestEnemy extends EnemyShip {
 
-    public testEnemy(){
+    public TestEnemy(){
         super();
     }
 

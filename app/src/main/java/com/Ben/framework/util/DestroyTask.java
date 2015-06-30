@@ -7,13 +7,13 @@ import com.Ben.simpleandroidgdf.Assets;
 /**
  * Created by Benjamin on 6/17/2015.
  */
-public class ImpactTask extends Task {
+public class DestroyTask extends Task {
     private Ship target;
     int power;
     int x, y;
     Animation explosion;
 
-    public ImpactTask(){
+    public DestroyTask(){
         super();
     }
 
