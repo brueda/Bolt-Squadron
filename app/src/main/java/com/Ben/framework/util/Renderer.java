@@ -37,16 +37,16 @@ public class Renderer {
         }
     }
 
-    public static void renderShips(Painter g, int state, Tile selected){
+    public static void renderShips(Painter g, int state, Ship selected){
         for(Ship s : Player.getParty()){
             s.render(g, state, selected);
         }
         g.setFont(Assets.tf, 20f);
-        if(selected.getShip() != null && !selected.getShip().isDead()){
+        if(selected != null && !selected.isDead()){
             g.setColor(Color.RED);
-            g.drawString("ATK: " + selected.getShip().getAttack(), 50, 443);
+            g.drawString("ATK: " + selected.getAttack(), 50, 443);
             g.setColor(Color.CYAN);
-            g.drawString("DEF: " + selected.getShip().getDefense(), 150, 443);
+            g.drawString("DEF: " + selected.getDefense(), 150, 443);
         }
         g.setColor(Color.YELLOW);
         g.drawString("VOLTS: " + Player.getVolts(), 250, 443);

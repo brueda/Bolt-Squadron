@@ -22,6 +22,7 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void shield(){
+        Assets.playSound(Assets.shieldID, 1.0f);
         shielded = true;
     }
 
@@ -48,7 +49,7 @@ public abstract class PlayerShip extends Ship {
         if(offset == 0) increasing = true;
     }
 
-    public void render(Painter g, int state, Tile selected){
+    public void render(Painter g, int state, Ship selected){
         int x = currentTile.x_coordinate;
         int y = currentTile.y_coordinate;
         int sway = (offset - 100)/20;
@@ -57,12 +58,12 @@ public abstract class PlayerShip extends Ship {
             switch (state) {
                 case (State.MOVE):
                     g.drawImage(Assets.greenDot, x + 45, y + 10 + sway, 10, 10);
-                    if (currentTile == selected)
+                    if (this == selected)
                         g.drawImage(Assets.greenRing, x + 40, y + 5 + sway, 20, 20);
                     break;
                 case (State.ATTACK):
                     g.drawImage(Assets.blueDot, x + 45, y + 10 + sway, 10, 10);
-                    if (currentTile == selected)
+                    if (this == selected)
                         g.drawImage(Assets.blueRing, x + 40, y + 5 + sway, 20, 20);
                     break;
             }
@@ -72,7 +73,9 @@ public abstract class PlayerShip extends Ship {
             g.setColor(Color.GREEN);
             g.drawString("" + health, x - 15, y + sway + 20);
             g.drawImage(Assets.testShip, x, y + sway, 65, 85);
-            g.drawImage(Assets.shield, x - 10, y + sway, 95, 95);
+            if(shielded){
+                g.drawImage(Assets.shield, x - 10, y + sway, 95, 95);
+            }
         }
     }
 

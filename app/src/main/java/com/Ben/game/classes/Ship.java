@@ -88,14 +88,19 @@ public abstract class Ship {
 
     public abstract void update();
 
-    public abstract void render(Painter g, int state, Tile selected);
+    public abstract void render(Painter g, int state, Ship selected);
 
 
     /* methods for battle */
 
     public void hit(int power){
         int damage = power - getDefense();
-        health -= damage;
+        if(shielded){
+            shielded = false;
+        }
+        else {
+            health -= damage;
+        }
         if(health <= 0){
             dead = true;
             currentTile.setShip(null);

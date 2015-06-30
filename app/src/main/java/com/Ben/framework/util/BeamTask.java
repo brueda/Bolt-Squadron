@@ -12,7 +12,7 @@ import com.Ben.simpleandroidgdf.Assets;
 public class BeamTask extends Task {
     private int x_coordinate;
     private int y_coordinate;
-    private final int TRAVEL = 15;
+    private final int TRAVEL = 25;
 
     public BeamTask(){super();}
 
@@ -20,7 +20,7 @@ public class BeamTask extends Task {
         x_coordinate = src.getTile().x_coordinate;
         y_coordinate = src.getTile().y_coordinate;
         for(EnemyShip e : Enemies.getEnemies()){
-            if(e.getPositionY() == src.getPositionY()){
+            if(e.getPositionY() == src.getPositionY() && !e.isDead()){
                 e.hit(power);
                 if(e.isDead()){
                     DestroyTask impact = new DestroyTask();

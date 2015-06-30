@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.content.res.Resources;
 
 import com.Ben.framework.util.Painter;
+import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.Enemies;
 import com.Ben.game.classes.Grid;
 import com.Ben.game.classes.Player;
@@ -20,13 +21,15 @@ public class MenuState extends State {
 	@Override
 	public void update(float delta) {
 		Assets.playMusic("cyber-advance.mp3", true);
+		Renderer.updateBackground(delta);
 	}
 
 	@Override
 	public void render(Painter g) {
+		Renderer.renderBackground(g);
 		g.setFont(Assets.tf, 50);
 		g.setColor(Color.YELLOW);
-		g.drawString("BOLT SQUADRON",100,200);
+		g.drawString("BOLT SQUADRON",140,200);
 	}
 
 	@Override

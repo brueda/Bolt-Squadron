@@ -10,18 +10,20 @@ import com.Ben.game.classes.Player;
 import com.Ben.game.classes.PlayerShip;
 import com.Ben.game.classes.Ship;
 import com.Ben.game.classes.Tile;
+import com.Ben.simpleandroidgdf.Assets;
 
 /**
  * Created by Benjamin on 6/3/2015.
  */
 public class AttackState extends State {
     private Tile selectedTile;
+    private Ship selectedShip;
 
     public AttackState(){}
 
     public void init(){
         Player.resetActivated();
-        selectedTile = Player.getParty().get(0).getTile();
+        //selectedTile = Player.getParty().get(0).getTile();
     }
 
     public void update(float delta){
@@ -32,7 +34,7 @@ public class AttackState extends State {
 
     public void render(Painter g){
         Renderer.renderBackground(g);
-        Renderer.renderShips(g, ATTACK, selectedTile);
+        Renderer.renderShips(g, ATTACK, selectedShip);
         Renderer.renderEnemies(g, State.ATTACK);
     }
 
@@ -44,19 +46,30 @@ public class AttackState extends State {
                 if(ship == null) return true;
                 if(ship.getPositionX() > 3){      // enemy ship was selected
                     EnemyShip target = (EnemyShip) pressed.getShip();
-                    Ship attacker = selectedTile.getShip();
+                    //Ship attacker = selectedTile.getShip();
+                    Ship attacker = selectedShip;
+                    if(attacker == null) return true;
                     if(!attacker.isActivated() && !attacker.isDead()) {
                         attacker.fire(target);
                     }
                     resolve(attacker);
                 }
-                else selectedTile = pressed;      // player ship was selected
+                //else selectedTile = pressed;      // player ship was selected
+                else selectedShip = pressed.getShip();
             }
         }
         else if(e == InputHandler.SWIPE_RIGHT){
-            PlayerShip ship = (PlayerShip) selectedTile.getShip();
-            if(ship.isDead() || ship.isActivated()) return true;
+            PlayerShip ship = (PlayerShip) selectedShip;
+            if(ship == null || ship.isDead() || ship.isActivated()) return true;
+            Assets.playSound(Assets.beamID, 1.0f);
             ship.columnAttack();
+            resolve(ship);
+        }
+        else if(e == InputHandler.SWIPE_LEFT){
+            PlayerShip ship = (PlayerShip) selectedShip;
+            if(ship == null || ship.isDead() || ship.isActivated()) return true;
+            ship.shield();
+            resolve(ship);
         }
         return true;
     }

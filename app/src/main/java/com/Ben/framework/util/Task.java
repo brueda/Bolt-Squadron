@@ -19,6 +19,7 @@ public abstract class Task {
 
     public Task() {
         //_owner = owner;
+        _children = new ArrayList<Task>();
         _state = TASK_NEW;
     }
 

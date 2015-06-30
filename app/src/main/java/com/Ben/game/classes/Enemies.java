@@ -36,6 +36,7 @@ public class Enemies {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                attacker.move();
                 attacker.attack();
             }
         }

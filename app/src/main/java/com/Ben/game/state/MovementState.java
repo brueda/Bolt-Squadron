@@ -18,12 +18,13 @@ import com.Ben.simpleandroidgdf.Assets;
  */
 public class MovementState extends State {
     private Tile selectedTile;
+    private Ship selectedShip;
 
     public MovementState(){}
 
     public void init(){
         Player.resetActivated();
-        selectedTile = Player.getParty().get(0).getTile();
+        //selectedTile = Player.getParty().get(0).getTile();
     }
 
     public void update(float delta){
@@ -34,7 +35,7 @@ public class MovementState extends State {
 
     public void render(Painter g){
         Renderer.renderBackground(g);
-        Renderer.renderShips(g, MOVE, selectedTile);
+        Renderer.renderShips(g, MOVE, selectedShip);
         Renderer.renderEnemies(g, MOVE);
     }
 
@@ -45,10 +46,10 @@ public class MovementState extends State {
             if(pressed == null) return true;
             if(pressed.getShip() != null){
                 if(pressed.getShip().getPositionX() > 3) return true;  // can't move Enemy ship
-                if(pressed == selectedTile) doMove(selectedTile, pressed);  // hold position
-                selectedTile = pressed;
+                if(pressed.getShip() == selectedShip) doMove(selectedShip.getTile(), pressed);  // hold position
+                selectedShip = pressed.getShip();
             }
-            else doMove(selectedTile, pressed);
+            else doMove(selectedShip.getTile(), pressed);
         }
         return true;
     }
@@ -58,7 +59,7 @@ public class MovementState extends State {
         Ship ship = source.getShip();
         /* check if the move is valid */
         if(Math.abs(destination.getPositionY() - source.getPositionY()) + Math.abs(destination.getPositionX() - source.getPositionX()) <= 1){
-            Assets.playSound(Assets.movementID, 0.3f);
+            Assets.playSound(Assets.selectID, 0.3f);
             source.setShip(null);
             destination.setShip(ship);
             ship.setActivated(true);
