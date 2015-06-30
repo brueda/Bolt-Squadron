@@ -16,18 +16,17 @@ import com.Ben.simpleandroidgdf.Assets;
  */
 public class VictoryState extends State {
     @Override
-    public void init(){
-        /* clean up stuff */
+    public void init(){}
+
+    @Override
+    public void update(float delta) {
+          /* clean up stuff */
         Enemies.getEnemies().clear();
         for(PlayerShip p : Player.getParty()){
             if(p.isDead()){
                 Player.getParty().remove(p);
             }
         }
-    }
-
-    @Override
-    public void update(float delta) {
     }
 
     @Override

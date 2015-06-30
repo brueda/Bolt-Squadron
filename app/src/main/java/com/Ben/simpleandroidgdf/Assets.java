@@ -20,7 +20,7 @@ public class Assets {
 	private static SoundPool soundPool;
 	public static Bitmap welcome;
 	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield, beam;
-	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID;
+	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
 
@@ -49,6 +49,7 @@ public class Assets {
 		shieldID = loadSound("shield.wav");
 		beamID = loadSound("beam.wav");
 		selectID = loadSound("Select.wav");
+		healID = loadSound("heal.wav");
 
         explosionFrames = new Frame[9];
         for (int i = 0; i < 9; ++i) {
