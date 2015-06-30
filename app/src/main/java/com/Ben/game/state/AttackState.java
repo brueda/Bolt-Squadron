@@ -62,14 +62,27 @@ public class AttackState extends State {
             PlayerShip ship = (PlayerShip) selectedShip;
             if(ship == null || ship.isDead() || ship.isActivated()) return true;
             Assets.playSound(Assets.beamID, 1.0f);
-            ship.columnAttack();
-            resolve(ship);
+            if(Player.getVolts() >= 75) {
+                Player.setVolts(Player.getVolts() - 75);
+                ship.columnAttack();
+                resolve(ship);
+            }
         }
         else if(e == InputHandler.SWIPE_LEFT){
             PlayerShip ship = (PlayerShip) selectedShip;
             if(ship == null || ship.isDead() || ship.isActivated()) return true;
             ship.shield();
             resolve(ship);
+        }
+        else if(e == InputHandler.SWIPE_UP){
+            Assets.playSound(Assets.healID, 1.0f);
+            PlayerShip ship = (PlayerShip) selectedShip;
+            if(ship == null || ship.isDead() || ship.isActivated()) return true;
+            if(Player.getVolts() >= 150) {
+                Player.setVolts(Player.getVolts() - 150);
+                ship.repair();
+                resolve(ship);
+            }
         }
         return true;
     }

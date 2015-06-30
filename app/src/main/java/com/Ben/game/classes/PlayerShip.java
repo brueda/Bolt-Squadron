@@ -27,6 +27,7 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void repair(){
+        Assets.playSound(Assets.healID, 1.0f);
         health = Math.min(maxHealth, health + (maxHealth / 2));
     }
 

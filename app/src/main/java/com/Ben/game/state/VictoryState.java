@@ -20,13 +20,6 @@ public class VictoryState extends State {
 
     @Override
     public void update(float delta) {
-          /* clean up stuff */
-        Enemies.getEnemies().clear();
-        for(PlayerShip p : Player.getParty()){
-            if(p.isDead()){
-                Player.getParty().remove(p);
-            }
-        }
     }
 
     @Override
