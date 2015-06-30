@@ -40,13 +40,13 @@ public class InputHandler implements OnTouchListener {
 				return currentState.onTouch(SWIPE_RIGHT, scaledX, scaledY);
 			}
 			else if((scaledY - downY) > BOUND){
-				return currentState.onTouch(SWIPE_UP, scaledX, scaledY);
+				return currentState.onTouch(SWIPE_DOWN, scaledX, scaledY);
 			}
 			else if((scaledX - downX) < -BOUND){
 				return currentState.onTouch(SWIPE_LEFT, scaledX, scaledY);
 			}
 			else if((scaledY - downY) < -BOUND){
-				return currentState.onTouch(SWIPE_DOWN, scaledX, scaledY);
+				return currentState.onTouch(SWIPE_UP, scaledX, scaledY);
 			}
 		}
 		return true;

@@ -61,12 +61,13 @@ public class AttackState extends State {
         else if(e == InputHandler.SWIPE_RIGHT){
             PlayerShip ship = (PlayerShip) selectedShip;
             if(ship == null || ship.isDead() || ship.isActivated()) return true;
-            Assets.playSound(Assets.beamID, 1.0f);
             if(Player.getVolts() >= 75) {
                 Player.setVolts(Player.getVolts() - 75);
+                Assets.playSound(Assets.beamID, 1.0f);
                 ship.columnAttack();
                 resolve(ship);
             }
+            else Assets.playSound(Assets.failID, 1.0f);
         }
         else if(e == InputHandler.SWIPE_LEFT){
             PlayerShip ship = (PlayerShip) selectedShip;
@@ -75,7 +76,6 @@ public class AttackState extends State {
             resolve(ship);
         }
         else if(e == InputHandler.SWIPE_UP){
-            Assets.playSound(Assets.healID, 1.0f);
             PlayerShip ship = (PlayerShip) selectedShip;
             if(ship == null || ship.isDead() || ship.isActivated()) return true;
             if(Player.getVolts() >= 150) {
@@ -83,6 +83,7 @@ public class AttackState extends State {
                 ship.repair();
                 resolve(ship);
             }
+            else Assets.playSound(Assets.failID, 1.0f);
         }
         return true;
     }
