@@ -16,7 +16,7 @@ public class Player {
         party = new ArrayList<PlayerShip>();
 
         for(int i = 0; i < 4; i++){          // add the test ships
-            PlayerShip ship = new testShip();
+            PlayerShip ship = new TestShip();
             party.add(ship);
             Grid.grid[1][i].setShip(ship);
         }
