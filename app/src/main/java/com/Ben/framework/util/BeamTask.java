@@ -23,7 +23,7 @@ public class BeamTask extends Task {
             if(e.getPositionY() == src.getPositionY()){
                 e.hit(power);
                 if(e.isDead()){
-                    ImpactTask impact = new ImpactTask();
+                    DestroyTask impact = new DestroyTask();
                     impact.initialize(e, power);
                     attachChild(impact);
                 }

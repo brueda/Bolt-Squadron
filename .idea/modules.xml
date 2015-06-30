@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Bolt-Squadron.iml" filepath="$PROJECT_DIR$/Bolt-Squadron.iml" />
       <module fileurl="file://$PROJECT_DIR$/SpaceGame.iml" filepath="$PROJECT_DIR$/SpaceGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpaceGame.iml" filepath="$PROJECT_DIR$/SpaceGame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
