@@ -1,5 +1,7 @@
 package com.Ben.game.classes;
 
+import android.graphics.Bitmap;
+
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.ProjectileTask;
 import com.Ben.framework.util.TaskList;
@@ -21,6 +23,8 @@ public abstract class Ship {
     protected boolean activated;  // has moved or attacked this round
     protected Tile currentTile;
     protected boolean renderable;
+
+    public Bitmap image;
 
     public Ship(){
         dead = false;
@@ -70,6 +74,14 @@ public abstract class Ship {
         return defense;
     }
 
+    public void setDefense(int d){
+        defense = d;
+    }
+
+    public void setAttack(int a){
+        attack = a;
+    }
+
     public void setActivated(boolean set){
         activated = set;
     }
@@ -111,10 +123,6 @@ public abstract class Ship {
         Assets.playSound(Assets.laserID, 4f);
         int power = attack;
         target.hit(power);
-        ProjectileTask laser = new ProjectileTask();
-        laser.initialize(this, target, power, target.isDead());
-        laser.makeRunnable();
-        TaskList.addTask(laser);
     }
 
     public abstract void destroy();

@@ -10,13 +10,19 @@ public class Player {
     private static ArrayList<PlayerShip> party;
     //private Tile[][] grid;
     private static int volts;
+    public static AttackShip attackBuy;
+    public static DefenseShip defenseBuy;
+    public static MoneyShip moneyBuy;
 
     public Player(){
         volts = 1000;
         party = new ArrayList<PlayerShip>();
+        attackBuy = new AttackShip();
+        defenseBuy = new DefenseShip();
+        moneyBuy = new MoneyShip();
 
         for(int i = 0; i < 4; i++){          // add the test ships
-            PlayerShip ship = new TestShip();
+            PlayerShip ship = new AttackShip();
             party.add(ship);
             Grid.grid[1][i].setShip(ship);
         }

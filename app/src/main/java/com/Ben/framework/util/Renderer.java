@@ -5,7 +5,9 @@ import android.graphics.Typeface;
 import android.widget.TextView;
 
 import com.Ben.game.classes.Enemies;
+import com.Ben.game.classes.Grid;
 import com.Ben.game.classes.Player;
+import com.Ben.game.classes.PlayerShip;
 import com.Ben.game.classes.Ship;
 import com.Ben.game.classes.Tile;
 import com.Ben.game.state.State;
@@ -27,6 +29,26 @@ public class Renderer {
         int numberOfShifts = (int)Math.floor(_currentTime / _backgroundSpeed);
         _backgroundPosition = (_backgroundPosition + numberOfShifts) % 255;
         _currentTime %= _backgroundSpeed;
+    }
+
+    public static void renderBuyInfo(Painter g, PlayerShip selected){
+        g.setFont(Assets.tf, 25);
+        Tile buyTile = Grid.grid[4][0];
+        if(selected.getPositionX() > 3){     // buy ship
+            g.drawString("BUY", buyTile.x_coordinate, buyTile.y_coordinate);
+        }
+        else{                                // upgrade ship
+            g.drawString("regex ftw boi", buyTile.x_coordinate, buyTile.y_coordinate+10);
+            g.setFont(Assets.tf, 15);
+            String[] description = selected.getDescriptions()[selected.upgradeLevel+1].split("\\.");
+            int offset = 300;
+            //g.drawString(selected.getDescriptions()[1],350,300);
+            for(String s : description){
+                g.drawString(s, 375, offset);
+                offset += 20;
+            }
+        }
+
     }
 
     public static void renderBackground(Painter g){

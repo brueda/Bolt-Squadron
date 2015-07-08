@@ -21,13 +21,11 @@ public class ProjectileTask extends Task {
     private Bitmap myProjectile;
     private final int TRAVEL = 20;
 
-    private Bitmap image;
-
     public ProjectileTask(){
         super();
     }
 
-    public void initialize(Ship src, Ship dest, int power, boolean killShot){
+    public void initialize(Ship src, Ship dest, int power, boolean killShot, Bitmap image){
         x_coordinate = src.getTile().x_coordinate;
         y_coordinate = src.getTile().y_coordinate;
         destination_x = dest.getTile().x_coordinate;
@@ -35,17 +33,9 @@ public class ProjectileTask extends Task {
         vertical = y_coordinate - destination_y;
         distance = Math.abs(x_coordinate - destination_x);
 
-        if(destination_x > x_coordinate){
-            direction = 1;              // laser is going right
-            image = Assets.blueLaser;
-        }
-        else{
-            direction = 0;              // laser is going left
-            image = Assets.redLaser;
-        }
-
         int deltaY = destination_y - y_coordinate;
         int deltaX = destination_x - x_coordinate;
+        direction = (deltaX > 0 ? 1 : 0);
         angle = (float)(Math.atan2(deltaY, deltaX) * 180 / Math.PI);
         Matrix mat = new Matrix();
         mat.setRotate(angle, image.getWidth()/2, image.getHeight()/2);

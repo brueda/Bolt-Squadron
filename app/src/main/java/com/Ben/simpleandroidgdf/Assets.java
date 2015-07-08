@@ -18,29 +18,31 @@ import com.Ben.framework.animation.Frame;
 public class Assets {
 	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
-	public static Bitmap welcome;
-	public static Bitmap testShip, greenDot, blueDot, crosshair, bolt, UFO, background, blueLaser, redLaser, greenLaser, greenRing, blueRing, shield, beam;
+	public static Bitmap testShip, greenDot, blueDot, UFO, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
+	attackGreen, attackBlue, attackRed;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
 
 
 	public static void load() {
-		welcome = loadBitmap("welcome.png", false);
 		testShip = loadBitmap("playerShip1_orange.png", true);
 		greenDot = loadBitmap("fx13.png", true);
-		bolt = loadBitmap("bolt_gold.png", true);
 		UFO = loadBitmap("Bio1_14_green.png", true);
 		background = loadBitmap("black.png", true);
 		blueDot = loadBitmap("fx12.png", true);
-		crosshair = loadBitmap("crossair_redOutline.png", true);
 		blueLaser = loadBitmap("lzrfx086.png", true);
 		redLaser = loadBitmap("lzrfx101.png", true);
-		greenLaser = loadBitmap("illuminaFX03.png", true);
 		greenRing = loadBitmap("fx15.png", true);
 		blueRing = loadBitmap("fx14.png", true);
 		shield = loadBitmap("shieldSoft4.png", true);
 		beam = loadBitmap("beam.png", true);
+		shieldLaser = loadBitmap("shieldLaser.png", true);
+		multiLaser = loadBitmap("multiLaser.png", true);
+		moneyLaser = loadBitmap("moneyLaser.png", true);
+		attackGreen = loadBitmap("attackShipGreen.png", true);
+		attackBlue = loadBitmap("attackShipBlue.png", true);
+		attackRed = loadBitmap("attackShipRed.png", true);
 
 		laserID = loadSound("laser1.wav");
 		hitID = loadSound("Hit.wav");

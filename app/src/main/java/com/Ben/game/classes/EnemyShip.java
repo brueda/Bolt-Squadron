@@ -1,9 +1,12 @@
 package com.Ben.game.classes;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 
 import com.Ben.framework.util.Painter;
+import com.Ben.framework.util.ProjectileTask;
 import com.Ben.framework.util.RandomNumberGenerator;
+import com.Ben.framework.util.TaskList;
 import com.Ben.game.state.State;
 import com.Ben.simpleandroidgdf.Assets;
 
@@ -15,11 +18,22 @@ import java.util.ArrayList;
 public abstract class EnemyShip extends Ship {
     private int offset;
     private boolean increasing;
+    private Bitmap laserImage;
 
     public EnemyShip(){
         super();
         offset = RandomNumberGenerator.getRandInt(200);
         increasing = true;
+        laserImage = Assets.redLaser;
+    }
+
+    @Override
+    public void fire(Ship target){
+        super.fire(target);
+        ProjectileTask laser = new ProjectileTask();
+        laser.initialize(this, target, attack, target.isDead(), laserImage);
+        laser.makeRunnable();
+        TaskList.addTask(laser);
     }
 
     public void attack(){

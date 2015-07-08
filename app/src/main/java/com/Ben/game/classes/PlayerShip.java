@@ -1,9 +1,11 @@
 package com.Ben.game.classes;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 
 import com.Ben.framework.util.BeamTask;
 import com.Ben.framework.util.Painter;
+import com.Ben.framework.util.ProjectileTask;
 import com.Ben.framework.util.RandomNumberGenerator;
 import com.Ben.framework.util.TaskList;
 import com.Ben.game.state.State;
@@ -15,10 +17,35 @@ import com.Ben.simpleandroidgdf.Assets;
 public abstract class PlayerShip extends Ship {
     private int offset;
     private boolean increasing;
+    public int upgradeLevel;
+    protected Bitmap specialLaser;
+    protected Bitmap laserImage;
+    protected Bitmap[] shipImage;
+    protected String[] descriptions;
+
     public PlayerShip(){
         super();
         offset = RandomNumberGenerator.getRandInt(200);
         increasing = true;
+        upgradeLevel = 0;
+        specialLaser = Assets.multiLaser;
+        laserImage = Assets.blueLaser;
+        shipImage = new Bitmap[3];
+        descriptions = new String[6];
+    }
+
+    public String[] getDescriptions(){
+        return descriptions;
+    }
+
+    @Override
+    public void fire(Ship target){
+        super.fire(target);
+        ProjectileTask laser = new ProjectileTask();
+        Bitmap image = (target.getPositionY() == positionY ? specialLaser : laserImage);
+        laser.initialize(this, target, attack, target.isDead(), image);
+        laser.makeRunnable();
+        TaskList.addTask(laser);
     }
 
     public void shield(){
@@ -29,6 +56,10 @@ public abstract class PlayerShip extends Ship {
     public void repair(){
         Assets.playSound(Assets.healID, 1.0f);
         health = Math.min(maxHealth, health + (maxHealth / 2));
+    }
+
+    public void levelUp(){
+        upgradeLevel += 1;
     }
 
     // all allied ships in the same column attack
@@ -67,13 +98,17 @@ public abstract class PlayerShip extends Ship {
                     if (this == selected)
                         g.drawImage(Assets.blueRing, x + 40, y + 5 + sway, 20, 20);
                     break;
+                case (State.CHECK):
+                    if(this == selected)
+                        g.drawImage(Assets.greenRing, x + 40, y + 5 + sway, 20, 20);
+                    break;
             }
         }
         if(renderable) {
             g.setFont(Assets.tf, 15f);
             g.setColor(Color.GREEN);
             g.drawString("" + health, x - 15, y + sway + 20);
-            g.drawImage(Assets.testShip, x, y + sway, 65, 85);
+            g.drawImage(shipImage[upgradeLevel/2], x, y + sway, 65, 85);
             if(shielded){
                 g.drawImage(Assets.shield, x - 10, y + sway, 95, 95);
             }

@@ -25,6 +25,7 @@ public class MovementState extends State {
     public void init(){
         Player.resetActivated();
         //selectedTile = Player.getParty().get(0).getTile();
+        selectedShip = Player.getParty().get(0);
     }
 
     public void update(float delta){

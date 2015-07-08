@@ -13,17 +13,12 @@ ADDED from AndroidManifest.xml:1:1
 		ADDED from AndroidManifest.xml:3:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
-uses-sdk
+uses-sdknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 ADDED from AndroidManifest.xml:6:5
-MERGED from com.android.support:support-v4:20.0.0:16:5
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:8:9
-		INJECTED from AndroidManifest.xml:0:0
-		INJECTED from AndroidManifest.xml:0:0
 	android:minSdkVersion
 		ADDED from AndroidManifest.xml:7:9
-		INJECTED from AndroidManifest.xml:0:0
-		INJECTED from AndroidManifest.xml:0:0
 application
 ADDED from AndroidManifest.xml:10:5
 MERGED from com.android.support:support-v4:20.0.0:17:5
@@ -55,3 +50,12 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:22:17
 	android:name
 		ADDED from AndroidManifest.xml:22:27
+uses-sdk
+INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
+MERGED from com.android.support:support-v4:20.0.0:16:5
+	android:targetSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0

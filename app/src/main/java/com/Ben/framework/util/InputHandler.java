@@ -16,7 +16,7 @@ public class InputHandler implements OnTouchListener {
 	public static final int SWIPE_RIGHT = 2;
 	public static final int SWIPE_UP = 3;
 	public static final int SWIPE_DOWN = 4;
-	private static final int BOUND = 100;
+	private static final int BOUND = 50;
 
 	public void setCurrentState(State currentState) {
 		this.currentState = currentState;

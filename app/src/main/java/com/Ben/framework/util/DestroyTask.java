@@ -27,7 +27,7 @@ public class DestroyTask extends Task {
     public void update(long delta, Painter g){
        // Assets.playSound(Assets.hitID, 1f);
         explosion.update(delta);
-        explosion.render(g, x, y, 100, 100);
+        explosion.render(g, x, y, 120, 120);
         if (explosion.isDone()) {
             finishTask();
         }
