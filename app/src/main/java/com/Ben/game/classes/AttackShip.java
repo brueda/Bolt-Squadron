@@ -16,7 +16,12 @@ public class AttackShip extends PlayerShip {
         shipImage[2] = Assets.attackRed;
         descriptions[0] = "*attack specialist.*aligned attacks hit twice";
         descriptions[1] = "+5 HP.+2 ATK.+2 DEF";
-        descriptions[2] = "+Extra hit for each attack";
+        descriptions[2] = "+";
+        int cost = 200;
+        for(int i = 0; i < 6; i++){
+            costs[i] = cost;
+            cost += 100;
+        }
     }
 
     @Override

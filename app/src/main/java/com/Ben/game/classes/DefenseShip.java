@@ -17,6 +17,11 @@ public class DefenseShip extends PlayerShip {
         descriptions[0] = "*defense specialist.*aligned attacks activate shield";
         descriptions[1] = "battle-hardened team leader. +2 ATK +2 DEF";
         descriptions[2] = "Extra hit for each attack";
+        int cost = 200;
+        for(int i = 0; i < 6; i++){
+            costs[i] = cost;
+            cost += 100;
+        }
     }
 
     @Override

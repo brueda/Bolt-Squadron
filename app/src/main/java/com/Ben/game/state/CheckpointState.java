@@ -42,6 +42,13 @@ public class CheckpointState extends State {
         Grid.grid[4][3].getShip().render(g, CHECK, selectedShip);
         Grid.grid[5][3].getShip().render(g,CHECK,selectedShip);
         Grid.grid[6][3].getShip().render(g,CHECK,selectedShip);
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 4; j++){
+                if(Grid.grid[i][j].getShip() == null){
+                    g.drawImage(Assets.greenDot, Grid.grid[i][j].x_coordinate+20, Grid.grid[i][j].y_coordinate+40, 10, 10);
+                }
+            }
+        }
     }
 
     @Override

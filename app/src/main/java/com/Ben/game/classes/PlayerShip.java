@@ -22,6 +22,7 @@ public abstract class PlayerShip extends Ship {
     protected Bitmap laserImage;
     protected Bitmap[] shipImage;
     protected String[] descriptions;
+    protected int[] costs;
 
     public PlayerShip(){
         super();
@@ -32,6 +33,7 @@ public abstract class PlayerShip extends Ship {
         laserImage = Assets.blueLaser;
         shipImage = new Bitmap[3];
         descriptions = new String[6];
+        costs  = new int[6];
     }
 
     public String[] getDescriptions(){

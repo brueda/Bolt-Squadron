@@ -16,6 +16,11 @@ public class MoneyShip extends PlayerShip {
         descriptions[0] = "*resource generator.*aligned attacks increase volts";
         descriptions[1] = "battle-hardened team leader. +2 ATK +2 DEF";
         descriptions[2] = "Extra hit for each attack";
+        int cost = 150;
+        for(int i = 0; i < 6; i++){
+            costs[i] = cost;
+            cost += 100;
+        }
     }
 
     @Override
