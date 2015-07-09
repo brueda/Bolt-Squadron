@@ -12,25 +12,28 @@ import android.media.SoundPool;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 
-import com.Ben.framework.animation.Animation;
 import com.Ben.framework.animation.Frame;
 
 public class Assets {
 	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
 	public static Bitmap testShip, greenDot, blueDot, UFO, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
-	attackGreen, attackBlue, attackRed;
+	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
+	purpleOrb;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
 
 
 	public static void load() {
-		testShip = loadBitmap("playerShip1_orange.png", true);
+		testShip = loadBitmap("attackOrange.png", true);
 		greenDot = loadBitmap("fx13.png", true);
 		UFO = loadBitmap("Bio1_14_green.png", true);
 		background = loadBitmap("black.png", true);
 		blueDot = loadBitmap("fx12.png", true);
+		purpleOrb = loadBitmap("purpleOrb.png", true);
+		redDot = loadBitmap("redDot.png", true);
+		redSelect = loadBitmap("redSelect.png", true);
 		blueLaser = loadBitmap("lzrfx086.png", true);
 		redLaser = loadBitmap("lzrfx101.png", true);
 		greenRing = loadBitmap("fx15.png", true);
@@ -43,6 +46,15 @@ public class Assets {
 		attackGreen = loadBitmap("attackShipGreen.png", true);
 		attackBlue = loadBitmap("attackShipBlue.png", true);
 		attackRed = loadBitmap("attackShipRed.png", true);
+		attackOrange = loadBitmap("attackOrange.png", true);
+		moneyBlue = loadBitmap("moneyBlue.png", true);
+		moneyOrange = loadBitmap("moneyOrange.png", true);
+		moneyRed = loadBitmap("moneyRed.png", true);
+		defenseBlue = loadBitmap("defenseBlue.png", true);
+		defenseOrange = loadBitmap("defenseOrange.png", true);
+		defenseRed = loadBitmap("defenseRed.png", true);
+		ring = loadBitmap("fx04.png", true);
+		star = loadBitmap("star.png", true);
 
 		laserID = loadSound("laser1.wav");
 		hitID = loadSound("Hit.wav");

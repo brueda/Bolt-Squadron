@@ -64,7 +64,7 @@ public class AttackState extends State {
             if(ship == null || ship.isDead() || ship.isActivated()) return true;
             if(Player.getVolts() >= 75) {
                 Player.setVolts(Player.getVolts() - 75);
-                Assets.playSound(Assets.beamID, 1.0f);
+                Assets.playSound(Assets.laserID, 1.0f);
                 ship.columnAttack();
                 resolve(ship);
             }

@@ -1,5 +1,6 @@
 package com.Ben.framework.util;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.widget.TextView;
@@ -33,22 +34,37 @@ public class Renderer {
 
     public static void renderBuyInfo(Painter g, PlayerShip selected){
         g.setFont(Assets.tf, 25);
-        Tile buyTile = Grid.grid[4][0];
+        g.drawString("BUY:",355,380);
         if(selected.getPositionX() > 3){     // buy ship
-            g.drawString("BUY", buyTile.x_coordinate, buyTile.y_coordinate);
-        }
-        else{                                // upgrade ship
-            g.drawString("regex ftw boi", buyTile.x_coordinate, buyTile.y_coordinate+10);
+            g.drawString("SWIPE UP TO BUY", 400, 30);
+            Bitmap image = selected.getShipImage()[0];
+            g.drawImage(image, 500, 100, 98, 127);
             g.setFont(Assets.tf, 15);
-            String[] description = selected.getDescriptions()[selected.upgradeLevel+1].split("\\.");
-            int offset = 300;
-            //g.drawString(selected.getDescriptions()[1],350,300);
+            String[] description = selected.getDescriptions()[0].split("\\.");
+            int offset = 250;
             for(String s : description){
-                g.drawString(s, 375, offset);
+                g.drawString(s, 400, offset);
                 offset += 20;
             }
         }
-
+        else{                                // upgrade ship
+            g.drawString("SWIPE UP TO UPGRADE", 400, 30);
+            Bitmap image = selected.getShipImage()[(selected.upgradeLevel+1)/2];
+            g.drawImage(image, 500, 100, 98, 127);
+            if(selected.upgradeLevel % 2 == 0 || selected.upgradeLevel == 0){
+                g.drawImage(Assets.star, 500+14, 100+51, 23, 23);
+            }
+            g.setFont(Assets.tf, 15);
+            String[] description = selected.getDescriptions()[selected.upgradeLevel+1].split("\\.");
+            int offset = 250;
+            for(String s : description){
+                g.drawString(s, 450, offset);
+                offset += 20;
+            }
+        }
+        g.setColor(Color.WHITE);
+        g.setFont(Assets.tf, 20);
+        g.drawString("SWIPE RIGHT TO BATTLE",450,443);
     }
 
     public static void renderBackground(Painter g){
@@ -60,6 +76,7 @@ public class Renderer {
     }
 
     public static void renderShips(Painter g, int state, Ship selected){
+        if(Player.getParty().isEmpty()) return;
         for(Ship s : Player.getParty()){
             s.render(g, state, selected);
         }

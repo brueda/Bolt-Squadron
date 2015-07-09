@@ -21,7 +21,7 @@ public class Player {
         defenseBuy = new DefenseShip();
         moneyBuy = new MoneyShip();
 
-        for(int i = 0; i < 4; i++){          // add the test ships
+        for(int i = 0; i < 3; i++){          // add the test ships
             PlayerShip ship = new AttackShip();
             party.add(ship);
             Grid.grid[1][i].setShip(ship);
@@ -30,6 +30,13 @@ public class Player {
 
     public static void addShip(PlayerShip ship){
         party.add(ship);
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 4; j++){
+                if(Grid.grid[i][j].getShip() == null){
+                    Grid.grid[i][j].setShip(ship);
+                }
+            }
+        }
     }
 
     public static int getVolts(){
