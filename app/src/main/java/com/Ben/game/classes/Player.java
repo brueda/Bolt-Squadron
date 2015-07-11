@@ -24,7 +24,7 @@ public class Player {
         partySize = 0;
 
         for(int i = 0; i < 1; i++){          // add the test ships
-            PlayerShip ship = new AttackShip();
+            PlayerShip ship = new MoneyShip();
             addShip(ship);
         }
     }

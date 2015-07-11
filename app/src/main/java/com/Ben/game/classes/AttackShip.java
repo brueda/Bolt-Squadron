@@ -15,11 +15,11 @@ public class AttackShip extends PlayerShip {
         shipImage[1] = Assets.attackOrange;
         shipImage[2] = Assets.attackRed;
         descriptions[0] = "*attack specialist.*aligned attacks hit twice";
-        descriptions[1] = "+5 HP.+1 ATK.+1 DEF";
-        descriptions[2] = "+5 HP.+1 ATK.*attacks reduce enemy defense";
-        descriptions[3] = "+5 HP.+1 ATK.+1 DEF";
-        descriptions[4] = "+5 HP.+1 ATK.*+1 hit per shot";
-        descriptions[5] = "+5 HP.+1 ATK.+1 DEF";
+        descriptions[1] = "+4 HP.+1 ATK.+1 DEF";
+        descriptions[2] = "+4 HP.+1 ATK.*attacks reduce enemy defense";
+        descriptions[3] = "+4 HP.+1 ATK.+1 DEF";
+        descriptions[4] = "+4 HP.+1 ATK.*+1 hit per shot";
+        descriptions[5] = "+4 HP.+1 ATK.+1 DEF";
         int cost = 200;
         for(int i = 0; i < 6; i++){
             costs[i] = cost;

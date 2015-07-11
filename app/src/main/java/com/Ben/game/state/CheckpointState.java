@@ -92,6 +92,10 @@ public class CheckpointState extends State {
             cost = selectedShip.getCosts()[0];
         }
         else{                                  // upgrade
+            if(s.upgradeLevel == 5){
+                Assets.playSound(Assets.failID, 1.0f);
+                return;
+            }
             cost = selectedShip.getCosts()[selectedShip.upgradeLevel+1];
         }
         if(Player.getVolts() < cost){
