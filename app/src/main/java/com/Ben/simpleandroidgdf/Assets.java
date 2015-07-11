@@ -20,7 +20,7 @@ public class Assets {
 	public static Bitmap testShip, greenDot, blueDot, UFO, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
 	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
 	purpleOrb;
-	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID;
+	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID, levelUpID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
 
@@ -65,6 +65,7 @@ public class Assets {
 		selectID = loadSound("Select.wav");
 		healID = loadSound("heal.wav");
 		failID = loadSound("fail.wav");
+		levelUpID = loadSound("levelUp.wav");
 
         explosionFrames = new Frame[9];
         for (int i = 0; i < 9; ++i) {

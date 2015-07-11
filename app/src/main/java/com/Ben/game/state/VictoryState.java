@@ -32,7 +32,7 @@ public class VictoryState extends State {
 
     @Override
     public boolean onTouch(int e, int scaledX, int scaledY) {
-        setCurrentState(new CheckpointState());
+        setCurrentState(new CleanupState(new CheckpointState()));
         return true;
     }
 }

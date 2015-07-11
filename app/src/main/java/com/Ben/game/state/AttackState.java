@@ -79,8 +79,8 @@ public class AttackState extends State {
         else if(e == InputHandler.SWIPE_UP){
             PlayerShip ship = (PlayerShip) selectedShip;
             if(ship == null || ship.isDead() || ship.isActivated()) return true;
-            if(Player.getVolts() >= 150) {
-                Player.setVolts(Player.getVolts() - 150);
+            if(Player.getVolts() >= 100) {
+                Player.setVolts(Player.getVolts() - 100);
                 ship.repair();
                 resolve(ship);
             }
@@ -92,6 +92,11 @@ public class AttackState extends State {
     private void resolve(Ship attacker){
         attacker.setActivated(true);
         if(Enemies.areDefeated()){
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             setCurrentState(new VictoryState());
             return;
         }

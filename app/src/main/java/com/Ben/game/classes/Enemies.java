@@ -14,14 +14,6 @@ public class Enemies {
         Tile[][] grid = Grid.grid;
         int numEnemies = 4;  // TODO: make this variable
         enemies = new ArrayList<EnemyShip>();
-        EnemyShip enemy;
-
-        /* this is just placeholder code for testing */
-        for(int i = 0; i < numEnemies; i++){
-            enemy = new TestEnemy();
-            enemies.add(enemy);
-            grid[5+i%2][i].setShip(enemy);
-        }
     }
 
     public static ArrayList<EnemyShip> getEnemies(){
@@ -31,12 +23,12 @@ public class Enemies {
     public static void attack(){
         for(EnemyShip attacker : enemies) {
             if (!attacker.isDead()) {
+                attacker.move();
                 try {
                     Thread.sleep(1000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                attacker.move();
                 attacker.attack();
             }
         }

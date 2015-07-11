@@ -40,6 +40,10 @@ public abstract class PlayerShip extends Ship {
         return descriptions;
     }
 
+    public int[] getCosts(){
+        return costs;
+    }
+
     @Override
     public void fire(Ship target){
         super.fire(target);
@@ -48,6 +52,14 @@ public abstract class PlayerShip extends Ship {
         laser.initialize(this, target, attack, target.isDead(), image);
         laser.makeRunnable();
         TaskList.addTask(laser);
+    }
+
+    @Override
+    public void hit(int power){
+        super.hit(power);
+        if(dead){
+            Player.removeShip(this);
+        }
     }
 
     public Bitmap[] getShipImage(){
@@ -65,6 +77,7 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void levelUp(){
+        Assets.playSound(Assets.levelUpID, 1.0f);
         upgradeLevel += 1;
     }
 

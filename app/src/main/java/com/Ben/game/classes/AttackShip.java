@@ -15,8 +15,11 @@ public class AttackShip extends PlayerShip {
         shipImage[1] = Assets.attackOrange;
         shipImage[2] = Assets.attackRed;
         descriptions[0] = "*attack specialist.*aligned attacks hit twice";
-        descriptions[1] = "+5 HP.+2 ATK.+2 DEF";
-        descriptions[2] = "+";
+        descriptions[1] = "+5 HP.+1 ATK.+1 DEF";
+        descriptions[2] = "+5 HP.+1 ATK.*attacks reduce enemy defense";
+        descriptions[3] = "+5 HP.+1 ATK.+1 DEF";
+        descriptions[4] = "+5 HP.+1 ATK.*+1 hit per shot";
+        descriptions[5] = "+5 HP.+1 ATK.+1 DEF";
         int cost = 200;
         for(int i = 0; i < 6; i++){
             costs[i] = cost;
@@ -32,7 +35,36 @@ public class AttackShip extends PlayerShip {
         if(upgradeLevel >= 4) target.hit(attack);
         super.fire(target);
         if(upgradeLevel >= 2){
-            target.setDefense(target.getDefense() - 1);
+            target.setDefense(target.getDefense() - 2);
+        }
+    }
+
+    @Override
+    public void levelUp(){
+        super.levelUp();
+        switch(upgradeLevel){
+            case 1:
+                increaseMaxHealth(4);
+                attack += 1;
+                defense += 1;
+                break;
+            case 2:
+                increaseMaxHealth(4);
+                attack += 1;
+                break;
+            case 3:
+                increaseMaxHealth(4);
+                attack += 1;
+                defense += 1;
+                break;
+            case 4:
+                increaseMaxHealth(4);
+                attack += 1;
+            case 5:
+                increaseMaxHealth(4);
+                attack += 1;
+                defense += 1;
+                break;
         }
     }
 }

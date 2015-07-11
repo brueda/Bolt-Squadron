@@ -7,6 +7,7 @@ import com.Ben.framework.util.InputHandler;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.Enemies;
+import com.Ben.game.classes.EnemyShip;
 import com.Ben.game.classes.Grid;
 import com.Ben.game.classes.Player;
 import com.Ben.game.classes.Ship;
@@ -26,6 +27,9 @@ public class MovementState extends State {
         Player.resetActivated();
         //selectedTile = Player.getParty().get(0).getTile();
         selectedShip = Player.getParty().get(0);
+        for(EnemyShip e : Enemies.getEnemies()){
+            e.getTile().setShip(e);
+        }
     }
 
     public void update(float delta){

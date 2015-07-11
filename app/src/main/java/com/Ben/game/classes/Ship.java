@@ -45,12 +45,29 @@ public abstract class Ship {
         positionY = y;
     }
 
+    public void increaseMaxHealth(int amount){
+        maxHealth += amount;
+        setHealth(maxHealth);
+    }
+
     public void setTile(Tile t){
         currentTile = t;
     }
 
+    public void setHealth(int h){
+        health = h;
+    }
+
     public Tile getTile(){
         return currentTile;
+    }
+
+    public void setShield(boolean set){
+        shielded = set;
+    }
+
+    public int getMaxHealth(){
+        return maxHealth;
     }
 
     public int getPositionX(){
@@ -72,6 +89,10 @@ public abstract class Ship {
     public int getDefense(){
         // apply shields
         return defense;
+    }
+
+    public void setDead(boolean set){
+        dead = set;
     }
 
     public void setDefense(int d){

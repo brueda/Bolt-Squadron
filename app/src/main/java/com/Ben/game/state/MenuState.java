@@ -37,7 +37,7 @@ public class MenuState extends State {
 		new Grid();
 		new Player();
 		new Enemies();
-		setCurrentState(new MovementState());
+		setCurrentState(new CheckpointState());
 		return true;
 	}
 }
