@@ -5,8 +5,8 @@ import android.util.Xml;
 
 import com.Ben.game.classes.EnemyShip;
 import com.Ben.game.classes.Grid;
-import com.Ben.game.classes.TestEnemy;
-import com.Ben.game.classes.TestShip;
+import com.Ben.game.classes.Level;
+import com.Ben.simpleandroidgdf.Assets;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -15,9 +15,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Map;
 
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
 /**
  * Created by homedesk on 6/27/2015.
@@ -25,30 +29,40 @@ import static org.xmlpull.v1.XmlPullParser.END_TAG;
 public class LevelLoader {
 
     private static XmlPullParser parser;
+    private static final ArrayList<Level> levelList = new ArrayList<Level>();
 
-    public static void initialize(String filename) {
-        parser = Xml.newPullParser();
+    public static void initialize(InputStream file) {
         try {
-            FileReader reader = new FileReader(new File(filename));
+            parser = Xml.newPullParser();
+            InputStreamReader reader = new InputStreamReader(file);
             parser.setInput(reader);
-        } catch (FileNotFoundException e) {
-            Log.d("LevelLoader", "Could not find level file.");
-            System.exit(1);
-        } catch (XmlPullParserException e) {
+        }
+        catch (XmlPullParserException e) {
             Log.d("LevelLoader", "Problem setting up parser.");
             System.exit(1);
         }
+
+        readLevelData();
+        sanityCheck();
     }
 
-    public static ArrayList<EnemyShip> loadEnemies(int level) {
-        ArrayList<EnemyShip> ret = null;
+    public static ArrayList<EnemyShip> getEnemies(int level) {
+        return levelList.get(level - 1).getEnemies();
+    }
+
+
+    //for this to really be correct... I should have another layer of this just for the root node.
+    //  I'm going to assume that we're capable of basic XML, though, and not account for errors
+    //  with this.
+    private static void readLevelData() {
         try {
             parser.nextTag();
             while (parser.next() != END_TAG) {
-                String name = parser.getName();
-                if (name.toLowerCase() == "level") {
-                    ret = parseLevel(level);
-                    if (ret != null) { break; }
+                if (parser.getEventType() == START_TAG) {
+                    if (parser.getName().toLowerCase().equals("level")) {
+                        int levelNum = Integer.parseInt(parser.getAttributeValue(null, "id"));
+                        addLevel(levelNum, parseLevel());
+                    }
                 }
             }
         } catch (XmlPullParserException e) {
@@ -59,44 +73,48 @@ public class LevelLoader {
             System.exit(1);
         }
 
-        return ret;
     }
 
-    private static ArrayList<EnemyShip> parseLevel(int level) throws IOException, XmlPullParserException {
-        if (Integer.parseInt(parser.getAttributeValue(null, "id")) == level) {
-            skip();
-            return null;
-        }
-        ArrayList<EnemyShip> ret = new ArrayList<EnemyShip>();
+    private static Level parseLevel() throws IOException, XmlPullParserException {
+        Level ret = new Level();
         while (parser.next() != END_TAG) {
-            if (parser.getName().toLowerCase().equals("enemy")) {
-                ret.add(parseEnemy());
+            if (parser.getEventType() == START_TAG
+                && parser.getName().toLowerCase().equals("enemy")) {
+                ret.addEnemy(parseEnemy());
             }
         }
         return ret;
     }
 
-    private static EnemyShip parseEnemy() throws IOException, XmlPullParserException {
-        EnemyShip ret;
-        //Create type of ship.
-        if(parser.getAttributeValue(null, "type").toLowerCase().equals("test")) {
-            ret = new TestEnemy();
-        }
-        else {
-            return null;
-        }
-
-        //Get x and y position values. x is range 1-3. y is range 1-4.
-        int xPosition = Integer.parseInt(parser.getAttributeValue(null, "x"));
-        int yPosition = Integer.parseInt(parser.getAttributeValue(null, "y"));
-
-        Grid.grid[5+xPosition-1][yPosition-1].setShip(ret);
+    private static String parseEnemy() throws IOException, XmlPullParserException {
+        String ret = parser.getAttributeValue(null, "type").toLowerCase();
         skip();
         return ret;
     }
 
     private static void skip() throws IOException, XmlPullParserException {
-        while (parser.next() != END_TAG) { /*While-Header does the work here*/ }
+        while (parser.next() != END_TAG) {
+            if (parser.getEventType() == START_TAG) {
+                skip();
+            }
+        }
+    }
+
+    private static void addLevel(int number, Level l) {
+        --number;
+        while (levelList.size() < number) {
+            levelList.add(null);
+        }
+        levelList.add(l);
+    }
+
+    private static void sanityCheck() {
+        for (int i = 0; i < levelList.size(); ++i) {
+            if (levelList.get(i) == null) {
+                Log.d("LEVELLOADER", "Missing level: " + (i + 1));
+                System.exit(1);
+            }
+        }
     }
 
 }

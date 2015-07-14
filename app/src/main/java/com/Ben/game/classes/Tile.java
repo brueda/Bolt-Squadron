@@ -46,4 +46,6 @@ public class Tile {
     public int getPositionY(){
         return positionY;
     }
+
+    public boolean isOccupied() { return ship != null; }
 }

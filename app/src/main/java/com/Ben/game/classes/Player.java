@@ -14,6 +14,8 @@ public class Player {
     public static AttackShip attackBuy;
     public static DefenseShip defenseBuy;
     public static MoneyShip moneyBuy;
+    public static int currentLevel = 1;
+    public static int totalLevels = 1;
 
     public Player(){
         volts = 5000;

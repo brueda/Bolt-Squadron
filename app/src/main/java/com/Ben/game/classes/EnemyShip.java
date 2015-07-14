@@ -15,16 +15,18 @@ import java.util.ArrayList;
 /**
  * Created by Benjamin on 5/26/2015.
  */
-public abstract class EnemyShip extends Ship {
+public class EnemyShip extends Ship {
     private int offset;
     private boolean increasing;
     private Bitmap laserImage;
+    private Bitmap shipImage;
 
     public EnemyShip(){
         super();
         offset = RandomNumberGenerator.getRandInt(200);
         increasing = true;
         laserImage = Assets.redLaser;
+        shipImage = Assets.UFO;
     }
 
     @Override
@@ -110,7 +112,7 @@ public abstract class EnemyShip extends Ship {
         int y = currentTile.y_coordinate;
         int sway = (offset - 100)/20;
         if(renderable) {
-            g.drawImage(Assets.UFO, x, y + sway, 80, 80);
+            g.drawImage(shipImage, x, y + sway, 80, 80);
             g.setFont(Assets.tf, 15f);
             g.setColor(Color.GREEN);
             g.drawString("" + health, x + 85, y + 20 + sway);
@@ -128,4 +130,8 @@ public abstract class EnemyShip extends Ship {
        }
        return all;
    }
+
+    public void setShipImage(Bitmap image) {
+        shipImage = image;
+    }
 }

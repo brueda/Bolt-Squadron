@@ -1,11 +1,11 @@
 package com.Ben.game.state;
 
+import com.Ben.framework.util.LevelLoader;
 import com.Ben.framework.util.Painter;
 import com.Ben.game.classes.Enemies;
 import com.Ben.game.classes.EnemyShip;
 import com.Ben.game.classes.Grid;
-import com.Ben.game.classes.TestEnemy;
-import com.Ben.simpleandroidgdf.Assets;
+import com.Ben.game.classes.Player;
 
 /**
  * Created by Benjamin on 7/10/2015.
@@ -17,12 +17,7 @@ public class LoadLevelState extends State {
 
     @Override
     public void update(float delta) {
-        EnemyShip enemy;
-        for(int i = 0; i < 4; i++){
-            enemy = new TestEnemy();
-            Enemies.getEnemies().add(enemy);
-            Grid.grid[5+i%2][i].setShip(enemy);
-        }
+        Enemies.setEnemies(LevelLoader.getEnemies(Player.currentLevel));
         setCurrentState(new MovementState());
     }
 

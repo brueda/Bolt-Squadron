@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<enemies>
+    <enemy type="test" hp="20" att="10" def="5"/>
+    <enemy type="tank" hp="40" att="10" def="7"/>
+</enemies>

@@ -16,6 +16,8 @@ public class Enemies {
         enemies = new ArrayList<EnemyShip>();
     }
 
+    public static void setEnemies(ArrayList<EnemyShip> e) { enemies = e; }
+
     public static ArrayList<EnemyShip> getEnemies(){
         return enemies;
     }

@@ -8,13 +8,12 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
+import com.Ben.framework.util.EnemyTypes;
 import com.Ben.framework.util.InputHandler;
+import com.Ben.framework.util.LevelLoader;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.TaskList;
-import com.Ben.game.classes.Enemies;
-import com.Ben.game.classes.Player;
 import com.Ben.game.state.LoadState;
-import com.Ben.game.state.MovementState;
 import com.Ben.game.state.State;
 
 public class GameView extends SurfaceView implements Runnable {
@@ -83,6 +82,8 @@ public class GameView extends SurfaceView implements Runnable {
 
 	private void initGame() {
 		running = true;
+        EnemyTypes.initialize(getResources().openRawResource(R.raw.enemies));
+        LevelLoader.initialize(getResources().openRawResource(R.raw.levels));
 		gameThread = new Thread(this, "Game Thread");
 		task_list = new TaskList();
 		gameThread.start();
