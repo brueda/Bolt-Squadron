@@ -27,9 +27,10 @@ public class MovementState extends State {
         Player.resetActivated();
         //selectedTile = Player.getParty().get(0).getTile();
         selectedShip = Player.getParty().get(0);
-        for(EnemyShip e : Enemies.getEnemies()){
+        //THE BEST BUG TO EVER BUG
+        /*for(EnemyShip e : Enemies.getEnemies()){
             e.getTile().setShip(e);
-        }
+        }*/
     }
 
     public void update(float delta){

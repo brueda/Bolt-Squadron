@@ -27,14 +27,13 @@ public class Tile {
     }
 
 
-    public void setShip(Ship s){
-        ship = s;
-        if(ship != null){
-            ship.setPosition(positionX, positionY);
-            ship.setTile(this);
+    public void setShip(Ship s) {
+        if (s != null) {
+            s.setPosition(positionX, positionY);
+            s.setTile(this);
         }
+        ship = s;
     }
-
     public Ship getShip(){
         return ship;
     }
