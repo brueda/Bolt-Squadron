@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<levels>
+    <level id="1">
+        <enemy type="test"/>
+        <enemy type="test"/>
+        <enemy type="test"/>
+        <enemy type="tank"/>
+    </level>
+</levels>
