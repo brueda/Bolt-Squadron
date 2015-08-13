@@ -65,6 +65,7 @@ public class AttackState extends State {
             if(ship == null || ship.isDead() || ship.isActivated()) return true;
             Assets.playSound(Assets.laserID, 1.0f);
             ship.columnAttack();
+            resolve(ship);
         }
         // shield
         else if(e == InputHandler.SWIPE_LEFT){
