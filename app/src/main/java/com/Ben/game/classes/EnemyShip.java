@@ -16,17 +16,28 @@ import java.util.ArrayList;
  * Created by Benjamin on 5/26/2015.
  */
 public class EnemyShip extends Ship {
-    private int offset;
-    private boolean increasing;
-    private Bitmap laserImage;
     private Bitmap shipImage;
 
-    public EnemyShip(){
+    public EnemyShip(GenericEnemy g){
         super();
-        offset = RandomNumberGenerator.getRandInt(200);
-        increasing = true;
         laserImage = Assets.redLaser;
-        shipImage = Assets.UFO;
+        setAttack(g.attack + RandomNumberGenerator.getRandIntBetween(-1,1));
+        setDefense(g.defense + RandomNumberGenerator.getRandIntBetween(-1,1));
+        setHealth(g.health + RandomNumberGenerator.getRandIntBetween(-2,2));
+        switch(g.imageID){
+            case 1:
+                shipImage = Assets.enemy1;
+                break;
+            case 2:
+                shipImage = Assets.enemy2;
+                break;
+            case 3:
+                shipImage = Assets.enemy3;
+                break;
+            case 4:
+                shipImage = Assets.enemy4;
+                break;
+        }
     }
 
     @Override

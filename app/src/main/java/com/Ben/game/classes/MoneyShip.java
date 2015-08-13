@@ -14,15 +14,14 @@ public class MoneyShip extends PlayerShip {
         shipImage[1] = Assets.moneyOrange;
         shipImage[2] = Assets.moneyRed;
         descriptions[0] = "*resource generator.*aligned attacks increase volts";
-        descriptions[1] = "+3 HP.+25 volts for aligned attacks";
-        descriptions[2] = "+3 HP.+100 volts for kill shots";
-        descriptions[3] = "+3 HP.+25 volts for aligned attacks";
-        descriptions[4] = "+3 HP.+650 volts when destroyed";
-        descriptions[5] = "+3 HP.+900 volts when destroyed";
+        descriptions[1] = "+1 HP.+75 volts for aligned attacks";
+        descriptions[2] = "+1 HP.+700 volts when destroyed";
+        descriptions[3] = "+1 HP.+1000 volts when destroyed";
+        descriptions[4] = "+1 HP.+250 volts for aligned attacks";
+        descriptions[5] = "+12 HP.";
         int cost = 150;
         for(int i = 0; i < 6; i++){
             costs[i] = cost;
-            cost += i * 50;
         }
     }
 
@@ -33,9 +32,9 @@ public class MoneyShip extends PlayerShip {
             Player.setVolts(Player.getVolts() + 50);
             if(upgradeLevel >= 1){
                 Player.setVolts(Player.getVolts() + 25);
-                if(upgradeLevel >= 3){
-                    Player.setVolts(Player.getVolts() + 25);
-                }
+            }
+            if(upgradeLevel >= 4){
+                Player.setVolts(Player.getVolts() + 150);
             }
         }
     }
@@ -44,14 +43,14 @@ public class MoneyShip extends PlayerShip {
     public void hit(int power){
         super.hit(power);
         if(dead){
-            if(upgradeLevel == 4) Player.setVolts(Player.getVolts() + 650);
-            if(upgradeLevel == 5) Player.setVolts(Player.getVolts() + 900);
+            if(upgradeLevel >= 2) Player.setVolts(Player.getVolts() + 700);
+            if(upgradeLevel >= 3) Player.setVolts(Player.getVolts() + 300);
         }
     }
 
     @Override
     public void levelUp(){
         super.levelUp();
-        increaseMaxHealth(3);
+        increaseMaxHealth(1);
     }
 }

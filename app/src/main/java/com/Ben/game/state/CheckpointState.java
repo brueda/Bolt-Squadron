@@ -43,7 +43,7 @@ public class CheckpointState extends State {
         Renderer.renderBackground(g);
         Renderer.renderShips(g, CHECK, selectedShip);
         Renderer.renderBuyInfo(g, selectedShip);
-        Grid.grid[4][3].getShip().render(g, CHECK, selectedShip);
+        Grid.grid[4][3].getShip().render(g,CHECK, selectedShip);
         Grid.grid[5][3].getShip().render(g,CHECK,selectedShip);
         Grid.grid[6][3].getShip().render(g,CHECK,selectedShip);
         for(int i = 0; i < 3; i++){
@@ -84,32 +84,35 @@ public class CheckpointState extends State {
 
     private void buyOrUpgrade(PlayerShip s){
         int cost;
-        if(selectedShip.getPositionX() > 3){   // buy
+        if(selectedShip.getPositionX() > 3){       // buy
             if(Player.getParty().size() == 4){
                 Assets.playSound(Assets.failID, 1.0f);
                 return;
             }
             cost = selectedShip.getCosts()[0];
+            if(Player.getVolts() < cost){          // not enough money
+                Assets.playSound(Assets.failID, 1.0f);
+                return;
+            }
+            Player.setVolts(Player.getVolts() - cost);
+            Assets.playSound(Assets.levelUpID, 1.0f);
+            if(s.getPositionX() == 4) Player.addShip(new AttackShip());
+            else if(s.getPositionX() == 5) Player.addShip(new DefenseShip());
+            else Player.addShip(new MoneyShip());  // PositionX == 6
         }
-        else{                                  // upgrade
+        else{                                      // upgrade
             if(s.upgradeLevel == 5){
                 Assets.playSound(Assets.failID, 1.0f);
                 return;
             }
             cost = selectedShip.getCosts()[selectedShip.upgradeLevel+1];
-        }
-        if(Player.getVolts() < cost){
-            Assets.playSound(Assets.failID, 1.0f);
-            return;  // not enough money
-        }
-        Player.setVolts(Player.getVolts() - cost);
-        if(s.getPositionX() < 3){   // upgrade
+            if(Player.getVolts() < cost){
+                Assets.playSound(Assets.failID, 1.0f);
+                return;
+            }
+            Player.setVolts(Player.getVolts() - cost);
+            Assets.playSound(Assets.levelUpID, 1.0f);
             s.levelUp();
-        }
-        else{                       // buy
-            if(s.getPositionX() == 4) Player.addShip(new AttackShip());
-            else if(s.getPositionX() == 5) Player.addShip(new DefenseShip());
-            else Player.addShip(new MoneyShip());
         }
     }
 }

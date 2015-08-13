@@ -15,19 +15,14 @@ import com.Ben.simpleandroidgdf.Assets;
  * Created by Benjamin on 6/7/2015.
  */
 public abstract class PlayerShip extends Ship {
-    private int offset;
-    private boolean increasing;
     public int upgradeLevel;
     protected Bitmap specialLaser;
-    protected Bitmap laserImage;
     protected Bitmap[] shipImage;
     protected String[] descriptions;
     protected int[] costs;
 
     public PlayerShip(){
         super();
-        offset = RandomNumberGenerator.getRandInt(200);
-        increasing = true;
         upgradeLevel = 0;
         specialLaser = Assets.multiLaser;
         laserImage = Assets.blueLaser;
@@ -72,12 +67,10 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void repair(){
-        Assets.playSound(Assets.healID, 1.0f);
-        health = Math.min(maxHealth, health + (maxHealth / 2));
+        health = Math.min(maxHealth, health + (maxHealth / 5));
     }
 
     public void levelUp(){
-        Assets.playSound(Assets.levelUpID, 1.0f);
         upgradeLevel += 1;
     }
 

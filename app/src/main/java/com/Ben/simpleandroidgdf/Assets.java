@@ -11,16 +11,17 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
-import android.util.Log;
 
 import com.Ben.framework.animation.Frame;
 
 public class Assets {
 	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
-	public static Bitmap testShip, greenDot, blueDot, UFO, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
+	public static Bitmap testShip, greenDot, blueDot, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
 	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
 	purpleOrb;
+	// enemy sprites
+	public static Bitmap enemy1, enemy2, enemy3, enemy4;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID, levelUpID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
@@ -29,7 +30,6 @@ public class Assets {
 	public static void load() {
 		testShip = loadBitmap("attackOrange.png", true);
 		greenDot = loadBitmap("fx13.png", true);
-		UFO = loadBitmap("Bio1_14_green.png", true);
 		background = loadBitmap("black.png", true);
 		blueDot = loadBitmap("fx12.png", true);
 		purpleOrb = loadBitmap("purpleOrb.png", true);
@@ -56,6 +56,11 @@ public class Assets {
 		defenseRed = loadBitmap("defenseRed.png", true);
 		ring = loadBitmap("fx04.png", true);
 		star = loadBitmap("star.png", true);
+
+		enemy1 = loadBitmap("enemy1.png", true);
+        enemy2 = loadBitmap("enemy2.png", true);
+        enemy3 = loadBitmap("enemy3.png", true);
+        enemy4 = loadBitmap("enemy4.png", true);
 
 		laserID = loadSound("laser1.wav");
 		hitID = loadSound("Hit.wav");

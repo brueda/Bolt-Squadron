@@ -15,11 +15,11 @@ public class AttackShip extends PlayerShip {
         shipImage[1] = Assets.attackOrange;
         shipImage[2] = Assets.attackRed;
         descriptions[0] = "*attack specialist.*aligned attacks hit twice";
-        descriptions[1] = "+4 HP.+1 ATK.+1 DEF";
-        descriptions[2] = "+4 HP.+1 ATK.*attacks reduce enemy defense";
-        descriptions[3] = "+4 HP.+1 ATK.+1 DEF";
-        descriptions[4] = "+4 HP.+1 ATK.*+1 hit per shot";
-        descriptions[5] = "+4 HP.+1 ATK.+1 DEF";
+        descriptions[1] = "+2 HP.+1 ATK.+1 DEF";
+        descriptions[2] = "+2 HP.+1 ATK.*attacks reduce enemy defense";
+        descriptions[3] = "+2 HP.+1 ATK.+1 DEF";
+        descriptions[4] = "+2 HP.+1 ATK.*+1 hit per shot";
+        descriptions[5] = "+2 HP.+1 ATK.+1 DEF";
         int cost = 200;
         for(int i = 0; i < 6; i++){
             costs[i] = cost;
@@ -44,24 +44,24 @@ public class AttackShip extends PlayerShip {
         super.levelUp();
         switch(upgradeLevel){
             case 1:
-                increaseMaxHealth(4);
+                increaseMaxHealth(2);
                 attack += 1;
                 defense += 1;
                 break;
             case 2:
-                increaseMaxHealth(4);
+                increaseMaxHealth(2);
                 attack += 1;
                 break;
             case 3:
-                increaseMaxHealth(4);
+                increaseMaxHealth(2);
                 attack += 1;
                 defense += 1;
                 break;
             case 4:
-                increaseMaxHealth(4);
+                increaseMaxHealth(2);
                 attack += 1;
             case 5:
-                increaseMaxHealth(4);
+                increaseMaxHealth(2);
                 attack += 1;
                 defense += 1;
                 break;

@@ -46,12 +46,7 @@ public class EnemyTypes {
 
     public static EnemyShip get(String type) {
         GenericEnemy gen = enemyMap.get(type.toLowerCase());
-        EnemyShip ret = new EnemyShip();
-        ret.setAttack(gen.attack);
-        ret.setDefense(gen.defense);
-        ret.setHealth(gen.health);
-        ret.setShipImage(Assets.UFO);
-        return ret;
+        return new EnemyShip(gen);
     }
 
     private static void readEnemyData() {
@@ -81,6 +76,7 @@ public class EnemyTypes {
         e.health = Integer.parseInt(parser.getAttributeValue(null, "hp"));
         e.attack = Integer.parseInt(parser.getAttributeValue(null, "att"));
         e.defense = Integer.parseInt(parser.getAttributeValue(null, "def"));
+        e.imageID = Integer.parseInt(parser.getAttributeValue(null, "id"));
         enemyMap.put(name, e);
         skip();
     }

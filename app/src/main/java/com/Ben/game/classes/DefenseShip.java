@@ -15,11 +15,11 @@ public class DefenseShip extends PlayerShip {
         shipImage[1] = Assets.defenseOrange;
         shipImage[2] = Assets.defenseRed;
         descriptions[0] = "*defense specialist.*aligned attacks activate shield";
-        descriptions[1] = "+4 HP.+1 DEF.+1 ATK.";
-        descriptions[2] = "+4 HP.+1 DEF.*repair cost is refunded.*repair activates shield";
-        descriptions[3] = "+4 HP.+1 DEF.+1 ATK";
-        descriptions[4] = "+4 HP.+1 DEF.*shields adjacent allies";
-        descriptions[5] = "+4 HP.+1 DEF.+1 ATK";
+        descriptions[1] = "+3 HP.+1 DEF.+1 ATK.";
+        descriptions[2] = "+3 HP.+1 DEF.*using shield recovers HP";
+        descriptions[3] = "+3 HP.+1 DEF.+1 ATK";
+        descriptions[4] = "+3 HP.+1 DEF.*shields adjacent allies";
+        descriptions[5] = "+3 HP.+1 DEF.+1 ATK";
         int cost = 200;
         for(int i = 0; i < 6; i++){
             costs[i] = cost;
@@ -36,17 +36,11 @@ public class DefenseShip extends PlayerShip {
     }
 
     @Override
-    public void repair(){
-        super.repair();
-        if(upgradeLevel >= 2) {
-            shielded = true;
-            Player.setVolts(Player.getVolts() + 100);
-        }
-    }
-
-    @Override
     public void shield(){
         super.shield();
+        if(upgradeLevel >= 2){
+            repair();
+        }
         if(upgradeLevel >= 4){
             for(PlayerShip s : Player.getParty()){
                 if(Math.abs(positionY - s.getPositionY()) + Math.abs(positionX - s.getPositionX()) <= 1){
@@ -61,25 +55,25 @@ public class DefenseShip extends PlayerShip {
         super.levelUp();
         switch(upgradeLevel){
             case 1:
-                increaseMaxHealth(4);
+                increaseMaxHealth(3);
                 defense += 1;
                 attack += 1;
                 break;
             case 2:
-                increaseMaxHealth(4);
+                increaseMaxHealth(3);
                 defense += 1;
                 break;
             case 3:
-                increaseMaxHealth(4);
+                increaseMaxHealth(3);
                 defense += 1;
                 attack += 1;
                 break;
             case 4:
-                increaseMaxHealth(4);
+                increaseMaxHealth(3);
                 defense += 1;
                 break;
             case 5:
-                increaseMaxHealth(4);
+                increaseMaxHealth(3);
                 defense += 1;
                 attack += 1;
                 break;

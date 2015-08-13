@@ -32,7 +32,14 @@ public class VictoryState extends State {
 
     @Override
     public boolean onTouch(int e, int scaledX, int scaledY) {
-        setCurrentState(new CleanupState(new CheckpointState()));
+        ++Player.currentLevel;
+        // checkpoint every 2 levels
+        if(Player.currentLevel % 2 != 0) {
+            setCurrentState(new CleanupState(new CheckpointState()));
+        }
+        else{
+            setCurrentState(new CleanupState(new LoadLevelState()));
+        }
         return true;
     }
 }

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.ProjectileTask;
+import com.Ben.framework.util.RandomNumberGenerator;
 import com.Ben.framework.util.TaskList;
 import com.Ben.simpleandroidgdf.Assets;
 
@@ -18,13 +19,13 @@ public abstract class Ship {
     protected int positionX;
     protected int positionY;
     protected boolean dead;
-    protected boolean cloaked;
     protected boolean shielded;
     protected boolean activated;  // has moved or attacked this round
     protected Tile currentTile;
     protected boolean renderable;
-
-    public Bitmap image;
+    protected int offset;
+    protected boolean increasing;
+    protected Bitmap laserImage;
 
     public Ship(){
         dead = false;
@@ -32,10 +33,11 @@ public abstract class Ship {
         defense = 5;
         maxHealth = health = 20;
         activated = false;
-        cloaked = false;
         shielded = false;
         currentTile = null;
         renderable = true;
+        offset = RandomNumberGenerator.getRandInt(200);
+        increasing = true;
     }
 
     /* getters and setters */
