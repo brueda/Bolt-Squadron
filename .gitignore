@@ -1,0 +1,13 @@
+*.apk
+*.ap_
+*.jar
+*.class
+bin/
+gen/
+classes/
+gen-external-apklibs
+local.properties
+.idea
+*.iml
+.gradle
+build/
