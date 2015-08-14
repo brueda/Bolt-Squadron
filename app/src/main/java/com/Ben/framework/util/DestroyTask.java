@@ -9,7 +9,6 @@ import com.Ben.simpleandroidgdf.Assets;
  */
 public class DestroyTask extends Task {
     private Ship target;
-    int power;
     int x, y;
     Animation explosion;
 
@@ -17,9 +16,8 @@ public class DestroyTask extends Task {
         super();
     }
 
-    public void initialize(Ship t, int p){
+    public void initialize(Ship t){
         target = t;
-        power = p;
         explosion = new Animation(Assets.explosionFrames);
         explosion.setLoop(false);
     }

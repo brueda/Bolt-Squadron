@@ -12,28 +12,25 @@ import com.Ben.simpleandroidgdf.Assets;
 public class BeamTask extends Task {
     private int x_coordinate;
     private int y_coordinate;
+    private int destination_x;
     private final int TRAVEL = 25;
 
     public BeamTask(){super();}
 
-    public void initialize(PlayerShip src, int power){
+    public void initialize(PlayerShip src, Ship target){
         x_coordinate = src.getTile().x_coordinate;
         y_coordinate = src.getTile().y_coordinate;
-        for(EnemyShip e : Enemies.getEnemies()){
-            if(e.getPositionY() == src.getPositionY() && !e.isDead()){
-                e.hit(power);
-                if(e.isDead()){
-                    DestroyTask impact = new DestroyTask();
-                    impact.initialize(e, power);
-                    attachChild(impact);
-                }
-            }
+        destination_x = (target == null ? 800 : target.getTile().x_coordinate);
+        if(target != null && target.isDead()){
+            DestroyTask impact = new DestroyTask();
+            impact.initialize(target);
+            attachChild(impact);
         }
     }
 
     public void update(long delta, Painter g){
         x_coordinate += TRAVEL;
-        if(x_coordinate >= 800){
+        if(x_coordinate >= destination_x){
             finishTask();
         }
         g.drawImage(Assets.beam, x_coordinate, y_coordinate);

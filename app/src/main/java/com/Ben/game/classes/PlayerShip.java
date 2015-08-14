@@ -78,8 +78,16 @@ public abstract class PlayerShip extends Ship {
     public void columnAttack(){
         for(PlayerShip s : Player.getParty()){
             if(s.getPositionX() == positionX && !s.isDead()){
+                Ship target = null;
+                for(int i = 4; i < 7; i++){
+                    if(Grid.grid[i][s.getPositionY()].getShip() != null){
+                        target = Grid.grid[i][s.getPositionY()].getShip();
+                        target.hit(s.getAttack());
+                        break;
+                    }
+                }
                 BeamTask task = new BeamTask();
-                task.initialize(s, s.getAttack());
+                task.initialize(s, target);
                 task.makeRunnable();
                 TaskList.addTask(task);
             }

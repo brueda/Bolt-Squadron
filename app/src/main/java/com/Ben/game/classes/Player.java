@@ -18,7 +18,7 @@ public class Player {
     public static int totalLevels = 1;
 
     public Player(){
-        volts = 500;
+        volts = 600;
         party = new ArrayList<PlayerShip>();
         attackBuy = new AttackShip();
         defenseBuy = new DefenseShip();

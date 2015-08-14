@@ -25,9 +25,14 @@ public class Enemies {
     public static void attack(){
         for(EnemyShip attacker : enemies) {
             if (!attacker.isDead()) {
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 attacker.move();
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

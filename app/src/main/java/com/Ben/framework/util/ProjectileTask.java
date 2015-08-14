@@ -43,7 +43,7 @@ public class ProjectileTask extends Task {
 
         if (killShot) {
             DestroyTask impact = new DestroyTask();
-            impact.initialize(dest, power);
+            impact.initialize(dest);
             attachChild(impact);
         }
     }
