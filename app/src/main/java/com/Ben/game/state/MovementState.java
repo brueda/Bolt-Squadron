@@ -42,7 +42,7 @@ public class MovementState extends State {
     public void render(Painter g){
         Renderer.renderBackground(g);
         if(!selectedShip.isActivated()) {
-            for (int i = 0; i < 3; i++) {       // make the Tiles for player ships
+            for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 4; j++) {
                     if (Math.abs(Grid.grid[i][j].getPositionX() - selectedShip.getPositionX()) + Math.abs(Grid.grid[i][j].getPositionY() - selectedShip.getPositionY()) <= 1) {
                         g.drawImage(Assets.greenDot, Grid.grid[i][j].x_coordinate + 20, Grid.grid[i][j].y_coordinate + 40, 10, 10);
@@ -50,6 +50,9 @@ public class MovementState extends State {
                 }
             }
         }
+        g.setColor(Color.WHITE);
+        g.setFont(Assets.tf, 15);
+        g.drawString("movement phase",200,15);
         Renderer.renderShips(g, MOVE, selectedShip);
         Renderer.renderEnemies(g, MOVE);
     }

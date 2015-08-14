@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
+import com.Ben.game.classes.Player;
 import com.Ben.simpleandroidgdf.Assets;
 
 /**

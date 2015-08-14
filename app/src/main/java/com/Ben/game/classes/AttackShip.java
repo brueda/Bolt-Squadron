@@ -20,11 +20,12 @@ public class AttackShip extends PlayerShip {
         descriptions[3] = "+2 HP.+1 ATK.+1 DEF";
         descriptions[4] = "+2 HP.+1 ATK.*+1 hit per shot";
         descriptions[5] = "+2 HP.+1 ATK.+1 DEF";
-        int cost = 200;
-        for(int i = 0; i < 6; i++){
-            costs[i] = cost;
-            cost += 100;
-        }
+        costs[0] = 200;
+        costs[1] = 400;
+        costs[2] = 600;
+        costs[3] = 800;
+        costs[4] = 1000;
+        costs[5] = 1200;
     }
 
     @Override

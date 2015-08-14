@@ -15,16 +15,17 @@ public class DefenseShip extends PlayerShip {
         shipImage[1] = Assets.defenseOrange;
         shipImage[2] = Assets.defenseRed;
         descriptions[0] = "*defense specialist.*aligned attacks activate shield";
-        descriptions[1] = "+3 HP.+1 DEF.+1 ATK.";
-        descriptions[2] = "+3 HP.+1 DEF.*using shield recovers HP";
-        descriptions[3] = "+3 HP.+1 DEF.+1 ATK";
-        descriptions[4] = "+3 HP.+1 DEF.*shields adjacent allies";
-        descriptions[5] = "+3 HP.+1 DEF.+1 ATK";
-        int cost = 200;
-        for(int i = 0; i < 6; i++){
-            costs[i] = cost;
-            cost += 100;
-        }
+        descriptions[1] = "+2 HP.+1 DEF.+1 ATK.";
+        descriptions[2] = "+2 HP.+1 DEF.*using shield recovers HP";
+        descriptions[3] = "+2 HP.+1 DEF.+1 ATK";
+        descriptions[4] = "+2 HP.+1 DEF.*shields adjacent allies";
+        descriptions[5] = "+2 HP.+1 DEF.+1 ATK";
+        costs[0] = 200;
+        costs[1] = 400;
+        costs[2] = 600;
+        costs[3] = 800;
+        costs[4] = 1000;
+        costs[5] = 1200;
     }
 
     @Override
@@ -55,25 +56,25 @@ public class DefenseShip extends PlayerShip {
         super.levelUp();
         switch(upgradeLevel){
             case 1:
-                increaseMaxHealth(3);
+                increaseMaxHealth(2);
                 defense += 1;
                 attack += 1;
                 break;
             case 2:
-                increaseMaxHealth(3);
+                increaseMaxHealth(2);
                 defense += 1;
                 break;
             case 3:
-                increaseMaxHealth(3);
+                increaseMaxHealth(2);
                 defense += 1;
                 attack += 1;
                 break;
             case 4:
-                increaseMaxHealth(3);
+                increaseMaxHealth(2);
                 defense += 1;
                 break;
             case 5:
-                increaseMaxHealth(3);
+                increaseMaxHealth(2);
                 defense += 1;
                 attack += 1;
                 break;

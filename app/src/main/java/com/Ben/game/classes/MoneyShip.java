@@ -14,27 +14,29 @@ public class MoneyShip extends PlayerShip {
         shipImage[1] = Assets.moneyOrange;
         shipImage[2] = Assets.moneyRed;
         descriptions[0] = "*resource generator.*aligned attacks increase volts";
-        descriptions[1] = "+1 HP.+75 volts for aligned attacks";
+        descriptions[1] = "+1 HP.+40 volts for aligned attacks";
         descriptions[2] = "+1 HP.+700 volts when destroyed";
         descriptions[3] = "+1 HP.+1000 volts when destroyed";
-        descriptions[4] = "+1 HP.+250 volts for aligned attacks";
-        descriptions[5] = "+12 HP.";
-        int cost = 150;
-        for(int i = 0; i < 6; i++){
-            costs[i] = cost;
-        }
+        descriptions[4] = "+1 HP.+200 volts for aligned attacks";
+        descriptions[5] = "+1 HP.";
+        costs[0] = 150;
+        costs[1] = 150;
+        costs[2] = 200;
+        costs[3] = 200;
+        costs[4] = 500;
+        costs[5] = 0;
     }
 
     @Override
     public void fire(Ship target){
         super.fire(target);
         if(target.getPositionY() == positionY){
-            Player.setVolts(Player.getVolts() + 50);
+            Player.setVolts(Player.getVolts() + 25);
             if(upgradeLevel >= 1){
-                Player.setVolts(Player.getVolts() + 25);
+                Player.setVolts(Player.getVolts() + 15);
             }
             if(upgradeLevel >= 4){
-                Player.setVolts(Player.getVolts() + 150);
+                Player.setVolts(Player.getVolts() + 160);
             }
         }
     }

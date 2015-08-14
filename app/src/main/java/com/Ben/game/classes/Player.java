@@ -9,13 +9,11 @@ public class Player {
 
     private static ArrayList<PlayerShip> party;
     private static int partySize;
-    //private Tile[][] grid;
     private static int volts;
     public static AttackShip attackBuy;
     public static DefenseShip defenseBuy;
     public static MoneyShip moneyBuy;
-    public static int currentLevel = 1;
-    public static int totalLevels = 1;
+    public static int currentLevel;
 
     public Player(){
         volts = 600;
@@ -24,6 +22,7 @@ public class Player {
         defenseBuy = new DefenseShip();
         moneyBuy = new MoneyShip();
         partySize = 0;
+        currentLevel = 1;
 
         for(int i = 0; i < 1; i++){          // add the test ships
             PlayerShip ship = new MoneyShip();

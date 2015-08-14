@@ -1,5 +1,7 @@
 package com.Ben.game.state;
 
+import android.graphics.Color;
+
 import com.Ben.framework.util.InputHandler;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
@@ -37,6 +39,9 @@ public class AttackState extends State {
         Renderer.renderBackground(g);
         Renderer.renderShips(g, ATTACK, selectedShip);
         Renderer.renderEnemies(g, State.ATTACK);
+        g.setColor(Color.WHITE);
+        g.setFont(Assets.tf, 15);
+        g.drawString("attack phase", 200, 15);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){
