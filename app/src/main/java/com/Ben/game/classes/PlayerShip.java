@@ -100,6 +100,7 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void kamikaze(){
+        hit(1);   // take off shields
         hit(50);
         renderable = false;
         Ship target = null;

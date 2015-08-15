@@ -27,10 +27,8 @@ public class Player {
         partySize = 0;
         currentLevel = 1;
 
-        for(int i = 0; i < 1; i++){          // add the test ships
-            PlayerShip ship = new MoneyShip();
-            addShip(ship);
-        }
+        addShip(new MoneyShip());
+
     }
 
     public static void addShip(PlayerShip ship){
