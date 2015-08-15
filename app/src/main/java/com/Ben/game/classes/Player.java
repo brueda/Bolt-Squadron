@@ -9,12 +9,12 @@ import java.util.concurrent.Semaphore;
 public class Player {
 
     private static ArrayList<PlayerShip> party;
-    private static int partySize;
     private static int volts;
     public static AttackShip attackBuy;
     public static DefenseShip defenseBuy;
     public static MoneyShip moneyBuy;
     public static int currentLevel;
+    public static int partySize;
     public static ArrayList<PlayerShip> toAddList;
 
     public Player(){

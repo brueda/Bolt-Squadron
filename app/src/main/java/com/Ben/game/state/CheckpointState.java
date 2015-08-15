@@ -59,6 +59,11 @@ public class CheckpointState extends State {
                 }
             }
         }
+        Renderer.renderShips(g, MOVE, selectedShip);
+        Renderer.renderEnemies(g, MOVE);
+        g.setColor(Color.WHITE);
+        g.setFont(Assets.tf, 15);
+        g.drawString("ships:  " + Player.partySize + " / 4", 200, 15);
     }
 
     @Override
