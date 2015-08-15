@@ -59,7 +59,7 @@ public abstract class PlayerShip extends Ship {
 
     @Override
     public Bitmap getShipImage(){
-        return shipImage[upgradeLevel];
+        return shipImage[upgradeLevel/2];
     }
 
     public Bitmap[] getImageArray(){
