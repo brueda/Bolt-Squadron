@@ -15,10 +15,12 @@ public class Player {
     public static DefenseShip defenseBuy;
     public static MoneyShip moneyBuy;
     public static int currentLevel;
+    public static ArrayList<PlayerShip> toAddList;
 
     public Player(){
         volts = 600;
         party = new ArrayList<PlayerShip>();
+        toAddList = new ArrayList<PlayerShip>();
         attackBuy = new AttackShip();
         defenseBuy = new DefenseShip();
         moneyBuy = new MoneyShip();
@@ -32,7 +34,7 @@ public class Player {
     }
 
     public static void addShip(PlayerShip ship){
-        party.add(ship);
+        toAddList.add(ship);
         partySize++;
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 4; j++){

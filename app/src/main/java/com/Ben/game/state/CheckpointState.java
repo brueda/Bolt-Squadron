@@ -14,6 +14,8 @@ import com.Ben.game.classes.PlayerShip;
 import com.Ben.game.classes.Tile;
 import com.Ben.simpleandroidgdf.Assets;
 
+import java.util.Iterator;
+
 /**
  * Created by Benjamin on 7/7/2015.
  */
@@ -27,7 +29,7 @@ public class CheckpointState extends State {
             p.setShield(false);
             p.setHealth(p.getMaxHealth());
         }
-        selectedShip = Player.getParty().get(0);
+        selectedShip = Player.attackBuy;
         Grid.grid[4][3].setShip(Player.attackBuy);
         Grid.grid[5][3].setShip(Player.defenseBuy);
         Grid.grid[6][3].setShip(Player.moneyBuy);
@@ -36,6 +38,10 @@ public class CheckpointState extends State {
     @Override
     public void update(float delta) {
         Renderer.updateBackground(delta);
+        for(PlayerShip p : Player.toAddList){
+            Player.getParty().add(p);
+        }
+        Player.toAddList.clear();
     }
 
     @Override
@@ -43,9 +49,9 @@ public class CheckpointState extends State {
         Renderer.renderBackground(g);
         Renderer.renderShips(g, CHECK, selectedShip);
         Renderer.renderBuyInfo(g, selectedShip);
-        Grid.grid[4][3].getShip().render(g,CHECK, selectedShip);
-        Grid.grid[5][3].getShip().render(g,CHECK,selectedShip);
-        Grid.grid[6][3].getShip().render(g,CHECK,selectedShip);
+        Grid.grid[4][3].getShip().render(g, CHECK, selectedShip);
+        Grid.grid[5][3].getShip().render(g, CHECK, selectedShip);
+        Grid.grid[6][3].getShip().render(g, CHECK, selectedShip);
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 4; j++){
                 if(Grid.grid[i][j].getShip() == null){
