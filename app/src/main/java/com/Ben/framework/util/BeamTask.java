@@ -37,7 +37,12 @@ public class BeamTask extends Task {
         if(x_coordinate >= destination_x){
             finishTask();
         }
-        g.drawImage(image, x_coordinate, y_coordinate);
+        if(image == Assets.beam) {
+            g.drawImage(image, x_coordinate, y_coordinate);
+        }
+        else{
+            g.drawImage(image,x_coordinate, y_coordinate, 65, 85);
+        }
     }
 
 
