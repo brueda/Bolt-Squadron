@@ -20,11 +20,11 @@ public class MoneyShip extends PlayerShip {
         descriptions[4] = "+1 HP.+200 volts for aligned attacks";
         descriptions[5] = "+1 HP.";
         costs[0] = 150;
-        costs[1] = 150;
+        costs[1] = 100;
         costs[2] = 200;
         costs[3] = 200;
         costs[4] = 500;
-        costs[5] = 0;
+        costs[5] = 25;
     }
 
     @Override

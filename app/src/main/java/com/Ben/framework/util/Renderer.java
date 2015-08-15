@@ -37,7 +37,7 @@ public class Renderer {
         g.drawString("BUY:",355,380);
         if(selected.getPositionX() > 3){     // buy ship
             g.drawString("SWIPE UP TO BUY:  " + selected.getCosts()[0] + " V", 370, 50);
-            Bitmap image = selected.getShipImage()[0];
+            Bitmap image = selected.getImageArray()[0];
             g.drawImage(image, 500, 100, 98, 127);
             g.setFont(Assets.tf, 15);
             String[] description = selected.getDescriptions()[0].split("\\.");
@@ -50,7 +50,7 @@ public class Renderer {
         else{                                // upgrade ship
             if(selected.upgradeLevel == 5) return;
             g.drawString("SWIPE UP TO UPGRADE:  " + selected.getCosts()[selected.upgradeLevel+1] + " V", 320, 50);
-            Bitmap image = selected.getShipImage()[(selected.upgradeLevel+1)/2];
+            Bitmap image = selected.getImageArray()[(selected.upgradeLevel+1)/2];
             g.drawImage(image, 500, 100, 98, 127);
             if(selected.upgradeLevel % 2 == 0 || selected.upgradeLevel == 0){
                 g.drawImage(Assets.star, 500+14, 100+51, 23, 23);

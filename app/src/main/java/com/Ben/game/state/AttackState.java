@@ -79,11 +79,22 @@ public class AttackState extends State {
             ship.shield();
             resolve(ship);
         }
+        // kamikaze
+        else if(e == InputHandler.SWIPE_DOWN){
+            PlayerShip ship = (PlayerShip) selectedShip;
+            if(ship == null || ship.isDead() || ship.isActivated()) return true;
+            ship.kamikaze();
+            resolve(ship);
+        }
         return true;
     }
 
     private void resolve(Ship attacker){
         attacker.setActivated(true);
+        if(Player.isDefeated()){
+            setCurrentState(new GameOverState());
+            return;
+        }
         if(Enemies.areDefeated()){
             try {
                 Thread.sleep(1000);

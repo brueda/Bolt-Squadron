@@ -41,8 +41,18 @@ public class EnemyShip extends Ship {
     }
 
     @Override
+    public Bitmap getShipImage(){
+        return shipImage;
+    }
+
+    @Override
     public void fire(Ship target){
         super.fire(target);
+        // last man standing shot
+        if(lastManStanding()){
+            target.hit(getAttack());
+            laserImage = Assets.fireball;
+        }
         ProjectileTask laser = new ProjectileTask();
         laser.initialize(this, target, attack, target.isDead(), laserImage);
         laser.makeRunnable();
@@ -142,7 +152,19 @@ public class EnemyShip extends Ship {
        return all;
    }
 
+    private boolean lastManStanding(){
+        int count = 0;
+        for(EnemyShip e: Enemies.getEnemies()){
+            if(!e.isDead()){
+                ++count;
+            }
+        }
+        return count == 1;
+    }
+
     public void setShipImage(Bitmap image) {
         shipImage = image;
     }
+
+
 }

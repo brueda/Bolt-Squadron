@@ -25,7 +25,7 @@ public class GameOverState extends State {
         Renderer.renderBackground(g);
         g.setFont(Assets.tf, 50);
         g.setColor(Color.YELLOW);
-        g.drawString("Defeat",100,200);
+        g.drawString("Defeat",100,100);
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Assets {
 	private static SoundPool soundPool;
 	public static Bitmap testShip, greenDot, blueDot, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
 	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
-	purpleOrb;
+	purpleOrb, fireball;
 	// enemy sprites
 	public static Bitmap enemy1, enemy2, enemy3, enemy4;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID, levelUpID;
@@ -56,6 +56,8 @@ public class Assets {
 		defenseRed = loadBitmap("defenseRed.png", true);
 		ring = loadBitmap("fx04.png", true);
 		star = loadBitmap("star.png", true);
+		fireball = loadBitmap("heavy1.png",true);
+
 
 		enemy1 = loadBitmap("enemy1.png", true);
         enemy2 = loadBitmap("enemy2.png", true);

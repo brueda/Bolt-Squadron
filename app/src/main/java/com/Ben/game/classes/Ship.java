@@ -125,6 +125,8 @@ public abstract class Ship {
 
     public abstract void render(Painter g, int state, Ship selected);
 
+    public abstract Bitmap getShipImage();
+
 
     /* methods for battle */
 

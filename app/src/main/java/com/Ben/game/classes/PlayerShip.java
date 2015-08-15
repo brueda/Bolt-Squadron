@@ -57,7 +57,12 @@ public abstract class PlayerShip extends Ship {
         }
     }
 
-    public Bitmap[] getShipImage(){
+    @Override
+    public Bitmap getShipImage(){
+        return shipImage[upgradeLevel];
+    }
+
+    public Bitmap[] getImageArray(){
         return shipImage;
     }
 
@@ -92,6 +97,23 @@ public abstract class PlayerShip extends Ship {
                 TaskList.addTask(task);
             }
         }
+    }
+
+    public void kamikaze(){
+        hit(50);
+        renderable = false;
+        Ship target = null;
+        for(int i = 4; i < 7; i++){
+            if(Grid.grid[i][getPositionY()].getShip() != null){
+                target = Grid.grid[i][getPositionY()].getShip();
+                target.hit(50);
+                break;
+            }
+        }
+        BeamTask task = new BeamTask();
+        task.initialize(this, target);
+        task.makeRunnable();
+        TaskList.addTask(task);
     }
 
     public void update(){

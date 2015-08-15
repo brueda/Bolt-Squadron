@@ -2,8 +2,8 @@
 <enemies>
     <enemy type="1" hp="12" att="10" def="5" id="1"/>
     <enemy type="2" hp="16" att="11" def="5" id="2"/>
-    <enemy type="3" hp="20" att="12" def="7" id="3"/>
+    <enemy type="3" hp="20" att="12" def="6" id="3"/>
     <enemy type="4" hp="24" att="13" def="7" id="4"/>
-    <enemy type="5" hp="28" att="14" def="9" id="5"/>
-    <enemy type="6" hp="32" att="15" def="9" id="6"/>
+    <enemy type="5" hp="28" att="14" def="7" id="4"/>
+    <enemy type="6" hp="32" att="15" def="8" id="4"/>
 </enemies>
