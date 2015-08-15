@@ -41,7 +41,7 @@ public class AttackState extends State {
         Renderer.renderEnemies(g, State.ATTACK);
         g.setColor(Color.WHITE);
         g.setFont(Assets.tf, 15);
-        g.drawString("attack phase", 200, 15);
+        g.drawString("attack phase", 100, 15);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){

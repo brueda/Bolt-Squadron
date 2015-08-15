@@ -52,7 +52,7 @@ public class MovementState extends State {
         }
         g.setColor(Color.WHITE);
         g.setFont(Assets.tf, 15);
-        g.drawString("movement phase",200,15);
+        g.drawString("movement phase",100,15);
         Renderer.renderShips(g, MOVE, selectedShip);
         Renderer.renderEnemies(g, MOVE);
     }
