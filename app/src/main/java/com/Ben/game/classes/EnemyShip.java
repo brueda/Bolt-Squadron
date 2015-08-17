@@ -102,11 +102,9 @@ public class EnemyShip extends Ship {
             }
         }
         if(tiles.isEmpty()) return;
-        int randIndex = RandomNumberGenerator.getRandInt(tiles.size() * 2);
-        if(randIndex < tiles.size()){
-            currentTile.setShip(null);
-            tiles.get(randIndex).setShip(this);
-        }
+        int randIndex = RandomNumberGenerator.getRandInt(tiles.size());
+        currentTile.setShip(null);
+        tiles.get(randIndex).setShip(this);
     }
 
     private boolean checkValid(Tile t){

@@ -18,7 +18,7 @@ public class Player {
     public static ArrayList<PlayerShip> toAddList;
 
     public Player(){
-        volts = 600;
+        volts = 602;
         party = new ArrayList<PlayerShip>();
         toAddList = new ArrayList<PlayerShip>();
         attackBuy = new AttackShip();
