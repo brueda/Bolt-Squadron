@@ -20,7 +20,7 @@ public class AttackShip extends PlayerShip {
         descriptions[1] = "+2 HP.+1 ATK.+1 DEF";
         descriptions[2] = "+2 HP.*kill shots cause.  adjacent allies to attack";
         descriptions[3] = "+2 HP.+2 ATK.+1 DEF";
-        descriptions[4] = "+2 HP.*+1 hit per shot";
+        descriptions[4] = "+2 HP.*+1 hit per attack";
         descriptions[5] = "+2 HP.+3 ATK.+1 DEF";
         costs[0] = 200;
         costs[1] = 400;

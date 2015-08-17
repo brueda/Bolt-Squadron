@@ -17,14 +17,14 @@ public class MoneyShip extends PlayerShip {
         descriptions[1] = "+1 HP.+15 volts for aligned attacks";
         descriptions[2] = "+1 HP.*+40 volts for kill shots";
         descriptions[3] = "+1 HP.+800 volts when destroyed";
-        descriptions[4] = "+1 HP.+60 volts for all attacks";
-        descriptions[5] = "+1 HP.";
+        descriptions[4] = "+1 HP.+1 ATK.+60 volts for all attacks";
+        descriptions[5] = "+1 HP.+1 ATK.+2 DEF";
         costs[0] = 150;
         costs[1] = 100;
         costs[2] = 150;
         costs[3] = 200;
         costs[4] = 300;
-        costs[5] = 25;
+        costs[5] = 50;
     }
 
     @Override
@@ -55,6 +55,11 @@ public class MoneyShip extends PlayerShip {
     @Override
     public void levelUp(){
         super.levelUp();
+        if(upgradeLevel == 4) attack += 1;
+        if(upgradeLevel == 5){
+            attack += 1;
+            defense += 2;
+        }
         increaseMaxHealth(1);
     }
 }

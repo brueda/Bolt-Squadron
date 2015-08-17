@@ -31,12 +31,16 @@ public class Enemies {
                     e.printStackTrace();
                 }
                 attacker.move();
+            }
+        }
+        for(EnemyShip attacker : enemies) {
+            if (!attacker.isDead()) {
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(200);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                attacker.attack();
+                attacker.attack();;
             }
         }
     }
