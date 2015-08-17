@@ -38,13 +38,13 @@
         <enemy type="5"/> <enemy type="5"/>
     </level>
     <level id="13">
-        <enemy type="1"/> <enemy type="1"/> <enemy type="1"/> <enemy type="1"/>
+        <enemy type="4"/> <enemy type="4"/> <enemy type="4"/> <enemy type="4"/>
     </level>
     <level id="14">
-        <enemy type="1"/> <enemy type="1"/> <enemy type="1"/> <enemy type="1"/>
+        <enemy type="5"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>  <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>
     </level>
     <level id="15">
-        <enemy type="1"/> <enemy type="1"/> <enemy type="1"/> <enemy type="1"/>
+        <enemy type="1"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>  <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>
     </level>
     <level id="16">
         <enemy type="1"/> <enemy type="1"/> <enemy type="1"/> <enemy type="1"/>
