@@ -21,7 +21,7 @@ public class Assets {
 	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
 	purpleOrb, fireball;
 	// enemy sprites
-	public static Bitmap enemy1, enemy2, enemy3, enemy4;
+	public static Bitmap enemy1, enemy2, enemy3, enemy4, enemy5;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID, levelUpID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
@@ -63,6 +63,7 @@ public class Assets {
         enemy2 = loadBitmap("enemy2.png", true);
         enemy3 = loadBitmap("enemy3.png", true);
         enemy4 = loadBitmap("enemy4.png", true);
+		enemy5 = loadBitmap("enemy5.png", true);
 
 		laserID = loadSound("laser1.wav");
 		hitID = loadSound("Hit.wav");

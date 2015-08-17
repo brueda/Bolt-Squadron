@@ -20,10 +20,10 @@
         <enemy type="3"/> <enemy type="2"/> <enemy type="2"/> <enemy type="1"/> <enemy type="1"/>
     </level>
     <level id="7">
-        <enemy type="3"/> <enemy type="3"/> <enemy type="1"/> <enemy type="1"/>
+        <enemy type="3"/> <enemy type="3"/> <enemy type="2"/> <enemy type="2"/>
     </level>
     <level id="8">
-        <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>
+        <enemy type="3"/> <enemy type="3"/> <enemy type="3"/> <enemy type="2"/> <enemy type="2"/>
     </level>
     <level id="9">
         <enemy type="3"/> <enemy type="3"/> <enemy type="3"/> <enemy type="3"/>
@@ -32,10 +32,10 @@
         <enemy type="4"/> <enemy type="3"/> <enemy type="3"/> <enemy type="2"/> <enemy type="2"/>
     </level>
     <level id="11">
-        <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>
+        <enemy type="3"/> <enemy type="3"/> <enemy type="3"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>
     </level>
     <level id="12">
-        <enemy type="5"/>
+        <enemy type="5"/> <enemy type="5"/>
     </level>
     <level id="13">
         <enemy type="1"/> <enemy type="1"/> <enemy type="1"/> <enemy type="1"/>

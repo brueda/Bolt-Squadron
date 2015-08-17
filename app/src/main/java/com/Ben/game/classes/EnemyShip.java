@@ -37,6 +37,9 @@ public class EnemyShip extends Ship {
             case 4:
                 shipImage = Assets.enemy4;
                 break;
+            case 5:
+                shipImage = Assets.enemy5;
+                break;
         }
     }
 
