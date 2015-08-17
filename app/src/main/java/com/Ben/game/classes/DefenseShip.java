@@ -16,9 +16,9 @@ public class DefenseShip extends PlayerShip {
         shipImage[2] = Assets.defenseRed;
         descriptions[0] = "*defense specialist.*aligned attacks activate shield";
         descriptions[1] = "+2 HP.+1 DEF.+1 ATK.";
-        descriptions[2] = "+2 HP.+1 DEF.*kill shots shield adjacent allies";
+        descriptions[2] = "+2 HP.*kill shots shield adjacent allies";
         descriptions[3] = "+2 HP.+2 DEF.+1 ATK";
-        descriptions[4] = "+2 HP.+1 DEF.*shield recovers health";
+        descriptions[4] = "+2 HP.*shield recovers HP";
         descriptions[5] = "+2 HP.+3 DEF.+1 ATK";
         costs[0] = 200;
         costs[1] = 400;
@@ -32,12 +32,12 @@ public class DefenseShip extends PlayerShip {
     public void fire(Ship target){
         super.fire(target);
         if(target.getPositionY() == positionY){
-            shielded = true;
+            shield();
         }
         if(upgradeLevel >= 2 && target.isDead()){
             for (PlayerShip s : Player.getParty()) {
                 if (Math.abs(positionY - s.getPositionY()) + Math.abs(positionX - s.getPositionX()) <= 1) {
-                    s.shielded = true;
+                    s.shield();
                 }
             }
         }
@@ -62,7 +62,6 @@ public class DefenseShip extends PlayerShip {
                 break;
             case 2:
                 increaseMaxHealth(2);
-                defense += 1;
                 break;
             case 3:
                 increaseMaxHealth(2);
@@ -71,7 +70,6 @@ public class DefenseShip extends PlayerShip {
                 break;
             case 4:
                 increaseMaxHealth(2);
-                defense += 1;
                 break;
             case 5:
                 increaseMaxHealth(2);

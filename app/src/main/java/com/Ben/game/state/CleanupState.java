@@ -32,6 +32,7 @@ public class CleanupState extends State {
         while(it.hasNext()){
             if(it.next().isDead()){
                 it.remove();
+                --Player.partySize;
             }
         }
         Iterator<EnemyShip> it2 = Enemies.getEnemies().iterator();
