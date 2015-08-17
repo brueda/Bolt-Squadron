@@ -35,7 +35,9 @@ public class AttackShip extends PlayerShip {
         if(target.getPositionY() == positionY){
             target.hit(attack);   // double shot if enemy is aligned
         }
-        if(upgradeLevel >= 4) target.hit(attack);
+        if(upgradeLevel >= 4) {
+            target.hit(attack);
+        }
         super.fire(target);
         if(upgradeLevel >= 2 && target.isDead()){
             for(PlayerShip s : Player.getParty()){

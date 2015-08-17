@@ -16,7 +16,7 @@ public class MoneyShip extends PlayerShip {
         descriptions[0] = "*resource generator.*aligned attacks increase volts";
         descriptions[1] = "+1 HP.+15 volts for aligned attacks";
         descriptions[2] = "+1 HP.*+40 volts for kill shots";
-        descriptions[3] = "+1 HP.+900 volts when destroyed";
+        descriptions[3] = "+1 HP.+800 volts when destroyed";
         descriptions[4] = "+1 HP.+60 volts for aligned attacks";
         descriptions[5] = "+1 HP.";
         costs[0] = 150;
@@ -48,8 +48,7 @@ public class MoneyShip extends PlayerShip {
     public void hit(int power){
         super.hit(power);
         if(dead){
-            if(upgradeLevel >= 2) Player.setVolts(Player.getVolts() + 700);
-            if(upgradeLevel >= 3) Player.setVolts(Player.getVolts() + 300);
+            if(upgradeLevel >= 3) Player.setVolts(Player.getVolts() + 800);
         }
     }
 
