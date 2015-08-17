@@ -17,9 +17,9 @@ public class DefenseShip extends PlayerShip {
         descriptions[0] = "*defense specialist.*aligned attacks activate shield";
         descriptions[1] = "+2 HP.+1 DEF.+1 ATK.";
         descriptions[2] = "+2 HP.+1 DEF.*kill shots shield adjacent allies";
-        descriptions[3] = "+2 HP.+1 DEF.+1 ATK";
+        descriptions[3] = "+2 HP.+2 DEF.+1 ATK";
         descriptions[4] = "+2 HP.+1 DEF.*shield recovers health";
-        descriptions[5] = "+2 HP.+1 DEF.+1 ATK";
+        descriptions[5] = "+2 HP.+3 DEF.+1 ATK";
         costs[0] = 200;
         costs[1] = 400;
         costs[2] = 600;
@@ -66,7 +66,7 @@ public class DefenseShip extends PlayerShip {
                 break;
             case 3:
                 increaseMaxHealth(2);
-                defense += 1;
+                defense += 2;
                 attack += 1;
                 break;
             case 4:
@@ -75,7 +75,7 @@ public class DefenseShip extends PlayerShip {
                 break;
             case 5:
                 increaseMaxHealth(2);
-                defense += 1;
+                defense += 3;
                 attack += 1;
                 break;
         }

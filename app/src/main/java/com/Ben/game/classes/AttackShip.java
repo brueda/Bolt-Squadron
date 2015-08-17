@@ -18,10 +18,10 @@ public class AttackShip extends PlayerShip {
         shipImage[2] = Assets.attackRed;
         descriptions[0] = "*attack specialist.*aligned attacks hit twice";
         descriptions[1] = "+2 HP.+1 ATK.+1 DEF";
-        descriptions[2] = "+2 HP.+1 ATK.*kill shots cause adjacent allies to attack";
-        descriptions[3] = "+2 HP.+1 ATK.+1 DEF";
+        descriptions[2] = "+2 HP.+1 ATK.*kill shots cause.  adjacent allies to attack";
+        descriptions[3] = "+2 HP.+2 ATK.+1 DEF";
         descriptions[4] = "+2 HP.+1 ATK.*+1 hit per shot";
-        descriptions[5] = "+2 HP.+1 ATK.+1 DEF";
+        descriptions[5] = "+2 HP.+3 ATK.+1 DEF";
         costs[0] = 200;
         costs[1] = 400;
         costs[2] = 600;
@@ -74,7 +74,7 @@ public class AttackShip extends PlayerShip {
                 break;
             case 3:
                 increaseMaxHealth(2);
-                attack += 1;
+                attack += 2;
                 defense += 1;
                 break;
             case 4:
@@ -82,7 +82,7 @@ public class AttackShip extends PlayerShip {
                 attack += 1;
             case 5:
                 increaseMaxHealth(2);
-                attack += 1;
+                attack += 3;
                 defense += 1;
                 break;
         }

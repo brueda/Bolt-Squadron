@@ -30,13 +30,13 @@ public class MoneyShip extends PlayerShip {
     @Override
     public void fire(Ship target){
         super.fire(target);
+        if(upgradeLevel >= 2 && target.isDead()){
+            Player.setVolts(Player.getVolts() + 40);
+        }
         if(target.getPositionY() == positionY){
             Player.setVolts(Player.getVolts() + 25);
             if(upgradeLevel >= 1){
                 Player.setVolts(Player.getVolts() + 15);
-            }
-            if(upgradeLevel >= 2 && target.isDead()){
-                Player.setVolts(Player.getVolts() + 40);
             }
             if(upgradeLevel >= 4){
                 Player.setVolts(Player.getVolts() + 60);
