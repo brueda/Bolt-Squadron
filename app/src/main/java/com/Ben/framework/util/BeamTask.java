@@ -37,11 +37,11 @@ public class BeamTask extends Task {
         if(x_coordinate >= destination_x){
             finishTask();
         }
-        if(image == Assets.beam) {
+        if(image == Assets.beam) {   // column attack
             g.drawImage(image, x_coordinate, y_coordinate);
         }
-        else{
-            g.drawImage(image,x_coordinate, y_coordinate, 65, 85);
+        else{   // kamikaze attack
+            g.drawImage(image, x_coordinate, y_coordinate, 65, 85);
         }
     }
 

@@ -25,7 +25,7 @@ public class ProjectileTask extends Task {
         super();
     }
 
-    public void initialize(Ship src, Ship dest, int power, boolean killShot, Bitmap image){
+    public void initialize(Ship src, Ship dest, boolean killShot, Bitmap image){
         x_coordinate = src.getTile().x_coordinate;
         y_coordinate = src.getTile().y_coordinate;
         destination_x = dest.getTile().x_coordinate;

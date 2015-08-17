@@ -23,7 +23,7 @@ public class EnemyShip extends Ship {
         laserImage = Assets.redLaser;
         setAttack(g.attack + RandomNumberGenerator.getRandIntBetween(-1,1));
         setDefense(g.defense + RandomNumberGenerator.getRandIntBetween(-1,1));
-        setHealth(g.health + RandomNumberGenerator.getRandIntBetween(-2,2));
+        setHealth(g.health + RandomNumberGenerator.getRandIntBetween(-1,2));
         switch(g.imageID){
             case 1:
                 shipImage = Assets.enemy1;
@@ -54,7 +54,7 @@ public class EnemyShip extends Ship {
             laserImage = Assets.fireball;
         }
         ProjectileTask laser = new ProjectileTask();
-        laser.initialize(this, target, attack, target.isDead(), laserImage);
+        laser.initialize(this, target, target.isDead(), laserImage);
         laser.makeRunnable();
         TaskList.addTask(laser);
     }

@@ -44,7 +44,7 @@ public abstract class PlayerShip extends Ship {
         super.fire(target);
         ProjectileTask laser = new ProjectileTask();
         Bitmap image = (target.getPositionY() == positionY ? specialLaser : laserImage);
-        laser.initialize(this, target, attack, target.isDead(), image);
+        laser.initialize(this, target, target.isDead(), image);
         laser.makeRunnable();
         TaskList.addTask(laser);
     }
@@ -72,7 +72,7 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void repair(){
-        health = Math.min(maxHealth, health + (maxHealth / 5));
+        health = Math.min(maxHealth, health + (maxHealth / 4));
     }
 
     public void levelUp(){
@@ -102,7 +102,7 @@ public abstract class PlayerShip extends Ship {
     public void kamikaze(){
         shielded = false;
         hit(50);
-        renderable = false;
+        destroy();
         Ship target = null;
         for(int i = 4; i < 7; i++){
             if(Grid.grid[i][getPositionY()].getShip() != null){

@@ -1,5 +1,7 @@
 package com.Ben.game.classes;
 
+import com.Ben.framework.util.BeamTask;
+import com.Ben.framework.util.TaskList;
 import com.Ben.simpleandroidgdf.Assets;
 
 /**
@@ -16,7 +18,7 @@ public class AttackShip extends PlayerShip {
         shipImage[2] = Assets.attackRed;
         descriptions[0] = "*attack specialist.*aligned attacks hit twice";
         descriptions[1] = "+2 HP.+1 ATK.+1 DEF";
-        descriptions[2] = "+2 HP.+1 ATK.*attacks reduce enemy defense";
+        descriptions[2] = "+2 HP.+1 ATK.*kill shots cause adjacent allies to attack";
         descriptions[3] = "+2 HP.+1 ATK.+1 DEF";
         descriptions[4] = "+2 HP.+1 ATK.*+1 hit per shot";
         descriptions[5] = "+2 HP.+1 ATK.+1 DEF";
@@ -35,8 +37,23 @@ public class AttackShip extends PlayerShip {
         }
         if(upgradeLevel >= 4) target.hit(attack);
         super.fire(target);
-        if(upgradeLevel >= 2){
-            target.setDefense(target.getDefense() - 2);
+        if(upgradeLevel >= 2 && target.isDead()){
+            for(PlayerShip s : Player.getParty()){
+                if(Math.abs(positionY - s.getPositionY()) + Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead() && s != this){
+                    Ship t = null;
+                    for(int i = 4; i < 7; i++){
+                        if(Grid.grid[i][s.getPositionY()].getShip() != null){
+                            t = Grid.grid[i][s.getPositionY()].getShip();
+                            t.hit(s.getAttack()-2);
+                            break;
+                        }
+                    }
+                    BeamTask task = new BeamTask();
+                    task.initialize(s, t);
+                    task.makeRunnable();
+                    TaskList.addTask(task);
+                }
+            }
         }
     }
 
