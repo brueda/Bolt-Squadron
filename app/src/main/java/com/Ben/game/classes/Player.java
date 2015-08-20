@@ -10,6 +10,7 @@ public class Player {
 
     private static ArrayList<PlayerShip> party;
     private static int volts;
+    private static int score;
     public static AttackShip attackBuy;
     public static DefenseShip defenseBuy;
     public static MoneyShip moneyBuy;
@@ -19,6 +20,7 @@ public class Player {
 
     public Player(){
         volts = 600;
+        score = 0;
         party = new ArrayList<PlayerShip>();
         toAddList = new ArrayList<PlayerShip>();
         attackBuy = new AttackShip();
@@ -53,6 +55,14 @@ public class Player {
         return volts;
     }
 
+    public static int getScore(){
+        return score;
+    }
+
+    public static void increaseScore(int amount){
+        score += amount;
+    }
+
     public static void setVolts(int _volts){
         volts = _volts;
     }
@@ -67,6 +77,11 @@ public class Player {
             if(!s.isActivated() && !s.isDead()) all = false;
         }
         return all;
+    }
+
+    public static void increaseVolts(int amount){
+        volts += amount;
+        score += amount;
     }
 
     public static void resetActivated(){

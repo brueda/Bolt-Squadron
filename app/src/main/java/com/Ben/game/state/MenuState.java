@@ -30,6 +30,9 @@ public class MenuState extends State {
 		g.setFont(Assets.tf, 50);
 		g.setColor(Color.YELLOW);
 		g.drawString("BOLT SQUADRON",140,200);
+		g.setFont(Assets.tf, 25);
+		g.setColor(Color.WHITE);
+		g.drawString("High Score:  " + GameMainActivity.getHighScore(),250,350);
 	}
 
 	@Override

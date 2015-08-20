@@ -25,7 +25,6 @@ public class AttackState extends State {
 
     public void init(){
         Player.resetActivated();
-        //selectedShip = Player.getParty().get(0);
     }
 
     public void update(float delta){

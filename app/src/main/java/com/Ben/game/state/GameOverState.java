@@ -8,16 +8,26 @@ import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.Player;
 import com.Ben.simpleandroidgdf.Assets;
+import com.Ben.simpleandroidgdf.GameMainActivity;
 
 /**
  * Created by Benjamin on 6/5/2015.
  */
 public class GameOverState extends State {
+
+    public String message;
     @Override
-    public void init(){}
+    public void init(){
+        message = "Game Over";
+        if(Player.getScore() > GameMainActivity.getHighScore()){
+            GameMainActivity.setHighScore(Player.getScore());
+            message = "High Score";
+        }
+    }
 
     @Override
     public void update(float delta) {
+        Renderer.updateBackground(delta);
     }
 
     @Override
@@ -25,7 +35,10 @@ public class GameOverState extends State {
         Renderer.renderBackground(g);
         g.setFont(Assets.tf, 50);
         g.setColor(Color.YELLOW);
-        g.drawString("Defeat",100,100);
+        g.drawString(message,225,150);
+        g.setFont(Assets.tf, 30);
+        g.setColor(Color.WHITE);
+        g.drawString("Score:   " + Player.getScore(),275,300);
     }
 
     @Override

@@ -24,22 +24,22 @@ public class MoneyShip extends PlayerShip {
         costs[2] = 150;
         costs[3] = 200;
         costs[4] = 300;
-        costs[5] = 50;
+        costs[5] = 100;
     }
 
     @Override
     public void fire(Ship target){
         super.fire(target);
         if(upgradeLevel >= 2 && target.isDead()){
-            Player.setVolts(Player.getVolts() + 40);
+            Player.increaseVolts(40);
         }
         if(upgradeLevel >= 4){
-            Player.setVolts(Player.getVolts() + 60);
+            Player.increaseVolts(60);
         }
         if(target.getPositionY() == positionY){
-            Player.setVolts(Player.getVolts() + 25);
+            Player.increaseVolts(25);
             if(upgradeLevel >= 1){
-                Player.setVolts(Player.getVolts() + 15);
+                Player.increaseVolts(15);
             }
         }
     }
@@ -48,7 +48,7 @@ public class MoneyShip extends PlayerShip {
     public void hit(int power){
         super.hit(power);
         if(dead){
-            if(upgradeLevel >= 3) Player.setVolts(Player.getVolts() + 800);
+            if(upgradeLevel >= 3) Player.increaseVolts(800);
         }
     }
 
