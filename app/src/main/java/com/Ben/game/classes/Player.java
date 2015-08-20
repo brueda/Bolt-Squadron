@@ -81,7 +81,7 @@ public class Player {
 
     public static void increaseVolts(int amount){
         volts += amount;
-        score += amount;
+        increaseScore(amount);
     }
 
     public static void resetActivated(){
