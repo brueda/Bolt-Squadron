@@ -25,8 +25,7 @@ public class AttackState extends State {
 
     public void init(){
         Player.resetActivated();
-        //selectedTile = Player.getParty().get(0).getTile();
-        selectedShip = Player.getParty().get(0);
+        //selectedShip = Player.getParty().get(0);
     }
 
     public void update(float delta){
@@ -60,7 +59,6 @@ public class AttackState extends State {
                     }
                     resolve(attacker);
                 }
-                //else selectedTile = pressed;      // player ship was selected
                 else selectedShip = pressed.getShip();
             }
         }

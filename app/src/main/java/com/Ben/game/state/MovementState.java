@@ -18,15 +18,13 @@ import com.Ben.simpleandroidgdf.Assets;
  * Created by Benjamin on 5/26/2015.
  */
 public class MovementState extends State {
-    private Tile selectedTile;
     private Ship selectedShip;
 
     public MovementState(){}
 
     public void init(){
         Player.resetActivated();
-        //selectedTile = Player.getParty().get(0).getTile();
-        selectedShip = Player.getParty().get(0);
+        //selectedShip = Player.getParty().get(0);
         //THE BEST BUG TO EVER BUG
         /*for(EnemyShip e : Enemies.getEnemies()){
             e.getTile().setShip(e);
@@ -41,7 +39,7 @@ public class MovementState extends State {
 
     public void render(Painter g){
         Renderer.renderBackground(g);
-        if(!selectedShip.isActivated()) {
+        if(selectedShip != null && !selectedShip.isActivated()) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 4; j++) {
                     if (Math.abs(Grid.grid[i][j].getPositionX() - selectedShip.getPositionX()) + Math.abs(Grid.grid[i][j].getPositionY() - selectedShip.getPositionY()) <= 1) {
