@@ -19,7 +19,7 @@ public class DefenseShip extends PlayerShip {
         descriptions[2] = "+2 HP.*kill shots shield adjacent allies";
         descriptions[3] = "+2 HP.+2 DEF.+1 ATK";
         descriptions[4] = "+2 HP.*shield recovers HP";
-        descriptions[5] = "+2 HP.+3 DEF.+1 ATK";
+        descriptions[5] = "+2 HP.+2 DEF.+2 ATK";
         costs[0] = 200;
         costs[1] = 400;
         costs[2] = 600;
@@ -73,8 +73,8 @@ public class DefenseShip extends PlayerShip {
                 break;
             case 5:
                 increaseMaxHealth(2);
-                defense += 3;
-                attack += 1;
+                defense += 2;
+                attack += 2;
                 break;
         }
     }

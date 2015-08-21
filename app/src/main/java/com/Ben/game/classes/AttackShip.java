@@ -21,7 +21,7 @@ public class AttackShip extends PlayerShip {
         descriptions[2] = "+2 HP.*kill shots cause.  adjacent allies to attack";
         descriptions[3] = "+2 HP.+2 ATK.+1 DEF";
         descriptions[4] = "+2 HP.*+1 hit per attack";
-        descriptions[5] = "+2 HP.+3 ATK.+1 DEF";
+        descriptions[5] = "+2 HP.+2 ATK.+2 DEF";
         costs[0] = 200;
         costs[1] = 400;
         costs[2] = 600;
@@ -80,8 +80,8 @@ public class AttackShip extends PlayerShip {
                 increaseMaxHealth(2);
             case 5:
                 increaseMaxHealth(2);
-                attack += 3;
-                defense += 1;
+                attack += 2;
+                defense += 2;
                 break;
         }
     }

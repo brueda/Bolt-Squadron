@@ -72,7 +72,7 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void repair(){
-        health = Math.min(maxHealth, health + (maxHealth / 4));
+        health = Math.min(maxHealth, health + (maxHealth / 8));
     }
 
     public void levelUp(){
