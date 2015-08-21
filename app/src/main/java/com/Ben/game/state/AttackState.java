@@ -50,7 +50,6 @@ public class AttackState extends State {
                 if(ship == null) return true;
                 if(ship.getPositionX() > 3){      // enemy ship was selected
                     EnemyShip target = (EnemyShip) pressed.getShip();
-                    //Ship attacker = selectedTile.getShip();
                     Ship attacker = selectedShip;
                     if(attacker == null) return true;
                     if(!attacker.isActivated() && !attacker.isDead()) {

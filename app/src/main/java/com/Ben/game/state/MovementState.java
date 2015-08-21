@@ -64,7 +64,11 @@ public class MovementState extends State {
                 if(pressed.getShip() == selectedShip) doMove(selectedShip.getTile(), pressed);  // hold position
                 selectedShip = pressed.getShip();
             }
-            else doMove(selectedShip.getTile(), pressed);
+            else{
+                if(selectedShip != null){
+                    doMove(selectedShip.getTile(), pressed);
+                }
+            }
         }
         return true;
     }

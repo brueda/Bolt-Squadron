@@ -36,18 +36,18 @@ public class InputHandler implements OnTouchListener {
 			if((Math.abs(downX - scaledX) < BOUND) && (Math.abs(downY - scaledY) < BOUND)){
 				return currentState.onTouch(TOUCHEVENT, scaledX, scaledY);
 			}
+			else if((scaledY - downY) < -BOUND){
+				return currentState.onTouch(SWIPE_UP, scaledX, scaledY);
+			}
 			else if((scaledX - downX) > BOUND){
 				return currentState.onTouch(SWIPE_RIGHT, scaledX, scaledY);
-			}
-			else if((scaledY - downY) > BOUND){
-				return currentState.onTouch(SWIPE_DOWN, scaledX, scaledY);
 			}
 			else if((scaledX - downX) < -BOUND){
 				return currentState.onTouch(SWIPE_LEFT, scaledX, scaledY);
 			}
-			else if((scaledY - downY) < -BOUND){
-				return currentState.onTouch(SWIPE_UP, scaledX, scaledY);
-			}
+            else if((scaledY - downY) > BOUND){
+                return currentState.onTouch(SWIPE_DOWN, scaledX, scaledY);
+            }
 		}
 		return true;
 	}
