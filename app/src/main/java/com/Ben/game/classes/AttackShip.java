@@ -18,7 +18,7 @@ public class AttackShip extends PlayerShip {
         shipImage[2] = Assets.attackRed;
         descriptions[0] = "*attack specialist.*aligned attacks hit twice";
         descriptions[1] = "+2 HP.+1 ATK.+1 DEF";
-        descriptions[2] = "+2 HP.*kill shots cause.  adjacent allies to attack";
+        descriptions[2] = "+2 HP.*kill shots cause.  nearby allies to attack";
         descriptions[3] = "+2 HP.+2 ATK.+1 DEF";
         descriptions[4] = "+2 HP.*+1 hit per attack";
         descriptions[5] = "+2 HP.+2 ATK.+2 DEF";
@@ -41,7 +41,7 @@ public class AttackShip extends PlayerShip {
         super.fire(target);
         if(upgradeLevel >= 2 && target.isDead()){
             for(PlayerShip s : Player.getParty()){
-                if(Math.abs(positionY - s.getPositionY()) + Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead() && s != this){
+                if(Math.abs(positionY - s.getPositionY()) <= 1 &&  Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead() && s != this){
                     Ship t = null;
                     for(int i = 4; i < 7; i++){
                         if(Grid.grid[i][s.getPositionY()].getShip() != null){
@@ -78,6 +78,9 @@ public class AttackShip extends PlayerShip {
                 break;
             case 4:
                 increaseMaxHealth(2);
+                laserImage = Assets.multiLaser;
+                specialLaser = Assets.hadoken;
+                break;
             case 5:
                 increaseMaxHealth(2);
                 attack += 2;

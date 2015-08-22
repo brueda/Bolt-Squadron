@@ -17,7 +17,7 @@ public class MoneyShip extends PlayerShip {
         descriptions[1] = "+1 HP.+15 volts for aligned attacks";
         descriptions[2] = "+1 HP.*+40 volts for kill shots";
         descriptions[3] = "+1 HP.+800 volts when destroyed";
-        descriptions[4] = "+1 HP.+1 ATK.+60 volts for all attacks";
+        descriptions[4] = "+1 HP.+1 ATK.+75 volts for all attacks";
         descriptions[5] = "+1 HP.+1 ATK.+2 DEF";
         costs[0] = 150;
         costs[1] = 100;
@@ -34,7 +34,7 @@ public class MoneyShip extends PlayerShip {
             Player.increaseVolts(40);
         }
         if(upgradeLevel >= 4){
-            Player.increaseVolts(60);
+            Player.increaseVolts(75);
         }
         if(target.getPositionY() == positionY){
             Player.increaseVolts(25);

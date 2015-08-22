@@ -16,7 +16,7 @@ public class DefenseShip extends PlayerShip {
         shipImage[2] = Assets.defenseRed;
         descriptions[0] = "*defense specialist.*aligned attacks activate shield";
         descriptions[1] = "+2 HP.+1 DEF.+1 ATK.";
-        descriptions[2] = "+2 HP.*kill shots shield adjacent allies";
+        descriptions[2] = "+2 HP.*kill shots shield nearby allies";
         descriptions[3] = "+2 HP.+2 DEF.+1 ATK";
         descriptions[4] = "+2 HP.*shield recovers HP";
         descriptions[5] = "+2 HP.+2 DEF.+2 ATK";
@@ -36,7 +36,7 @@ public class DefenseShip extends PlayerShip {
         }
         if(upgradeLevel >= 2 && target.isDead()){
             for (PlayerShip s : Player.getParty()) {
-                if (Math.abs(positionY - s.getPositionY()) + Math.abs(positionX - s.getPositionX()) <= 1) {
+                if (Math.abs(positionY - s.getPositionY()) <= 1 &&  Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead()) {
                     s.shield();
                 }
             }

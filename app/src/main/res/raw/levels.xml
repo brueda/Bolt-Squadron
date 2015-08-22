@@ -44,22 +44,22 @@
         <enemy type="5"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>  <enemy type="2"/> <enemy type="2"/> <enemy type="2"/> <enemy type="2"/>
     </level>
     <level id="15">
-        <enemy type="5"/> <enemy type="5"/> <enemy type="4"/> <enemy type="4"/>
+        <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/>
     </level>
     <level id="16">
-        <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="4"/> <enemy type="4"/>
+        <enemy type="6"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/>
     </level>
     <level id="17">
         <enemy type="6"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/>
     </level>
     <level id="18">
-        <enemy type="6"/> <enemy type="6"/>
+        <enemy type="6"/> <enemy type="6"/> <enemy type="6"/> <enemy type="6"/>
     </level>
     <level id="19">
         <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/>
     </level>
     <level id="20">
-        <enemy type="6"/> <enemy type="6"/> <enemy type="6"/> <enemy type="6"/>
+        <enemy type="6"/> <enemy type="6"/> <enemy type="6"/> <enemy type="6"/> <enemy type="6"/>
     </level>
 
 </levels>
