@@ -40,6 +40,13 @@ public class EnemyShip extends Ship {
             case 5:
                 shipImage = Assets.enemy5;
                 break;
+            case 6:
+                shipImage = Assets.enemy6;
+                break;
+            case 7:
+                shipImage = Assets.bossEnemy;
+                laserImage = Assets.bossLaser;
+                break;
         }
     }
 

@@ -19,9 +19,9 @@ public class Assets {
 	private static SoundPool soundPool;
 	public static Bitmap testShip, greenDot, blueDot, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
 	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
-	purpleOrb, fireball, hadoken;
+	purpleOrb, fireball, hadoken, bossLaser;
 	// enemy sprites
-	public static Bitmap enemy1, enemy2, enemy3, enemy4, enemy5;
+	public static Bitmap enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, bossEnemy;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID, levelUpID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
@@ -58,6 +58,7 @@ public class Assets {
 		star = loadBitmap("star.png", true);
 		fireball = loadBitmap("heavy1.png",true);
 		hadoken = loadBitmap("heavy2.png", true);
+		bossLaser = loadBitmap("bossLaser.png", true);
 
 
 		enemy1 = loadBitmap("enemy1.png", true);
@@ -65,6 +66,9 @@ public class Assets {
         enemy3 = loadBitmap("enemy3.png", true);
         enemy4 = loadBitmap("enemy4.png", true);
 		enemy5 = loadBitmap("enemy5.png", true);
+        enemy6 = loadBitmap("enemy6.png", true);
+		bossEnemy = loadBitmap("bossEnemy.png", true);
+
 
 		laserID = loadSound("laser1.wav");
 		hitID = loadSound("Hit.wav");

@@ -136,7 +136,9 @@ public abstract class Ship {
             shielded = false;
         }
         else {
-            health = Math.min(health - damage, maxHealth);
+            if(damage > 0){
+                health -= damage;
+            }
         }
         if(health <= 0){
             dead = true;

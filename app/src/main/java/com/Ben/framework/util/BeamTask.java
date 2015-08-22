@@ -16,7 +16,7 @@ public class BeamTask extends Task {
     private int y_coordinate;
     private int destination_x;
     private Bitmap image;
-    private final int TRAVEL = 25;
+    private final int TRAVEL = 20;
 
     public BeamTask(){super();}
 
