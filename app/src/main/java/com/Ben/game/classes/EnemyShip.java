@@ -140,8 +140,9 @@ public class EnemyShip extends Ship {
         int x = currentTile.x_coordinate;
         int y = currentTile.y_coordinate;
         int sway = (offset - 100)/20;
+        int width = 80, height = 80;
         if(renderable) {
-            g.drawImage(shipImage, x, y + sway, 80, 80);
+            g.drawImage(shipImage, x, y + sway, width, height);
             g.setFont(Assets.tf, 15f);
             g.setColor(Color.GREEN);
             g.drawString("" + health, x + 85, y + 20 + sway);

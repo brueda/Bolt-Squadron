@@ -107,7 +107,7 @@ public abstract class PlayerShip extends Ship {
         for(int i = 4; i < 7; i++){
             if(Grid.grid[i][getPositionY()].getShip() != null){
                 target = Grid.grid[i][getPositionY()].getShip();
-                target.hit(50);
+                target.hit(60);
                 break;
             }
         }
