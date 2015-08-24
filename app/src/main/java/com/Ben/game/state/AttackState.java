@@ -18,28 +18,32 @@ import com.Ben.simpleandroidgdf.Assets;
  * Created by Benjamin on 6/3/2015.
  */
 public class AttackState extends State {
-    private Tile selectedTile;
     private Ship selectedShip;
+    private int textPosition = 0;
 
     public AttackState(){}
 
     public void init(){
         Player.resetActivated();
+        Assets.playSound(Assets.movementID, 0.2f);
     }
 
     public void update(float delta){
         for(Ship s : Player.getParty()) s.update();
         for(Ship s : Enemies.getEnemies()) s.update();
         Renderer.updateBackground(delta);
+        if(textPosition < 130) {
+            textPosition += 12;
+        }
     }
 
     public void render(Painter g){
         Renderer.renderBackground(g);
         Renderer.renderShips(g, ATTACK, selectedShip);
-        Renderer.renderEnemies(g, State.ATTACK);
+        Renderer.renderEnemies(g, ATTACK);
         g.setColor(Color.WHITE);
-        g.setFont(Assets.tf, 15);
-        g.drawString("attack phase", 100, 15);
+        g.setFont(Assets.tf, 20);
+        g.drawString("action phase", textPosition, 15);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){

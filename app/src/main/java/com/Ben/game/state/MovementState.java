@@ -19,11 +19,13 @@ import com.Ben.simpleandroidgdf.Assets;
  */
 public class MovementState extends State {
     private Ship selectedShip;
+    private int textPosition = 0;
 
     public MovementState(){}
 
     public void init(){
         Player.resetActivated();
+        Assets.playSound(Assets.movementID, 0.2f);
         //THE BEST BUG TO EVER BUG
         /*for(EnemyShip e : Enemies.getEnemies()){
             e.getTile().setShip(e);
@@ -34,6 +36,9 @@ public class MovementState extends State {
         for(Ship s : Player.getParty()) s.update();
         for(Ship s : Enemies.getEnemies()) s.update();
         Renderer.updateBackground(delta);
+        if(textPosition < 80) {
+            textPosition += 12;
+        }
     }
 
     public void render(Painter g){
@@ -48,8 +53,8 @@ public class MovementState extends State {
             }
         }
         g.setColor(Color.WHITE);
-        g.setFont(Assets.tf, 15);
-        g.drawString("movement phase",100,15);
+        g.setFont(Assets.tf, 20);
+        g.drawString("movement phase",textPosition,15);
         Renderer.renderShips(g, MOVE, selectedShip);
         Renderer.renderEnemies(g, MOVE);
     }
