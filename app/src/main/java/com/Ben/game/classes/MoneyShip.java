@@ -14,7 +14,7 @@ public class MoneyShip extends PlayerShip {
         shipImage[1] = Assets.moneyOrange;
         shipImage[2] = Assets.moneyRed;
         descriptions[0] = "*resource generator.*+25 volts for attacks against.  enemies in the same row";
-        descriptions[1] = "+1 HP.+15 volts for aligned attacks";
+        descriptions[1] = "+1 HP.+15 volts for attacks against.  enemies in the same row";
         descriptions[2] = "+1 HP.*+40 volts for kill shots";
         descriptions[3] = "+1 HP.+800 volts when destroyed";
         descriptions[4] = "+1 HP.+1 ATK.+75 volts for all attacks";
