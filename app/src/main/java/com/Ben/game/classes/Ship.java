@@ -69,6 +69,7 @@ public abstract class Ship {
     }
 
     public void setShield(boolean set){
+        shieldRenderable = set;
         shielded = set;
     }
 
