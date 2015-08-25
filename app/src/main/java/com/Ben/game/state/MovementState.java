@@ -72,7 +72,10 @@ public class MovementState extends State {
             if(pressed == null) return true;
             if(pressed.getShip() != null){
                 if(pressed.getShip().getPositionX() > 3) return true;  // can't move Enemy ship
-                if(pressed.getShip() == selectedShip) doMove(selectedShip.getTile(), pressed);  // hold position
+                if(pressed.getShip() == selectedShip) {
+                    doMove(selectedShip.getTile(), pressed);  // hold position
+                    return true;
+                }
                 //manage currently selected ship invariants.
                 if (selectedShip != null) { selectedShip.setSelected(false); }
                 selectedShip = pressed.getShip();
@@ -97,7 +100,6 @@ public class MovementState extends State {
             destination.setShip(ship);
             ship.setActivated(true);
             if(Player.allShipsActivated()){
-                cleanup();
                 setCurrentState(new AttackState());
             }
             return true;
