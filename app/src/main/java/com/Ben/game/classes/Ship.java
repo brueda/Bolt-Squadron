@@ -26,6 +26,7 @@ public abstract class Ship {
     protected int offset;
     protected boolean increasing;
     protected Bitmap laserImage;
+    public boolean shieldRenderable;
     boolean selected;
 
     public Ship(){
@@ -37,6 +38,7 @@ public abstract class Ship {
         shielded = false;
         currentTile = null;
         renderable = true;
+        shieldRenderable = false;
         offset = RandomNumberGenerator.getRandInt(200);
         increasing = true;
         selected = false;

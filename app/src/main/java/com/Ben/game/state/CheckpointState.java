@@ -22,6 +22,7 @@ import java.util.Iterator;
  */
 public class CheckpointState extends State {
     private PlayerShip selectedShip;
+    private static final int SHADOW_COLOR = 0xAA000FFF;
 
     @Override
     public void init(){
@@ -34,6 +35,9 @@ public class CheckpointState extends State {
         Grid.grid[4][3].setShip(Player.attackBuy);
         Grid.grid[5][3].setShip(Player.defenseBuy);
         Grid.grid[6][3].setShip(Player.moneyBuy);
+        Assets.setSolidColor(Assets.attackShadow, SHADOW_COLOR);
+        Assets.setSolidColor(Assets.defenseShadow, SHADOW_COLOR);
+        Assets.setSolidColor(Assets.moneyShadow, SHADOW_COLOR);
     }
 
     @Override

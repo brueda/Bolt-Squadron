@@ -57,10 +57,10 @@ public class MovementState extends State {
                 }
             }
         }
-        g.setColor(Color.WHITE);
+        g.setColor(Color.GREEN);
         g.setFont(Assets.tf, 20);
         g.drawString("movement phase", textPosition, 15);
-        g.drawString("level " + Player.currentLevel + "/" + LevelLoader.getNumberOfLevels(), 550, 15);
+        g.drawString("level " + Player.currentLevel + " / " + LevelLoader.getNumberOfLevels(), 550, 15);
         Renderer.renderShips(g, MOVE, selectedShip);
         Renderer.renderEnemies(g, MOVE);
     }

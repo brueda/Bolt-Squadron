@@ -44,10 +44,10 @@ public class AttackState extends State {
         Renderer.renderBackground(g);
         Renderer.renderShips(g, ATTACK, selectedShip);
         Renderer.renderEnemies(g, ATTACK);
-        g.setColor(Color.WHITE);
+        g.setColor(Color.RED);
         g.setFont(Assets.tf, 20);
         g.drawString("action phase", textPosition, 15);
-        g.drawString("level " + Player.currentLevel + "/" + LevelLoader.getNumberOfLevels(), 550, 15);
+        g.drawString("level " + Player.currentLevel + " / " + LevelLoader.getNumberOfLevels(), 550, 15);
     }
 
     public boolean onTouch(int e, int scaledX, int scaledY){

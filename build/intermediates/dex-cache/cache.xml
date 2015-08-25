@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Benjamin\AndroidStudioProjects\Bolt-Squadron\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\jars\libs\internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="C:\Users\Benjamin\AndroidStudioProjects\Bolt-Squadron\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-aa3c83af51e79a90ff8a99d58cdab1f916ac3bc3.jar" />
-    </item>
-    <item
         jar="C:\Users\Benjamin\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
         <dex dex="C:\Users\Benjamin\AndroidStudioProjects\Bolt-Squadron\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-7b75f360f4dfb571c7d95baa5fa0c762211aa57a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Benjamin\AndroidStudioProjects\Bolt-Squadron\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\jars\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="C:\Users\Benjamin\AndroidStudioProjects\Bolt-Squadron\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-aa3c83af51e79a90ff8a99d58cdab1f916ac3bc3.jar" />
     </item>
     <item
         jar="C:\Users\Benjamin\AndroidStudioProjects\Bolt-Squadron\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\jars\classes.jar"

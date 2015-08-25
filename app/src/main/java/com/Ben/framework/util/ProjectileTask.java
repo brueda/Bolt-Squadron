@@ -20,6 +20,7 @@ public class ProjectileTask extends Task {
     private float angle;
     private Bitmap myProjectile;
     private final int TRAVEL = 20;
+    private Ship target;
 
     public ProjectileTask(){
         super();
@@ -32,6 +33,7 @@ public class ProjectileTask extends Task {
         destination_y = dest.getTile().y_coordinate;
         vertical = y_coordinate - destination_y;
         distance = Math.abs(x_coordinate - destination_x);
+        target = dest;
 
         int deltaY = destination_y - y_coordinate;
         int deltaX = destination_x - x_coordinate;
@@ -51,11 +53,16 @@ public class ProjectileTask extends Task {
     public void update(long delta, Painter g){
         if(direction == 1){
             x_coordinate += TRAVEL;
-            if(x_coordinate >= destination_x){finishTask();}
+            if(x_coordinate >= destination_x){
+                finishTask();
+            }
         }
         else{
             x_coordinate -= TRAVEL;
-            if(x_coordinate <= destination_x){finishTask();}
+            if(x_coordinate <= destination_x){
+                finishTask();
+                target.shieldRenderable = false;
+            }
         }
         y_coordinate -= vertical / (distance / TRAVEL);
         g.drawImage(myProjectile, x_coordinate, y_coordinate);

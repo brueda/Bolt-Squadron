@@ -33,14 +33,14 @@ public class VictoryState extends State {
             g.setColor(Color.WHITE);
             g.drawString("TIP:   in the action phase,",350,200);
             g.drawString("swipe left to use shield",350,240);
-            g.drawString("swipe right for team attack",350,280);
-            g.drawString("swipe down to ram attack",350,320);
+            g.drawString("swipe right to use team attack",350,280);
+            g.drawString("swipe down to use crash attack",350,320);
         }
         if(Player.currentLevel == 2){
             g.setFont(Assets.tf, 18);
             g.setColor(Color.WHITE);
             g.drawString("TIP:   ships closer to the enemy",350,200);
-            g.drawString("are more likely to be targeted",350,240);
+            g.drawString("are more likely to be targeted.",350,240);
             g.drawString("try to put shielded ships on", 350, 280);
             g.drawString("the front lines.", 350, 320);
         }

@@ -71,6 +71,7 @@ public abstract class PlayerShip extends Ship {
 
     public void shield(){
         Assets.playSound(Assets.shieldID, 1.0f);
+        shieldRenderable = true;
         shielded = true;
     }
 
@@ -135,18 +136,18 @@ public abstract class PlayerShip extends Ship {
         if(!activated && !dead) {
             switch (state) {
                 case (State.MOVE):
-                    g.drawImage(Assets.blueDot, x + 45, y + 10 + sway, 10, 10);
-                    if (this == selected)
-                        g.drawImage(Assets.blueRing, x + 40, y + 5 + sway, 20, 20);
+                    //g.drawImage(Assets.blueDot, x + 45, y + 10 + sway, 10, 10);
+                    if(this == selected)
+                        g.drawImage(shipImage[SHADOW], x - 3, y + sway - 3, 71, 91);
                     break;
                 case (State.ATTACK):
-                    g.drawImage(Assets.redDot, x + 45, y + 10 + sway, 10, 10);
-                    if (this == selected)
-                        g.drawImage(Assets.redSelect, x + 40, y + 5 + sway, 20, 20);
+                    //g.drawImage(Assets.redDot, x + 45, y + 10 + sway, 10, 10);
+                    if(this == selected)
+                        g.drawImage(shipImage[SHADOW], x - 3, y + sway - 3, 71, 91);
                     break;
                 case (State.CHECK):
                     if(this == selected)
-                        g.drawImage(Assets.greenRing, x + 40, y + 5 + sway, 20, 20);
+                        g.drawImage(shipImage[SHADOW], x - 3, y + sway - 3, 71, 91);
                     break;
             }
         }
@@ -162,8 +163,8 @@ public abstract class PlayerShip extends Ship {
             if(upgradeLevel % 2 == 1){
                 g.drawImage(Assets.star, x+9, y+35 + sway, 15, 15);
             }
-            if(shielded){
-                g.drawImage(Assets.shield, x - 10, y + sway, 95, 95);
+            if(shieldRenderable){
+                g.drawImage(Assets.shield, x - 10, y + sway, 95 + sway, 95 + sway);
             }
         }
     }
