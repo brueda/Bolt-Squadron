@@ -26,6 +26,7 @@ public abstract class Ship {
     protected int offset;
     protected boolean increasing;
     protected Bitmap laserImage;
+    boolean selected;
 
     public Ship(){
         dead = false;
@@ -38,6 +39,7 @@ public abstract class Ship {
         renderable = true;
         offset = RandomNumberGenerator.getRandInt(200);
         increasing = true;
+        selected = false;
     }
 
     /* getters and setters */
@@ -137,7 +139,7 @@ public abstract class Ship {
         }
         else {
             if(damage > 0){
-                health -= damage;
+                health = Math.max(health - damage, 0);
             }
         }
         if(health <= 0){
@@ -153,5 +155,14 @@ public abstract class Ship {
     }
 
     public abstract void destroy();
+
+    //Returns whether this is the ship currently selected by the player.
+    public boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean s) {
+        selected = s;
+    }
 
 }

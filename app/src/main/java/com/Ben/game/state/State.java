@@ -22,4 +22,7 @@ public abstract class State {
 
 	public abstract boolean onTouch(int event, int scaledX, int scaledY);
 
+	//Overridden in inheriting classes as necessary.
+	public void cleanup() {}
+
 }

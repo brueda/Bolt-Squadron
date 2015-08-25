@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -13,13 +14,14 @@ import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 
 import com.Ben.framework.animation.Frame;
+import com.Ben.framework.util.Painter;
 
 public class Assets {
 	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
 	public static Bitmap testShip, greenDot, blueDot, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
 	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
-	purpleOrb, fireball, hadoken, bossLaser;
+	purpleOrb, fireball, hadoken, bossLaser, attackShadow, defenseShadow, moneyShadow;
 	// enemy sprites
 	public static Bitmap enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, bossEnemy;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID, levelUpID;
@@ -48,12 +50,15 @@ public class Assets {
 		attackBlue = loadBitmap("attackShipBlue.png", true);
 		attackRed = loadBitmap("attackShipRed.png", true);
 		attackOrange = loadBitmap("attackOrange.png", true);
+		attackShadow = makeMutableBitmap("attackShipBlue.png");
 		moneyBlue = loadBitmap("moneyBlue.png", true);
 		moneyOrange = loadBitmap("moneyOrange.png", true);
 		moneyRed = loadBitmap("moneyRed.png", true);
+		moneyShadow = makeMutableBitmap("moneyBlue.png");
 		defenseBlue = loadBitmap("defenseBlue.png", true);
 		defenseOrange = loadBitmap("defenseOrange.png", true);
 		defenseRed = loadBitmap("defenseRed.png", true);
+		defenseShadow = makeMutableBitmap("defenseBlue.png");
 		ring = loadBitmap("fx04.png", true);
 		star = loadBitmap("star.png", true);
 		fireball = loadBitmap("heavy1.png",true);
@@ -154,4 +159,25 @@ public class Assets {
             mediaPlayer.start();
         }
     }
+
+	public static Bitmap makeMutableBitmap(String filename) {
+		Bitmap ret = loadBitmap(filename, true);
+		ret = ret.copy(ret.getConfig(), true);
+		return ret;
+	}
+
+	// Sets all non-transparent pixels of the sprite to the specified color.
+	// Make sure the bitmap is mutable before passing it into this function.
+	// The program will likely crash otherwise.
+	public static void setSolidColor(Bitmap b, int argb) {
+		int width = b.getWidth();
+		int height = b.getHeight();
+		for (int i = 0; i < width; ++i) {
+			for (int j = 0; j < height; ++j) {
+				if (Color.alpha(b.getPixel(i, j)) > 0) {
+					b.setPixel(i, j, argb);
+				}
+			}
+		}
+	}
 }

@@ -54,7 +54,7 @@ public class GameView extends SurfaceView implements Runnable {
 
 			@Override
 			public void surfaceChanged(SurfaceHolder holder, int format,
-					int width, int height) {
+									   int width, int height) {
 				// TODO Auto-generated method stub
 			}
 
@@ -67,6 +67,9 @@ public class GameView extends SurfaceView implements Runnable {
 	}
 
 	public void setCurrentState(State newState) {
+		if (currentState != null) {
+			currentState.cleanup();
+		}
 		System.gc();
 		newState.init();
 		currentState = newState;

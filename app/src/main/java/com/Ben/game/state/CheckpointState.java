@@ -3,6 +3,7 @@ package com.Ben.game.state;
 import android.graphics.Color;
 
 import com.Ben.framework.util.InputHandler;
+import com.Ben.framework.util.LevelLoader;
 import com.Ben.framework.util.Painter;
 import com.Ben.framework.util.Renderer;
 import com.Ben.game.classes.AttackShip;
@@ -64,6 +65,7 @@ public class CheckpointState extends State {
         g.setColor(Color.WHITE);
         g.setFont(Assets.tf, 15);
         g.drawString("ships:  " + Player.getParty().size() + " / 4", 100, 15);
+        g.drawString("level " + Player.currentLevel + "/" + LevelLoader.getNumberOfLevels(), 550, 15);
     }
 
     @Override

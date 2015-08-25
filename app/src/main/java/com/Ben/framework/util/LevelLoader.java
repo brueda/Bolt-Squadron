@@ -117,4 +117,8 @@ public class LevelLoader {
         }
     }
 
+    public static int getNumberOfLevels() {
+        return levelList.size();
+    }
+
 }

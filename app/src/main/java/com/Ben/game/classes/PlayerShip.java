@@ -15,6 +15,9 @@ import com.Ben.simpleandroidgdf.Assets;
  * Created by Benjamin on 6/7/2015.
  */
 public abstract class PlayerShip extends Ship {
+
+    protected static final int SHADOW = 4;
+    
     public int upgradeLevel;
     protected Bitmap specialLaser;
     protected Bitmap[] shipImage;
@@ -26,7 +29,7 @@ public abstract class PlayerShip extends Ship {
         upgradeLevel = 0;
         specialLaser = Assets.multiLaser;
         laserImage = Assets.blueLaser;
-        shipImage = new Bitmap[3];
+        shipImage = new Bitmap[5];
         descriptions = new String[6];
         costs  = new int[6];
     }
@@ -72,7 +75,7 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void repair(){
-        health = Math.min(maxHealth, health + (maxHealth / 7));
+        health = Math.min(maxHealth, health + 5);
     }
 
     public void levelUp(){
@@ -148,10 +151,14 @@ public abstract class PlayerShip extends Ship {
             }
         }
         if(renderable) {
+            if (this.selected && !this.isActivated()) {
+                g.drawImage(shipImage[SHADOW], x - 3, y + sway - 3, 71, 91);
+            }
             g.setFont(Assets.tf, 15f);
             g.setColor(Color.GREEN);
             g.drawString("" + health, x - 22, y + sway + 20);
             g.drawImage(shipImage[upgradeLevel/2], x, y + sway, 65, 85);
+
             if(upgradeLevel % 2 == 1){
                 g.drawImage(Assets.star, x+9, y+35 + sway, 15, 15);
             }
@@ -165,4 +172,6 @@ public abstract class PlayerShip extends Ship {
         //Player.getParty().remove(this);   ** concurrency issues with this **
         renderable = false;
     }
+
+
 }
