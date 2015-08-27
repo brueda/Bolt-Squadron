@@ -27,9 +27,9 @@ public class MoneyShip extends PlayerShip {
         costs[0] = 150;
         costs[1] = 100;
         costs[2] = 150;
-        costs[3] = 200;
-        costs[4] = 300;
-        costs[5] = 150;
+        costs[3] = 250;
+        costs[4] = 400;
+        costs[5] = 200;
     }
 
     @Override
