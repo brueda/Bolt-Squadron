@@ -51,7 +51,7 @@ public class DefenseShip extends PlayerShip {
     @Override
     public void shield(){
         super.shield();
-        if(upgradeLevel >= 0){
+        if(upgradeLevel >= 4){
             repair();
         }
     }
