@@ -59,7 +59,7 @@
         <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/> <enemy type="5"/>
     </level>
     <level id="20">
-        <enemy type="7"/> <enemy type="6"/> <enemy type="6"/> <enemy type="6"/> <enemy type="6"/>
+        <enemy type="7"/> <enemy type="6"/> <enemy type="6"/> <enemy type="6"/> <enemy type="7"/>
     </level>
 
 </levels>

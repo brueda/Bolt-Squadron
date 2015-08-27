@@ -34,7 +34,7 @@ public class VictoryState extends State {
             g.drawString("TIP:   in the action phase,",350,200);
             g.drawString("swipe left to use shield",350,240);
             g.drawString("swipe right to use team attack",350,280);
-            g.drawString("swipe down to use crash attack",350,320);
+            g.drawString("swipe down to use thunder rush",350,320);
         }
         if(Player.currentLevel == 2){
             g.setFont(Assets.tf, 18);

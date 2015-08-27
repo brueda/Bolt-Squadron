@@ -32,7 +32,7 @@ public class AttackShip extends PlayerShip {
         costs[2] = 600;
         costs[3] = 800;
         costs[4] = 1000;
-        costs[5] = 1200;
+        costs[5] = 1500;
     }
 
     @Override
