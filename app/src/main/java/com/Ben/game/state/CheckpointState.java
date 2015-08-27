@@ -22,7 +22,7 @@ import java.util.Iterator;
  */
 public class CheckpointState extends State {
     private PlayerShip selectedShip;
-    private static final int SHADOW_COLOR = 0xAA000FFF;
+    private static final int SHADOW_COLOR = 0xAAFFFF00;
 
     @Override
     public void init(){
