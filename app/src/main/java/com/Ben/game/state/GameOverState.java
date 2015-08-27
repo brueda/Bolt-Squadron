@@ -23,6 +23,9 @@ public class GameOverState extends State {
             GameMainActivity.setHighScore(Player.getScore());
             message = "High Score";
         }
+        if(Player.currentLevel == 21){
+            message = "You Win!";
+        }
     }
 
     @Override

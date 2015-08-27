@@ -28,8 +28,7 @@ public class CheckpointState extends State {
     public void init(){
         Player.resetActivated();
         for(PlayerShip p : Player.getParty()){
-            p.setShield(false);
-            p.setHealth(p.getMaxHealth());
+            p.resetStatus();
         }
         selectedShip = Player.attackBuy;
         Grid.grid[4][3].setShip(Player.attackBuy);

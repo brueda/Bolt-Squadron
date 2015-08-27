@@ -65,7 +65,11 @@ public class VictoryState extends State {
         ++Player.currentLevel;
         Player.increaseScore(500);
         // checkpoint every 2 levels
-        if(Player.currentLevel % 2 != 0) {
+        if(Player.currentLevel == 21){
+            Player.increaseScore(5000);
+            setCurrentState(new GameOverState());
+        }
+        else if(Player.currentLevel % 2 != 0) {
             setCurrentState(new CleanupState(new CheckpointState()));
         }
         else{

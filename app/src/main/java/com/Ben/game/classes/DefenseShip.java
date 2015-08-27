@@ -23,7 +23,7 @@ public class DefenseShip extends PlayerShip {
         descriptions[1] = "+2 HP.+1 DEF.+1 ATK.";
         descriptions[2] = "+2 HP.*kill shots shield nearby allies";
         descriptions[3] = "+2 HP.+2 DEF.+1 ATK";
-        descriptions[4] = "+2 HP.*shield recovers HP";
+        descriptions[4] = "+2 HP.*shield recovers 5 HP.  max 30 per round";
         descriptions[5] = "+2 HP.+2 DEF.+2 ATK";
         costs[0] = 200;
         costs[1] = 400;
@@ -51,7 +51,7 @@ public class DefenseShip extends PlayerShip {
     @Override
     public void shield(){
         super.shield();
-        if(upgradeLevel >= 4){
+        if(upgradeLevel >= 0){
             repair();
         }
     }

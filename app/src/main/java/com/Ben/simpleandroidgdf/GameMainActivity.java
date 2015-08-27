@@ -17,7 +17,6 @@ public class GameMainActivity extends Activity {
 	public static SharedPreferences prefs;
 	private static final String highScoreKey = "highScoreKey";
 	private static int highScore;
-	private Typeface tf;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

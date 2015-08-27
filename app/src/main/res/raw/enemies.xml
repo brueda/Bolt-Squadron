@@ -3,8 +3,8 @@
     <enemy type="1" hp="12" att="10" def="5" id="1"/>
     <enemy type="2" hp="16" att="11" def="5" id="2"/>
     <enemy type="3" hp="20" att="14" def="6" id="3"/>
-    <enemy type="4" hp="24" att="16" def="7" id="4"/>
-    <enemy type="5" hp="28" att="16" def="9" id="5"/>
+    <enemy type="4" hp="24" att="16" def="7" id="5"/>
+    <enemy type="5" hp="28" att="16" def="9" id="4"/>
     <enemy type="6" hp="32" att="17" def="10" id="6"/>
     <enemy type="7" hp="40" att="20" def="12" id="7"/>
 </enemies>

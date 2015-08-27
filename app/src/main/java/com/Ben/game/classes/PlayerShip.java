@@ -20,6 +20,7 @@ public abstract class PlayerShip extends Ship {
     protected static final int DESAT = 5;
     
     public int upgradeLevel;
+    protected int totalHealing;
     protected Bitmap specialLaser;
     protected Bitmap[] shipImage;
     protected String[] descriptions;
@@ -28,6 +29,7 @@ public abstract class PlayerShip extends Ship {
     public PlayerShip(){
         super();
         upgradeLevel = 0;
+        totalHealing = 0;
         specialLaser = Assets.multiLaser;
         laserImage = Assets.blueLaser;
         shipImage = new Bitmap[8];
@@ -77,7 +79,11 @@ public abstract class PlayerShip extends Ship {
     }
 
     public void repair(){
-        health = Math.min(maxHealth, health + 5);
+        // no more than 30 healing per round allowed
+        int healingPotential = Math.min(5, maxHealth - health);
+        int healingDone = Math.min(30-totalHealing, healingPotential);
+        totalHealing += healingDone;
+        health += healingDone;
     }
 
     public void levelUp(){
@@ -175,6 +181,12 @@ public abstract class PlayerShip extends Ship {
     public void destroy(){
         //Player.getParty().remove(this);   ** concurrency issues with this **
         renderable = false;
+    }
+
+    public void resetStatus(){
+        setShield(false);
+        setHealth(getMaxHealth());
+        totalHealing = 0;
     }
 
 
