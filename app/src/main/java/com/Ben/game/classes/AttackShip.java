@@ -18,6 +18,9 @@ public class AttackShip extends PlayerShip {
         shipImage[2] = Assets.attackRed;
         //Index 3 is left empty for now in case of additional levels.
         shipImage[PlayerShip.SHADOW] = Assets.attackShadow;
+        shipImage[DESAT + 0] = Assets.attBlueDesat;
+        shipImage[DESAT + 1] = Assets.attOrangeDesat;
+        shipImage[DESAT + 2] = Assets.attRedDesat;
         descriptions[0] = "*attack specialist.*attacks against enemies in.  the same row hit twice";
         descriptions[1] = "+2 HP.+1 ATK.+1 DEF";
         descriptions[2] = "+2 HP.*kill shots cause.  nearby allies to attack";

@@ -17,6 +17,7 @@ import com.Ben.simpleandroidgdf.Assets;
 public abstract class PlayerShip extends Ship {
 
     protected static final int SHADOW = 4;
+    protected static final int DESAT = 5;
     
     public int upgradeLevel;
     protected Bitmap specialLaser;
@@ -29,7 +30,7 @@ public abstract class PlayerShip extends Ship {
         upgradeLevel = 0;
         specialLaser = Assets.multiLaser;
         laserImage = Assets.blueLaser;
-        shipImage = new Bitmap[5];
+        shipImage = new Bitmap[8];
         descriptions = new String[6];
         costs  = new int[6];
     }
@@ -158,10 +159,12 @@ public abstract class PlayerShip extends Ship {
             g.setFont(Assets.tf, 15f);
             g.setColor(Color.GREEN);
             g.drawString("" + health, x - 22, y + sway + 20);
-            g.drawImage(shipImage[upgradeLevel/2], x, y + sway, 65, 85);
+            int shipSpriteIndex = !this.isActivated() ? upgradeLevel/2 : (upgradeLevel/2) + DESAT;
+            g.drawImage(shipImage[shipSpriteIndex], x, y + sway, 65, 85);
 
-            if(upgradeLevel % 2 == 1){
-                g.drawImage(Assets.star, x+9, y+35 + sway, 15, 15);
+            if(upgradeLevel % 2 == 1) {
+                Bitmap starSprite = !this.isActivated() ? Assets.star : Assets.starDesat;
+                g.drawImage(starSprite, x+9, y+35 + sway, 15, 15);
             }
             if(shieldRenderable){
                 g.drawImage(Assets.shield, x - 10, y + sway, 95 + sway, 95 + sway);

@@ -29,7 +29,7 @@ import static org.xmlpull.v1.XmlPullParser.START_TAG;
 public class LevelLoader {
 
     private static XmlPullParser parser;
-    private static final ArrayList<Level> levelList = new ArrayList<Level>();
+    private static ArrayList<Level> levelList;
 
     public static void initialize(InputStream file) {
         try {
@@ -41,6 +41,8 @@ public class LevelLoader {
             Log.d("LevelLoader", "Problem setting up parser.");
             System.exit(1);
         }
+
+        levelList = new ArrayList<Level>();
 
         readLevelData();
         sanityCheck();

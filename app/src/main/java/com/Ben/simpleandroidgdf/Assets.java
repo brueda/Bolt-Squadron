@@ -22,12 +22,18 @@ public class Assets {
 	public static Bitmap testShip, greenDot, blueDot, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
 	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
 	purpleOrb, fireball, hadoken, bossLaser, attackShadow, defenseShadow, moneyShadow;
+	//Inactive versions of sprites
+	public static Bitmap attGreenDesat, attBlueDesat, attRedDesat, attOrangeDesat, monBlueDesat, monRedDesat, monOrangeDesat,
+	defBlueDesat, defRedDesat, defOrangeDesat, starDesat;
 	// enemy sprites
 	public static Bitmap enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, bossEnemy;
 	public static int laserID, hitID, explosionID, movementID, shieldID, beamID, selectID, healID, failID, levelUpID;
     public static Frame[] explosionFrames;
 	public static Typeface tf;
 
+	//The amount to desaturate the inactive ship sprites by
+	private static float AMTDESAT = 90.0f;
+	private static float AMTBRITE = -20.0f;
 
 	public static void load() {
 		testShip = loadBitmap("attackOrange.png", true);
@@ -64,6 +70,8 @@ public class Assets {
 		fireball = loadBitmap("heavy1.png",true);
 		hadoken = loadBitmap("heavy2.png", true);
 		bossLaser = loadBitmap("bossLaser.png", true);
+
+		generateDesaturatedSprites();
 
 
 		enemy1 = loadBitmap("enemy1.png", true);
@@ -178,6 +186,65 @@ public class Assets {
 					b.setPixel(i, j, argb);
 				}
 			}
+		}
+	}
+
+	//Desaturates bitmap "b" by the percentage "percent"
+	//0 results in the original sprite whereas 100 results in total grayscale.
+	public static void desaturateSprite(Bitmap b, float percent) {
+		if (percent > 100.0f) { percent = 100.0f; }
+		if (percent < 0.0f) { percent = 0.0f; }
+		percent = percent / 100.0f;
+		for (int i = 0; i < b.getWidth(); ++i) {
+			for (int j = 0; j < b.getHeight(); ++j) {
+				int c = b.getPixel(i, j);
+				int average = (Color.red(c) + Color.green(c) + Color.blue(c)) / 3;
+				int red = (int) (Color.red(c) + ((average - Color.red(c)) * percent));
+				int green = (int) (Color.green(c) + ((average - Color.green(c)) * percent));
+				int blue = (int) (Color.blue(c) + ((average - Color.blue(c)) * percent));
+				b.setPixel(i, j, Color.alpha(c) << 24 | red << 16 | green << 8 | blue);
+			}
+		}
+	}
+
+	//Changes brightness in ratio to the percent given. -100.0f would not guarantee pure black.
+	//+100.0f would not guarantee pure white.
+	public static void changeSpriteBrightness(Bitmap b, float percent) {
+		if (percent < -100.0f) { percent = -100.0f; }
+		percent = percent / 100.0f;
+		for (int i = 0; i < b.getWidth(); ++i) {
+			for (int j = 0; j < b.getHeight(); ++j) {
+				int c = b.getPixel(i, j);
+				int average = (Color.red(c) + Color.green(c) + Color.blue(c)) / 3;
+				//Mins and maxes are to keep the value bounded between 0 and 255.
+				int red = (int) Math.min(255, Math.max(0, (Color.red(c) + (average * percent))));
+				int green = (int) Math.min(255, Math.max(0, (Color.green(c) + (average * percent))));
+				int blue = (int) Math.min(255, Math.max(0, (Color.blue(c) + (average * percent))));
+				b.setPixel(i, j, Color.alpha(c) << 24 | red << 16 | green << 8 | blue);
+			}
+		}
+	}
+
+	//So ugly... but for the sake of efficiency...
+	private static void generateDesaturatedSprites() {
+		//WHY ARE THE FILES INCONSISTENTLY NAMED?!?!
+		//WHY DOES ONLY THE ATTACK SHIP HAVE A GREEN SPRITE?!
+		Bitmap[] sprites = new Bitmap[11];
+
+		sprites[0] = attGreenDesat = makeMutableBitmap("attackShipGreen.png");
+		sprites[1] = attBlueDesat = makeMutableBitmap("attackShipBlue.png");
+		sprites[2] = attRedDesat = makeMutableBitmap("attackShipRed.png");
+		sprites[3] = attOrangeDesat = makeMutableBitmap("attackOrange.png");
+		sprites[4] = monBlueDesat = makeMutableBitmap("moneyBlue.png");
+		sprites[5] = monRedDesat = makeMutableBitmap("moneyRed.png");
+		sprites[6] = monOrangeDesat = makeMutableBitmap("moneyOrange.png");
+		sprites[7] = defBlueDesat = makeMutableBitmap("defenseBlue.png");
+		sprites[8] = defRedDesat = makeMutableBitmap("defenseRed.png");
+		sprites[9] = defOrangeDesat = makeMutableBitmap("defenseOrange.png");
+		sprites[10] = starDesat = makeMutableBitmap("star.png");
+		for (int i = 0; i < sprites.length; ++i) {
+			desaturateSprite(sprites[i], AMTDESAT);
+			changeSpriteBrightness(sprites[i], AMTBRITE);
 		}
 	}
 }

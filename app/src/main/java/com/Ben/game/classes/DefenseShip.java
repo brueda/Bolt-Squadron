@@ -16,6 +16,9 @@ public class DefenseShip extends PlayerShip {
         shipImage[2] = Assets.defenseRed;
         //Index 3 is left empty for now in case of additional levels.
         shipImage[PlayerShip.SHADOW] = Assets.defenseShadow;
+        shipImage[DESAT + 0] = Assets.defBlueDesat;
+        shipImage[DESAT + 1] = Assets.defOrangeDesat;
+        shipImage[DESAT + 2] = Assets.defRedDesat;
         descriptions[0] = "*defense specialist.*attacks against enemies in.  the same row activate shield";
         descriptions[1] = "+2 HP.+1 DEF.+1 ATK.";
         descriptions[2] = "+2 HP.*kill shots shield nearby allies";
