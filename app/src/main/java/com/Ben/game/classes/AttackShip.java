@@ -46,7 +46,7 @@ public class AttackShip extends PlayerShip {
         super.fire(target);
         if(upgradeLevel >= 2 && target.isDead()){
             for(PlayerShip s : Player.getParty()){
-                if(Math.abs(positionY - s.getPositionY()) <= 1 &&  Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead() && s != this){
+                if(Math.abs(positionY - s.getPositionY()) <= 1 &&  Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead()){
                     Ship t = null;
                     for(int i = 4; i < 7; i++){
                         if(Grid.grid[i][s.getPositionY()].getShip() != null){
