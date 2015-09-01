@@ -52,7 +52,7 @@ public class Renderer {
             g.drawString("SWIPE UP TO UPGRADE:  " + selected.getCosts()[selected.upgradeLevel + 1] + " V", 320, 50);
             g.setColor(Color.GREEN);
             g.drawString("SWIPE DOWN TO GO GREEN:", 320, 75);
-            g.drawString("+" + selected.getTotalCost() * 3 / 4 + " V", 320, 100);
+            g.drawString("+" + selected.getTotalCost() / 2 + " V", 320, 100);
             Bitmap image = selected.getImageArray()[(selected.upgradeLevel + 1) / 2];
             g.drawImage(image, 500, 100, 98, 127);
             if(selected.upgradeLevel % 2 == 0 || selected.upgradeLevel == 0){

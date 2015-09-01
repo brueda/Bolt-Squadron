@@ -51,7 +51,7 @@ public abstract class PlayerShip extends Ship {
     public void goGreen(){
         upgradeLevel = 6;
         green = true;
-        Player.increaseVolts((totalCost * 3) / 4);
+        Player.increaseVolts(totalCost / 2);
     }
 
     @Override

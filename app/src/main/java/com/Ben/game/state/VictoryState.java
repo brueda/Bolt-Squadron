@@ -34,9 +34,15 @@ public class VictoryState extends State {
             g.drawString("TIP:   in the action phase,",350,200);
             g.drawString("swipe left to use shield",350,240);
             g.drawString("swipe right to use team attack",350,280);
-            g.drawString("swipe down to use thunder rush",350,320);
+            g.drawString("swipe down to use last resort",350,320);
         }
         if(Player.currentLevel == 2){
+            g.setFont(Assets.tf, 18);
+            g.setColor(Color.WHITE);
+            g.drawString("TIP:   green ships cannot",350,200);
+            g.drawString("use any special abilities",350,240);
+        }
+        if(Player.currentLevel == 3){
             g.setFont(Assets.tf, 18);
             g.setColor(Color.WHITE);
             g.drawString("TIP:   ships closer to the enemy",350,200);
@@ -44,14 +50,14 @@ public class VictoryState extends State {
             g.drawString("try to put shielded ships on", 350, 280);
             g.drawString("the front lines.", 350, 320);
         }
-        if (Player.currentLevel == 3) {
+        if (Player.currentLevel == 4) {
             g.setFont(Assets.tf, 18);
             g.setColor(Color.WHITE);
             g.drawString("TIP:   use a ship's special attack", 350, 200);
             g.drawString("by attacking enemies directly", 350, 240);
             g.drawString("across from it", 350, 280);
         }
-        if (Player.currentLevel == 4) {
+        if (Player.currentLevel == 5) {
             g.setFont(Assets.tf, 18);
             g.setColor(Color.WHITE);
             g.drawString("TIP:   the last enemy left", 350, 200);

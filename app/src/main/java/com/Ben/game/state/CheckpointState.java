@@ -96,7 +96,7 @@ public class CheckpointState extends State {
             }
         }
         else if(e == InputHandler.SWIPE_DOWN){
-            if(selectedShip != null && !selectedShip.isGreen()){
+            if(selectedShip != null && selectedShip.getPositionX() < 3 && !selectedShip.isGreen()){
                 selectedShip.goGreen();
                 Assets.playSound(Assets.levelUpID, 1.0f);
             }
