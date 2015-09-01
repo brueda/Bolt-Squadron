@@ -49,6 +49,7 @@ public class Renderer {
         }
         else{                                // upgrade ship
             if(selected.upgradeLevel >= 5) return;
+            g.setColor(Color.CYAN);
             g.drawString("SWIPE UP TO UPGRADE:  " + selected.getCosts()[selected.upgradeLevel + 1] + " V", 320, 50);
             g.setColor(Color.GREEN);
             g.drawString("SWIPE DOWN TO GO GREEN:", 320, 75);
