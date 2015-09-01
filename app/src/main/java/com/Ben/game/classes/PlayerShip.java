@@ -36,7 +36,10 @@ public abstract class PlayerShip extends Ship {
         specialLaser = Assets.multiLaser;
         laserImage = Assets.blueLaser;
         shipImage = new Bitmap[10];
+        // the next couple for loops are hacky fixes to a problem. ignore them.
+        for(int i = 0; i < 10; i++) shipImage[i] = Assets.attackBlue;
         descriptions = new String[10];
+        for(int i = 0; i < 10; i++) descriptions[i] = "Hello World";
         costs  = new int[10];
     }
 
