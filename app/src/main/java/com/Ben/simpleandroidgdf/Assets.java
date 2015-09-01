@@ -19,9 +19,8 @@ import com.Ben.framework.util.Painter;
 public class Assets {
 	private static MediaPlayer mediaPlayer;
 	private static SoundPool soundPool;
-	public static Bitmap testShip, greenDot, blueDot, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser,
-	attackGreen, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, ring, redDot, redSelect, star,
-	purpleOrb, fireball, hadoken, bossLaser, attackShadow, defenseShadow, moneyShadow;
+	public static Bitmap testShip, greenDot, blueDot, background, blueLaser, redLaser, greenRing, blueRing, shield, beam, shieldLaser, multiLaser, moneyLaser, attackBlue, attackRed, attackOrange, moneyBlue, moneyOrange, moneyRed, defenseBlue, defenseOrange, defenseRed, attackGreen, moneyGreen, defenseGreen, ring, redDot, redSelect, star,
+	purpleOrb, fireball, hadoken, bossLaser, attackShadow, defenseShadow, moneyShadow, greenLaser;
 	//Inactive versions of sprites
 	public static Bitmap attGreenDesat, attBlueDesat, attRedDesat, attOrangeDesat, monBlueDesat, monRedDesat, monOrangeDesat,
 	defBlueDesat, defRedDesat, defOrangeDesat, starDesat;
@@ -52,7 +51,7 @@ public class Assets {
 		shieldLaser = loadBitmap("shieldLaser.png", true);
 		multiLaser = loadBitmap("multiLaser.png", true);
 		moneyLaser = loadBitmap("moneyLaser.png", true);
-		attackGreen = loadBitmap("attackShipGreen.png", true);
+		attackGreen = loadBitmap("attackGreen.png", true);
 		attackBlue = loadBitmap("attackShipBlue.png", true);
 		attackRed = loadBitmap("attackShipRed.png", true);
 		attackOrange = loadBitmap("attackOrange.png", true);
@@ -60,16 +59,20 @@ public class Assets {
 		moneyBlue = loadBitmap("moneyBlue.png", true);
 		moneyOrange = loadBitmap("moneyOrange.png", true);
 		moneyRed = loadBitmap("moneyRed.png", true);
+        moneyGreen = loadBitmap("moneyGreen.png", true);
 		moneyShadow = makeMutableBitmap("moneyBlue.png");
 		defenseBlue = loadBitmap("defenseBlue.png", true);
 		defenseOrange = loadBitmap("defenseOrange.png", true);
 		defenseRed = loadBitmap("defenseRed.png", true);
+        defenseGreen = loadBitmap("defenseGreen.png", true);
 		defenseShadow = makeMutableBitmap("defenseBlue.png");
 		ring = loadBitmap("fx04.png", true);
 		star = loadBitmap("star.png", true);
 		fireball = loadBitmap("heavy1.png",true);
 		hadoken = loadBitmap("heavy2.png", true);
 		bossLaser = loadBitmap("bossLaser.png", true);
+		greenLaser = loadBitmap("greenLaser.png", true);
+
 
 		generateDesaturatedSprites();
 

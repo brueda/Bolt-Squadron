@@ -25,14 +25,17 @@ public abstract class PlayerShip extends Ship {
     protected Bitmap[] shipImage;
     protected String[] descriptions;
     protected int[] costs;
+    protected boolean green;
+    protected int totalCost;
 
     public PlayerShip(){
         super();
+        green = false;
         upgradeLevel = 0;
         totalHealing = 0;
         specialLaser = Assets.multiLaser;
         laserImage = Assets.blueLaser;
-        shipImage = new Bitmap[8];
+        shipImage = new Bitmap[9];
         descriptions = new String[6];
         costs  = new int[6];
     }
@@ -45,11 +48,18 @@ public abstract class PlayerShip extends Ship {
         return costs;
     }
 
+    public void goGreen(){
+        upgradeLevel = 6;
+        green = true;
+        Player.increaseVolts((totalCost * 3) / 4);
+    }
+
     @Override
     public void fire(Ship target){
         super.fire(target);
         ProjectileTask laser = new ProjectileTask();
         Bitmap image = (target.getPositionY() == positionY ? specialLaser : laserImage);
+        image = (isGreen() ? Assets.greenLaser : image);
         laser.initialize(this, target, target.isDead(), image);
         laser.makeRunnable();
         TaskList.addTask(laser);
@@ -72,6 +82,14 @@ public abstract class PlayerShip extends Ship {
         return shipImage;
     }
 
+    public boolean isGreen(){
+        return green;
+    }
+
+    public int getTotalCost(){
+        return totalCost;
+    }
+
     public void shield(){
         Assets.playSound(Assets.shieldID, 1.0f);
         shieldRenderable = true;
@@ -88,6 +106,7 @@ public abstract class PlayerShip extends Ship {
 
     public void levelUp(){
         upgradeLevel += 1;
+        totalCost += costs[upgradeLevel];
     }
 
     // all allied ships in the same column attack

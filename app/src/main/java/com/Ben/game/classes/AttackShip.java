@@ -12,20 +12,23 @@ public class AttackShip extends PlayerShip {
     public AttackShip(){
         super();
         attack = 11;
+        totalCost = 200;
         specialLaser = Assets.multiLaser;
         shipImage[0] = Assets.attackBlue;
         shipImage[1] = Assets.attackOrange;
         shipImage[2] = Assets.attackRed;
-        //Index 3 is left empty for now in case of additional levels.
+        shipImage[3] = Assets.attackGreen;
+        //Index 3 is left empty for now in case of additional levels. Index 3 is now used for Green, thanks Tom.
         shipImage[PlayerShip.SHADOW] = Assets.attackShadow;
         shipImage[DESAT + 0] = Assets.attBlueDesat;
         shipImage[DESAT + 1] = Assets.attOrangeDesat;
         shipImage[DESAT + 2] = Assets.attRedDesat;
+        shipImage[DESAT + 3] = Assets.attBlueDesat;
         descriptions[0] = "*attack specialist.*attacks against enemies in.  the same row hit twice";
         descriptions[1] = "+2 HP.+1 ATK.+1 DEF";
         descriptions[2] = "+2 HP.*kill shots cause.  nearby allies to attack";
         descriptions[3] = "+2 HP.+2 ATK.+1 DEF";
-        descriptions[4] = "+2 HP.*+1 hit per attack";
+        descriptions[4] = "+2 HP.+1 hit per attack";
         descriptions[5] = "+2 HP.+2 ATK.+2 DEF";
         costs[0] = 200;
         costs[1] = 400;
@@ -37,14 +40,14 @@ public class AttackShip extends PlayerShip {
 
     @Override
     public void fire(Ship target){
-        if(target.getPositionY() == positionY){
+        if(target.getPositionY() == positionY && !green){
             target.hit(attack);   // double shot if enemy is aligned
         }
-        if(upgradeLevel >= 4) {
+        if(upgradeLevel >= 4 && !green) {
             target.hit(attack);
         }
         super.fire(target);
-        if(upgradeLevel >= 2 && target.isDead()){
+        if(upgradeLevel >= 2 && target.isDead() && !green){
             for(PlayerShip s : Player.getParty()){
                 if(Math.abs(positionY - s.getPositionY()) <= 1 &&  Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead()){
                     Ship t = null;

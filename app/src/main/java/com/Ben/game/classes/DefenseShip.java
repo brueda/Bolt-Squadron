@@ -10,15 +10,18 @@ public class DefenseShip extends PlayerShip {
     public DefenseShip(){
         super();
         defense = 6;
+        totalCost = 200;
         specialLaser = Assets.shieldLaser;
         shipImage[0] = Assets.defenseBlue;
         shipImage[1] = Assets.defenseOrange;
         shipImage[2] = Assets.defenseRed;
+        shipImage[3] = Assets.defenseGreen;
         //Index 3 is left empty for now in case of additional levels.
         shipImage[PlayerShip.SHADOW] = Assets.defenseShadow;
         shipImage[DESAT + 0] = Assets.defBlueDesat;
         shipImage[DESAT + 1] = Assets.defOrangeDesat;
         shipImage[DESAT + 2] = Assets.defRedDesat;
+        shipImage[DESAT + 3] = Assets.defBlueDesat;
         descriptions[0] = "*defense specialist.*attacks against enemies in.  the same row activate shield";
         descriptions[1] = "+2 HP.+1 DEF.+1 ATK.";
         descriptions[2] = "+2 HP.*kill shots shield nearby allies";
@@ -36,10 +39,10 @@ public class DefenseShip extends PlayerShip {
     @Override
     public void fire(Ship target){
         super.fire(target);
-        if(target.getPositionY() == positionY){
+        if(target.getPositionY() == positionY && !green){
             shield();
         }
-        if(upgradeLevel >= 2 && target.isDead()){
+        if(upgradeLevel >= 2 && target.isDead() && !green){
             for (PlayerShip s : Player.getParty()) {
                 if (Math.abs(positionY - s.getPositionY()) <= 1 &&  Math.abs(positionX - s.getPositionX()) <= 1 && !s.isDead()) {
                     s.shield();
@@ -51,7 +54,7 @@ public class DefenseShip extends PlayerShip {
     @Override
     public void shield(){
         super.shield();
-        if(upgradeLevel >= 4){
+        if(upgradeLevel >= 4 && !green){
             repair();
         }
     }

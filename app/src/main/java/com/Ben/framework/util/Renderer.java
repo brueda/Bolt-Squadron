@@ -48,14 +48,18 @@ public class Renderer {
             }
         }
         else{                                // upgrade ship
-            if(selected.upgradeLevel == 5) return;
-            g.drawString("SWIPE UP TO UPGRADE:  " + selected.getCosts()[selected.upgradeLevel+1] + " V", 320, 50);
-            Bitmap image = selected.getImageArray()[(selected.upgradeLevel+1)/2];
+            if(selected.upgradeLevel >= 5) return;
+            g.drawString("SWIPE UP TO UPGRADE:  " + selected.getCosts()[selected.upgradeLevel + 1] + " V", 320, 50);
+            g.setColor(Color.GREEN);
+            g.drawString("SWIPE DOWN TO GO GREEN:", 320, 75);
+            g.drawString("+" + selected.getTotalCost() * 3 / 4 + " V", 320, 100);
+            Bitmap image = selected.getImageArray()[(selected.upgradeLevel + 1) / 2];
             g.drawImage(image, 500, 100, 98, 127);
             if(selected.upgradeLevel % 2 == 0 || selected.upgradeLevel == 0){
                 g.drawImage(Assets.star, 500+14, 100+51, 23, 23);
             }
             g.setFont(Assets.tf, 15);
+            g.setColor(Color.CYAN);
             String[] description = selected.getDescriptions()[selected.upgradeLevel+1].split("\\.");
             int offset = 250;
             for(String s : description){

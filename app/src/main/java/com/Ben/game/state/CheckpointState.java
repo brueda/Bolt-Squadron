@@ -95,6 +95,12 @@ public class CheckpointState extends State {
                 setCurrentState(new CleanupState(new LoadLevelState()));
             }
         }
+        else if(e == InputHandler.SWIPE_DOWN){
+            if(selectedShip != null){
+                selectedShip.goGreen();
+                Assets.playSound(Assets.levelUpID, 1.0f);
+            }
+        }
         return true;
     }
 
@@ -117,7 +123,7 @@ public class CheckpointState extends State {
             else Player.addShip(new MoneyShip());  // PositionX == 6
         }
         else{                                      // upgrade
-            if(s.upgradeLevel == 5){
+            if(s.upgradeLevel >= 5){
                 Assets.playSound(Assets.failID, 1.0f);
                 return;
             }
