@@ -37,7 +37,7 @@ public abstract class PlayerShip extends Ship {
         laserImage = Assets.blueLaser;
         shipImage = new Bitmap[9];
         descriptions = new String[6];
-        costs  = new int[6];
+        costs  = new int[7];
     }
 
     public String[] getDescriptions(){
