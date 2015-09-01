@@ -19,7 +19,7 @@ public class Player {
     public static ArrayList<PlayerShip> toAddList;
 
     public Player(){
-        volts = 1000;
+        volts = 600;
         score = 0;
         party = new ArrayList<PlayerShip>();
         toAddList = new ArrayList<PlayerShip>();
