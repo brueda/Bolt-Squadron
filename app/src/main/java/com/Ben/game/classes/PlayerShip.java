@@ -35,9 +35,9 @@ public abstract class PlayerShip extends Ship {
         totalHealing = 0;
         specialLaser = Assets.multiLaser;
         laserImage = Assets.blueLaser;
-        shipImage = new Bitmap[9];
-        descriptions = new String[6];
-        costs  = new int[7];
+        shipImage = new Bitmap[10];
+        descriptions = new String[10];
+        costs  = new int[10];
     }
 
     public String[] getDescriptions(){
